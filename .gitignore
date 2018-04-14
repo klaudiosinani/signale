@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+yarn.lock
+
+# logs
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
