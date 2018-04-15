@@ -1,0 +1,45 @@
+{
+  "name": "signale",
+  "version": "0.0.0",
+  "description": "👋 Fancy console status messages",
+  "license": "MIT",
+  "repository": "klauscfhq/signale",
+  "author": {
+    "name": "Klaus Sinani",
+    "email": "klauscfhq@protonmail.com",
+    "url": "https://klauscfhq.github.io"
+  },
+  "maintainers": [
+    {
+      "name": "Mario Sinani",
+      "email": "mariosinani@protonmail.ch",
+      "url": "https://mariocfhq.github.io"
+    }
+  ],
+  "scripts": {
+    "test": "xo"
+  },
+  "dependencies": {
+    "camelcase-keys": "^4.2.0",
+    "chalk": "^2.3.2",
+    "figures": "^2.0.0",
+    "pkg-conf": "^2.1.0"
+  },
+  "devDependencies": {
+    "xo": "^0.20.3"
+  },
+  "xo": {
+    "space": 2
+  },
+  "options": {
+    "defaults": {
+      "display-scope": true,
+      "display-badge": true,
+      "display-filename": false,
+      "display-label": true,
+      "display-timestamp": false,
+      "underline-label": true,
+      "underline-message": false
+    }
+  }
+}
