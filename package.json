@@ -28,18 +28,19 @@
   "devDependencies": {
     "xo": "^0.20.3"
   },
-  "xo": {
-    "space": 2
-  },
   "options": {
-    "defaults": {
+    "default": {
       "display-scope": true,
       "display-badge": true,
+      "display-datestamp": false,
       "display-filename": false,
       "display-label": true,
       "display-timestamp": false,
       "underline-label": true,
       "underline-message": false
     }
+  },
+  "xo": {
+    "space": 2
   }
 }
