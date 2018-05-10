@@ -1,4 +1,4 @@
 # Signale
 
-> 👋 Fancy console status messages
+> 👋 Hackable console logger
 

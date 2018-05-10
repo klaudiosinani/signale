@@ -1,7 +1,7 @@
 {
   "name": "signale",
   "version": "0.0.0",
-  "description": "👋 Fancy console status messages",
+  "description": "👋 Hackable console logger",
   "license": "MIT",
   "repository": "klauscfhq/signale",
   "author": {
