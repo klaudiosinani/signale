@@ -5,11 +5,11 @@ const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
 const types = require('./types');
-const pkgMeta = require('./package.json');
+const pkg = require('./package.json');
 
 let longestLabel = types.start.label.length;
-const defaults = pkgMeta.options.default;
-const namespace = pkgMeta.name;
+const defaults = pkg.options.default;
+const namespace = pkg.name;
 
 const now = () => Date.now();
 const timeSpan = then => {
