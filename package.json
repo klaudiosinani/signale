@@ -26,7 +26,7 @@
     "pkg-conf": "^2.1.0"
   },
   "devDependencies": {
-    "xo": "^0.20.3"
+    "xo": "*"
   },
   "options": {
     "default": {
