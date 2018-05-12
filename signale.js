@@ -76,8 +76,8 @@ class Signale {
     this._config = camelCase(Object.assign(this.packageConfiguration, configObj));
   }
 
-  _logger(type, scope, ...messageObj) {
-    this._log(this._buildSignale(this._types[type], scope, ...messageObj));
+  _logger(type, ...messageObj) {
+    this._log(this._buildSignale(this._types[type], ...messageObj));
   }
 
   _log(message) {
