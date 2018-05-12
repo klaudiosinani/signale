@@ -25,7 +25,7 @@ module.exports = {
   star: {
     badge: figures.star,
     color: 'yellow',
-    label: 'starred'
+    label: 'star'
   },
   success: {
     badge: figures.tick,
@@ -55,17 +55,17 @@ module.exports = {
   start: {
     badge: figures.play,
     color: 'green',
-    label: 'starting'
+    label: 'start'
   },
   pause: {
     badge: figures.squareSmallFilled,
     color: 'yellow',
-    label: 'paused'
+    label: 'pause'
   },
   debug: {
     badge: figures('⬤'),
     color: 'red',
-    label: 'debugger'
+    label: 'debug'
   },
   await: {
     badge: figures.ellipsis,
