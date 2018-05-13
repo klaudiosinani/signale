@@ -58,7 +58,7 @@ class Signale {
   get filename() {
     const _ = Error.prepareStackTrace;
     Error.prepareStackTrace = (error, stack) => stack;
-    const stack = new Error().stack;
+    const {stack} = new Error();
     Error.prepareStackTrace = _;
 
     const callers = stack.map(x => path.basename(x.getFileName()));
@@ -128,12 +128,16 @@ class Signale {
   _buildSignale(type, ...args) {
     let [msg, additional] = [{}, {}];
 
-    if (args.length === 1 && args[0].constructor === Object && !(args[0] instanceof Error)) {
-      const {message, suffix, prefix} = args[0];
-      msg = message;
-      additional = Object.assign({}, {suffix, prefix});
+    if (args.length === 1 && typeof (args[0]) === 'object' && args[0] !== null) {
+      if (args[0] instanceof Error) {
+        [msg] = args;
+      } else {
+        const [{prefix, message, suffix}] = args;
+        msg = message;
+        additional = Object.assign({}, {suffix, prefix});
+      }
     } else {
-      msg = args;
+      msg = args.join(' ');
     }
 
     const signale = this._meta();
@@ -154,8 +158,8 @@ class Signale {
       }
     }
 
-    if (msg[0] instanceof Error) {
-      const [name, ...rest] = msg[0].stack.split('\n');
+    if (msg instanceof Error) {
+      const [name, ...rest] = msg.stack.split('\n');
       signale.push(name);
       signale.push(chalk.grey(rest.map(l => l.replace(/^/, '\n')).join('')));
       return signale.join(' ');
@@ -211,7 +215,7 @@ class Signale {
   timeEnd(label) {
     if (!label && this._timers.size) {
       const is = x => x.includes('timer_');
-      label = Array.from(this._timers.keys()).reduceRight((x, y) => {
+      label = [...this._timers.keys()].reduceRight((x, y) => {
         return is(x) ? x : (is(y) ? y : null);
       });
     }
