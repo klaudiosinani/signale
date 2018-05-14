@@ -20,7 +20,6 @@
     "test": "xo"
   },
   "dependencies": {
-    "camelcase-keys": "^4.2.0",
     "chalk": "^2.3.2",
     "figures": "^2.0.0",
     "pkg-conf": "^2.1.0"
@@ -30,14 +29,14 @@
   },
   "options": {
     "default": {
-      "display-scope": true,
-      "display-badge": true,
-      "display-datestamp": false,
-      "display-filename": false,
-      "display-label": true,
-      "display-timestamp": false,
-      "underline-label": true,
-      "underline-message": false
+      "displayScope": true,
+      "displayBadge": true,
+      "displayDatestamp": false,
+      "displayFilename": false,
+      "displayLabel": true,
+      "displayTimestamp": false,
+      "underlineLabel": true,
+      "underlineMessage": false
     }
   },
   "xo": {

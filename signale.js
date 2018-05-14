@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-const camelCase = require('camelcase-keys');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
@@ -69,11 +68,11 @@ class Signale {
   }
 
   get packageConfiguration() {
-    return camelCase(pkgConf.sync(namespace, {defaults}));
+    return pkgConf.sync(namespace, {defaults});
   }
 
   set configuration(configObj) {
-    this._config = camelCase(Object.assign(this.packageConfiguration, configObj));
+    this._config = Object.assign(this.packageConfiguration, configObj);
   }
 
   _logger(type, ...messageObj) {
