@@ -188,7 +188,7 @@ class Signale {
     return new Signale(Object.assign(this.currentOptions, {scope: name}));
   }
 
-  descope() {
+  unscope() {
     this._scopeName = '';
   }
 
