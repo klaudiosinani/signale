@@ -18,7 +18,7 @@
 
 ## Description
 
-Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering of other node modules and applications.
+Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
 Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://twitter.com/klauscfhq) to share your thoughts on the project.
 
@@ -187,7 +187,7 @@ The color of the label, can be any of the foreground colors supported by [chalk]
 
 ### Scoped Loggers
 
-To create a scoped logger from scratch, define the `scope` field inside the `options` object and passed as argument to a new signale instance.
+To create a scoped logger from scratch, define the `scope` field inside the `options` object and pass it as argument to a new signale instance.
 
 ```js
 const {Signale} = require('signale');
