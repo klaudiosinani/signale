@@ -543,10 +543,10 @@ signale.time();
 signale.time('label');
 //=> ▶  label    Initialized timer...
 
-signale.timEnd();
+signale.timeEnd();
 //=> ◼  timer_1  Timer run for: 2ms
 
-signale.timEnd();
+signale.timeEnd();
 //=> ◼  timer_0  Timer run for: 2ms
 
 signale.timeEnd('label');
