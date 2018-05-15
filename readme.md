@@ -296,21 +296,21 @@ Display the name of the file that the logger is reporting from.
 
 Display the label of the logger.
 
-##### displayTimestamp
+##### `displayTimestamp`
 
 - Type: `Boolean`
 - Default: `false`
 
 Display the current local time in `HH:MM:SS` format.
 
-##### underlineLabel
+##### `underlineLabel`
 
 - Type: `Boolean`
 - Default: `true`
 
 Underline the logger label.
 
-##### underlineMessage
+##### `underlineMessage`
 
 - Type: `Boolean`
 - Default: `false`
@@ -321,7 +321,7 @@ Underline the logger message.
 
 ### Local
 
-To enable local configuration call the `.config()` function on your signale instance. Local configurations will always override any pre-existing configuration inherited from `package.json`.
+To enable local configuration call the `config()` function on your signale instance. Local configurations will always override any pre-existing configuration inherited from `package.json`.
 
 In the following example, loggers in the `foo.js` file will run under their own configuration, overriding the `package.json` one.
 
@@ -376,7 +376,7 @@ foo();
 
 ##### **`logger`**
 
-- Type: `function`
+- Type: `Function`
 
 Can be any default or custom logger.
 
