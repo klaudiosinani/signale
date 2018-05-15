@@ -263,7 +263,7 @@ The following illustrates all the available options with their respective defaul
 ```
 
 <details>
-<summary>All options are available in detail here.</summary>
+<summary>View all of the available options in detail.</summary>
 
 ##### `displayScope`
 
