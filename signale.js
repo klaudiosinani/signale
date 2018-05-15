@@ -46,11 +46,11 @@ class Signale {
     });
   }
 
-  get dateStamp() {
+  get date() {
     return new Date().toLocaleDateString();
   }
 
-  get timeStamp() {
+  get timestamp() {
     return new Date().toLocaleTimeString();
   }
 
@@ -83,8 +83,8 @@ class Signale {
     process.stdout.write(message + '\n');
   }
 
-  _formatDateStamp() {
-    return `[${this.dateStamp}]`;
+  _formatDate() {
+    return `[${this.date}]`;
   }
 
   _formatFilename() {
@@ -99,17 +99,17 @@ class Signale {
     return `[${this._scopeName}]`;
   }
 
-  _formatTimeStamp() {
-    return `[${this.timeStamp}]`;
+  _formatTimestamp() {
+    return `[${this.timestamp}]`;
   }
 
   _meta() {
     const meta = [];
-    if (this._config.displayDatestamp) {
-      meta.push(this._formatDateStamp());
+    if (this._config.displayDate) {
+      meta.push(this._formatDate());
     }
     if (this._config.displayTimestamp) {
-      meta.push(this._formatTimeStamp());
+      meta.push(this._formatTimestamp());
     }
     if (this._config.displayFilename) {
       meta.push(this._formatFilename());

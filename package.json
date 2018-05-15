@@ -31,7 +31,7 @@
     "default": {
       "displayScope": true,
       "displayBadge": true,
-      "displayDatestamp": false,
+      "displayDate": false,
       "displayFilename": false,
       "displayLabel": true,
       "displayTimestamp": false,
