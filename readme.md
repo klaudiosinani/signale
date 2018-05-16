@@ -6,6 +6,10 @@
   👋 Hackable console logger
 </h4>
 
+<div align="center">
+  <img alt="Header" src="https://cdn.rawgit.com/klauscfhq/signale/2d8bcff8/media/header.png" width="100%">
+</div>
+
 <p align="center">
   <a href="https://travis-ci.org/klauscfhq/signale">
     <img alt="Build Status" src="https://travis-ci.com/klauscfhq/signale.svg?branch=master">
