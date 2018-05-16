@@ -457,8 +457,8 @@ Can be an object holding the `prefix`, `message` and `suffix` attributes, with `
 ```js
 const signale = require('signale');
 
-signale.complete({prefix: '[task]', message: 'Wash the dishes', suffix: '(@klauscfhq)'});
-//=> [task] ☒  complete  Wash the dishes (@klauscfhq)
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
+//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
 ```
 
 #### signale.`scope(name[, name])`
