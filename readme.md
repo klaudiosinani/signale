@@ -146,7 +146,7 @@ const options = {
     },
     success: {
       badge: '++',
-      color: 'red',
+      color: 'green',
       label: 'huge success'
     }
   }
