@@ -7,7 +7,7 @@
 </h4>
 
 <div align="center">
-  <img alt="Header" src="https://cdn.rawgit.com/klauscfhq/signale/2d8bcff8/media/header.png" width="100%">
+  <img alt="Header" src="https://cdn.rawgit.com/klauscfhq/signale/2d8bcff8/media/header.png" width="88%">
 </div>
 
 <p align="center">
@@ -94,6 +94,10 @@ signale.watch('Recursively watching build directory...');
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
 ```
 
+<div align="center">
+  <img alt="Default Loggers" src="media/default-loggers.png" width="60%">
+</div>
+
 ### Custom Loggers
 
 To create a custom logger define an `options` object yielding a `types` field with the logger data and pass it as argument to a new signale instance.
@@ -121,6 +125,10 @@ const custom = new Signale(options);
 custom.remind('Improve documentation.');
 custom.santa('Hoho! You have an unused variable on L45.');
 ```
+
+<div align="center">
+  <img alt="Custom Loggers" src="media/custom-loggers.png" width="70%">
+</div>
 
 Additionally, all default loggers can be overridden to your own preference.
 
@@ -152,6 +160,10 @@ const custom = new Signale(options);
 custom.error('Custom Error Log');
 custom.success('Custom Success Log');
 ```
+
+<div align="center">
+  <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
+</div>
 
 The `options` object can hold the `scope` and `types` attributes, where the first corresponds to the name of the scope the logger is reporting from and the second is where the objects named after the custom loggers reside.
 
@@ -200,6 +212,10 @@ const global = new Signale(options);
 global.success('Successful Operation');
 ```
 
+<div align="center">
+  <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
+</div>
+
 To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers and configuration of the initial one.
 
 ```js
@@ -221,6 +237,10 @@ function foo() {
 foo();
 ```
 
+<div align="center">
+  <img alt="Scope Existing" src="media/scope-existing.png" width="65%">
+</div>
+
 ### Timers
 
 Timer are managed by the `time()` and `endTime()` functions. A unique label can used to identify a timer on initialization, though if none is provided the timer will be assigned one automatically. In addition, calling the `timeEnd()` function without a specified label will have as effect the termination the most recently initialized timer that was created without providing a label.
@@ -238,6 +258,10 @@ setTimeout(() => {
   signale.timeEnd('test');
 }, 500);
 ```
+
+<div align="center">
+  <img alt="Timers" src="media/timers.png" width="55%">
+</div>
 
 ## Configuration
 
@@ -343,6 +367,10 @@ signale.config({
 signale.success('Hello from the Global scope');
 ```
 
+<div align="center">
+  <img alt="Local Config" src="media/local-config.png" width="65%">
+</div>
+
 Also, scoped loggers can have their own independent configuration, overriding the one inherited by the parent instance or `package.json`. 
 
 ```js
@@ -373,6 +401,10 @@ function foo() {
 
 foo();
 ```
+
+<div align="center">
+  <img alt="Scope Config" src="media/scope-config.png" width="65%">
+</div>
 
 ## API
 
