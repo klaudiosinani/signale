@@ -95,7 +95,7 @@ signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscf
 ```
 
 <div align="center">
-  <img alt="Default Loggers" src="media/default-loggers.png" width="60%">
+  <img alt="Default Loggers" src="media/default-loggers.png" width="65%">
 </div>
 
 ### Custom Loggers
@@ -260,7 +260,7 @@ setTimeout(() => {
 ```
 
 <div align="center">
-  <img alt="Timers" src="media/timers.png" width="55%">
+  <img alt="Timers" src="media/timers.png" width="60%">
 </div>
 
 ## Configuration
