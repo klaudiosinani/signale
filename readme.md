@@ -216,7 +216,7 @@ global.success('Successful Operation');
   <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
 </div>
 
-To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers and configuration of the initial one.
+To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers and configuration from the initial one.
 
 ```js
 const signale = require('signale');
@@ -243,7 +243,7 @@ foo();
 
 ### Timers
 
-Timer are managed by the `time()` and `endTime()` functions. A unique label can used to identify a timer on initialization, though if none is provided the timer will be assigned one automatically. In addition, calling the `timeEnd()` function without a specified label will have as effect the termination the most recently initialized timer that was created without providing a label.
+Timer are managed by the `time()` and `endTime()` functions. A unique label can be used to identify a timer on initialization, though if none is provided the timer will be assigned one automatically. In addition, calling the `timeEnd()` function without a specified label will have as effect the termination of the most recently initialized timer, that was created without providing a label.
 
 ```js
 const signale = require('signale');
@@ -530,7 +530,7 @@ signale.success('Successful operations');
 
 - Return Type: `String`
 
-Sets a timers and accept an optional label. If none provided the timer will receive a unique label automatically.
+Sets a timers and accepts an optional label. If none provided the timer will receive a unique label automatically.
 
 Returns a string corresponding to the timer label. 
 
@@ -553,7 +553,7 @@ signale.time('label');
 //=> ▶  label    Initialized timer...
 ```
 
-#### signale.`endTime([, label])`
+#### signale.`timeEnd([, label])`
 
 - Return Type: `Object`
 
