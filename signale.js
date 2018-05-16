@@ -159,13 +159,17 @@ class Signale {
 
     if (msg instanceof Error) {
       const [name, ...rest] = msg.stack.split('\n');
-      signale.push(name);
+      if (this._config.underlineMessage) {
+        signale.push(chalk.underline(name));
+      } else {
+        signale.push(name);
+      }
       signale.push(chalk.grey(rest.map(l => l.replace(/^/, '\n')).join('')));
       return signale.join(' ');
     }
 
     if (this._config.underlineMessage) {
-      signale.push(chalk.underline(msg.join(' ')));
+      signale.push(chalk.underline(msg));
     } else {
       signale.push(msg);
     }
