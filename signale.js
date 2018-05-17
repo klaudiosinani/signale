@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const os = require('os');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
@@ -80,7 +81,7 @@ class Signale {
   }
 
   _log(message) {
-    process.stdout.write(message + '\n');
+    process.stdout.write(message + os.EOL);
   }
 
   _formatDate() {
@@ -158,13 +159,13 @@ class Signale {
     }
 
     if (msg instanceof Error) {
-      const [name, ...rest] = msg.stack.split('\n');
+      const [name, ...rest] = msg.stack.split(/\r\n|\r|\n/);
       if (this._config.underlineMessage) {
         signale.push(chalk.underline(name));
       } else {
         signale.push(name);
       }
-      signale.push(chalk.grey(rest.map(l => l.replace(/^/, '\n')).join('')));
+      signale.push(chalk.grey(rest.map(l => l.replace(/^/, os.EOL)).join('')));
       return signale.join(' ');
     }
 
