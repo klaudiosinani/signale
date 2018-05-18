@@ -213,7 +213,7 @@ class Signale {
 
     message.push(...report);
     this._log(message.join(' '));
-    return {label};
+    return label;
   }
 
   timeEnd(label) {
