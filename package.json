@@ -16,6 +16,12 @@
       "url": "https://mariocfhq.github.io"
     }
   ],
+  "keywords": [
+    "hackable",
+    "colorful",
+    "console",
+    "logger"
+  ],
   "scripts": {
     "test": "xo"
   },

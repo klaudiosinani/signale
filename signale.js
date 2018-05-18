@@ -22,6 +22,7 @@ class Signale {
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
     this._types = Object.assign(types, this._customTypes);
+    this._stream = options.stream || process.stdout;
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -80,7 +81,7 @@ class Signale {
   }
 
   _log(message) {
-    process.stdout.write(message + '\n');
+    this._stream.write(message + '\n');
   }
 
   _formatDate() {
