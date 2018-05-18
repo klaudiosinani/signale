@@ -396,7 +396,7 @@ function foo() {
     displayDate: true
   });
 
-  fooLogger.success('Hello from the foo scope');
+  fooLogger.success('Hello from the Local scope');
 }
 
 foo();
