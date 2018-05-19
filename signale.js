@@ -43,7 +43,8 @@ class Signale {
     return Object.assign({}, {
       config: this._config,
       types: this._customTypes,
-      timers: this._timers
+      timers: this._timers,
+      stream: this._stream
     });
   }
 
