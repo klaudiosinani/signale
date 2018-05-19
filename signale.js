@@ -6,7 +6,6 @@ const pkgConf = require('pkg-conf');
 const types = require('./types');
 const pkg = require('./package.json');
 
-let longestLabel = types.start.label.length;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
 
@@ -23,14 +22,15 @@ class Signale {
     this._timers = options.timers || new Map();
     this._types = Object.assign({}, types, this._customTypes);
     this._stream = options.stream || process.stdout;
+    this._longestLabel = types.start.label.length;
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
     });
 
     for (const type in this._types) {
-      if (this._types[type].label && this._types[type].label.length > longestLabel) {
-        longestLabel = this._types[type].label.length;
+      if (this._types[type].label && this._types[type].label.length > this._longestLabel) {
+        this._longestLabel = this._types[type].label.length;
       }
     }
   }
@@ -153,9 +153,9 @@ class Signale {
 
     if (this._config.displayLabel && type.label) {
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color].underline(type.label).padEnd(longestLabel + 20));
+        signale.push(chalk[type.color].underline(type.label).padEnd(this._longestLabel + 20));
       } else {
-        signale.push(chalk[type.color](type.label.padEnd(longestLabel + 1)));
+        signale.push(chalk[type.color](type.label.padEnd(this._longestLabel + 1)));
       }
     }
 
@@ -208,7 +208,7 @@ class Signale {
 
     const report = [
       chalk.green(this._types.start.badge.padEnd(2)),
-      chalk.green.underline(label).padEnd(longestLabel + 20),
+      chalk.green.underline(label).padEnd(this._longestLabel + 20),
       'Initialized timer...'
     ];
 
@@ -231,7 +231,7 @@ class Signale {
       const message = this._meta();
       const report = [
         chalk.red(this._types.pause.badge.padEnd(2)),
-        chalk.red.underline(label).padEnd(longestLabel + 20),
+        chalk.red.underline(label).padEnd(this._longestLabel + 20),
         'Timer run for:',
         chalk.yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
       ];
