@@ -148,7 +148,7 @@ class Signale {
     }
 
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](type.badge.padEnd(2)));
+      signale.push(chalk[type.color](type.badge.padEnd(type.badge.length + 1)));
     }
 
     if (this._config.displayLabel && type.label) {
