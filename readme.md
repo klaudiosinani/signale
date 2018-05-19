@@ -308,7 +308,7 @@ Display the badge of the logger.
 - Type: `Boolean`
 - Default: `false`
 
-Display the current local date in `YY-MM-DD` format. 
+Display the current local date in `YYYY-MM-DD` format. 
 
 ##### `displayFilename`
 
