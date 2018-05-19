@@ -21,7 +21,7 @@ class Signale {
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
-    this._types = Object.assign(types, this._customTypes);
+    this._types = Object.assign({}, types, this._customTypes);
     this._stream = options.stream || process.stdout;
 
     Object.keys(this._types).forEach(type => {
