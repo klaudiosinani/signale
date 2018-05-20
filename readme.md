@@ -24,7 +24,7 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 
 ## Highlights
 
-- 15 out-of-the-box loggers
+- 16 out-of-the-box loggers
 - Hackable to the core
 - Clean and beautiful output
 - Integrated timers
