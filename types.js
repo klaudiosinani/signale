@@ -76,5 +76,10 @@ module.exports = {
     badge: figures.ellipsis,
     color: 'yellow',
     label: 'watching'
+  },
+  log: {
+    badge: '',
+    color: '',
+    label: ''
   }
 };
