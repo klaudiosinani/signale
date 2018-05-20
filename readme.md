@@ -31,6 +31,7 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - Custom pluggable loggers
 - Filename, date and timestamp support
 - Scoped loggers and timers
+- Configurable writable streams
 - Simple and minimal syntax
 - Globally configurable through `package.json`
 - Overridable configuration per file and logger
@@ -78,6 +79,7 @@ Import signale and start using any of the default loggers.
 - `success`
 - `warn`
 - `watch`
+- `log`
 
 </details>
 
@@ -106,6 +108,7 @@ To create a custom logger define an `options` object yielding a `types` field wi
 const {Signale} = require('signale');
 
 const options = {
+  stream: process.stdout,
   scope: 'custom',
   types: {
     remind: {
@@ -165,7 +168,14 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold the `scope` and `types` attributes, where the first corresponds to the name of the scope the logger is reporting from and the second is where the objects named after the custom loggers reside.
+The `options` object can hold the `stream`, `scope` and `types` attributes, where the first yields the destination to which the logged data is written, the second corresponds to the name of the scope the logger is reporting from and the third is where the objects named after the custom loggers reside.
+
+##### `stream`
+
+- Type: `Writable stream`
+- Default: `process.stdout`
+
+Destination to which the data is written, can be any valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams).
 
 ##### `scope`
 
@@ -216,7 +226,7 @@ global.success('Successful Operation');
   <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
 </div>
 
-To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers and configuration from the initial one.
+To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, stream and configuration from the initial one.
 
 ```js
 const signale = require('signale');
