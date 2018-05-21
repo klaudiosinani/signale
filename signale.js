@@ -181,7 +181,11 @@ class Signale {
     }
 
     if (additional.suffix) {
-      signale.push(additional.suffix);
+      if (this._config.underlineSuffix) {
+        signale.push(chalk.underline(additional.suffix));
+      } else {
+        signale.push(additional.suffix);
+      }
     }
 
     return signale.join(' ');

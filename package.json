@@ -43,7 +43,8 @@
       "displayTimestamp": false,
       "underlineLabel": true,
       "underlineMessage": false,
-      "underlinePrefix": false
+      "underlinePrefix": false,
+      "underlineSuffix": false
     }
   },
   "xo": {
