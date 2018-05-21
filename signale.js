@@ -144,7 +144,11 @@ class Signale {
     const signale = this._meta();
 
     if (additional.prefix) {
-      signale.push(additional.prefix);
+      if (this._config.underlinePrefix) {
+        signale.push(chalk.underline(additional.prefix));
+      } else {
+        signale.push(additional.prefix);
+      }
     }
 
     if (this._config.displayBadge && type.badge) {

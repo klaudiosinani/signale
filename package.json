@@ -42,7 +42,8 @@
       "displayLabel": true,
       "displayTimestamp": false,
       "underlineLabel": true,
-      "underlineMessage": false
+      "underlineMessage": false,
+      "underlinePrefix": false
     }
   },
   "xo": {
