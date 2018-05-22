@@ -192,7 +192,7 @@ class Signale {
   }
 
   config(configObj) {
-    this.configuration = configObj;
+    this._config = configObj;
   }
 
   scope(...name) {
