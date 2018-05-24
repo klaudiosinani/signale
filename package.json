@@ -44,7 +44,8 @@
       "underlineLabel": true,
       "underlineMessage": false,
       "underlinePrefix": false,
-      "underlineSuffix": false
+      "underlineSuffix": false,
+      "uppercaseLabel": false
     }
   },
   "xo": {

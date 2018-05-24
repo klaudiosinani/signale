@@ -156,10 +156,11 @@ class Signale {
     }
 
     if (this._config.displayLabel && type.label) {
+      const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color].underline(type.label).padEnd(this._longestLabel + 20));
+        signale.push(chalk[type.color].underline(label).padEnd(this._longestLabel + 20));
       } else {
-        signale.push(chalk[type.color](type.label.padEnd(this._longestLabel + 1)));
+        signale.push(chalk[type.color](label.padEnd(this._longestLabel + 1)));
       }
     }
 
