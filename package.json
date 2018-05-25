@@ -1,6 +1,6 @@
 {
   "name": "signale",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "👋 Hackable console logger",
   "license": "MIT",
   "repository": "klauscfhq/signale",
@@ -15,6 +15,12 @@
       "email": "mariosinani@protonmail.ch",
       "url": "https://mariocfhq.github.io"
     }
+  ],
+  "keywords": [
+    "hackable",
+    "colorful",
+    "console",
+    "logger"
   ],
   "scripts": {
     "test": "xo"
@@ -36,7 +42,10 @@
       "displayLabel": true,
       "displayTimestamp": false,
       "underlineLabel": true,
-      "underlineMessage": false
+      "underlineMessage": false,
+      "underlinePrefix": false,
+      "underlineSuffix": false,
+      "uppercaseLabel": false
     }
   },
   "xo": {

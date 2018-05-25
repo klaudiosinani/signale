@@ -9,3 +9,6 @@ before_install:
   - npm --version
 git:
   depth: 5
+cache:
+  directories:
+    - node_modules
