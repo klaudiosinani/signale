@@ -19,10 +19,13 @@ class Signale {
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
-    this._timers = options.timers || new Map();
+    this._timers = new Map();
+    this.__timers = options.timers || {};
     this._types = Object.assign({}, types, this._customTypes);
     this._stream = options.stream || process.stdout;
     this._longestLabel = types.start.label.length;
+
+    // Object.keys(this.__timers).forEach(item => console.log(item));
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -207,6 +210,25 @@ class Signale {
     this._scopeName = '';
   }
 
+  textType(text) {
+    let _textType = null;
+    switch (text) {
+      case typeof text === 'string':
+        _textType = 'string';
+        break;
+      case typeof text === 'object':
+        _textType = 'object';
+        break;
+      case typeof text === 'boolean':
+        _textType = 'boolean';
+        break;
+      default:
+        _textType = null;
+        break;
+    }
+    return _textType;
+  }
+
   time(label) {
     if (!label) {
       label = `timer_${this._timers.size}`;
@@ -215,14 +237,21 @@ class Signale {
     this._timers.set(label, Date.now());
     const message = this._meta();
 
+    const timerStart = this.__timers.start || {};
+
+    const __color = chalk[timerStart.color] || chalk.green;
+    const __badge = timerStart.badge || this._types.start.badge;
+    const __text = this.textType(timerStart.text) === 'object' ? timerStart.text.join(' ') : timerStart.text || 'Initialized timer...';
+
     const report = [
-      chalk.green(this._types.start.badge.padEnd(2)),
-      chalk.green.underline(label).padEnd(this._longestLabel + 20),
-      'Initialized timer...'
+      __color(__badge.padEnd(4)),
+      __color.underline(label).padEnd(this._longestLabel + 22),
+      __text
     ];
 
     message.push(...report);
     this._log(message.join(' '));
+
     return label;
   }
 
@@ -233,16 +262,26 @@ class Signale {
         return is(x) ? x : (is(y) ? y : null);
       });
     }
+
     if (this._timers.has(label)) {
       const span = timeSpan(this._timers.get(label));
       this._timers.delete(label);
 
       const message = this._meta();
+
+      const executionTime = span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's';
+      const timerEnd = this.__timers.end || {};
+
+      const __color = chalk[timerEnd.color] || chalk.red;
+      const __badge = timerEnd.badge || this._types.pause.badge;
+      const __text = timerEnd.text || 'Timer run for:';
+      const __executionColor = chalk[timerEnd.time] || chalk.yellow;
+
       const report = [
-        chalk.red(this._types.pause.badge.padEnd(2)),
-        chalk.red.underline(label).padEnd(this._longestLabel + 20),
-        'Timer run for:',
-        chalk.yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
+        __color(__badge.padEnd(4)),
+        __color.underline(label).padEnd(this._longestLabel + 22),
+        __text,
+        __executionColor(executionTime)
       ];
 
       message.push(...report);
