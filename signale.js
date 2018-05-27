@@ -1,4 +1,5 @@
 'use strict';
+const util = require('util');
 const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
@@ -138,7 +139,7 @@ class Signale {
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
-      msg = args.join(' ');
+      msg = util.format(args[0], ...args.slice(1, args.length)); // args.join(' ');
     }
 
     const signale = this._meta();
