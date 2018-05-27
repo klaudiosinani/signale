@@ -139,7 +139,7 @@ class Signale {
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
-      msg = util.format(args[0], ...args.slice(1, args.length)); // args.join(' ');
+      msg = util.format(args[0], ...args.slice(1, args.length));
     }
 
     const signale = this._meta();
