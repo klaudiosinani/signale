@@ -50,5 +50,11 @@
   },
   "xo": {
     "space": 2
-  }
+  },
+  "files": [
+		"index.js",
+		"signale.js",
+		"types/index.d.ts"
+	],
+	"types": "types/index.d.ts"
 }
