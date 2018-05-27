@@ -20,12 +20,14 @@ class Signale {
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
     this._timers = new Map();
-    this.__timers = options.timers || {};
+    this.__timers = options.timers || {start: {}, end: {}};
     this._types = Object.assign({}, types, this._customTypes);
     this._stream = options.stream || process.stdout;
     this._longestLabel = types.start.label.length;
 
-    // Object.keys(this.__timers).forEach(item => console.log(item));
+    Object.keys(options).forEach(type => {
+      this[type] = options[type];
+    });
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -211,33 +213,55 @@ class Signale {
   }
 
   textType(text) {
-    let _textType = null;
-    switch (text) {
-      case typeof text === 'string':
-        _textType = 'string';
+    let textType = null;
+    switch (typeof text) {
+      case 'string':
+        textType = 'string';
         break;
-      case typeof text === 'object':
-        _textType = 'object';
+      case 'object':
+        textType = 'object';
         break;
-      case typeof text === 'boolean':
-        _textType = 'boolean';
+      case 'boolean':
+        textType = 'boolean';
         break;
       default:
-        _textType = null;
+        textType = null;
         break;
     }
-    return _textType;
+    return textType;
   }
 
-  time(label) {
+  time(label, options) {
     if (!label) {
       label = `timer_${this._timers.size}`;
+    }
+
+    if (options) {
+      if (options.both) {
+        Object.keys(options.both).forEach(key => {
+          this.__timers.start[key] = options.both[key];
+          this.__timers.end[key] = options.both[key];
+        });
+      } else {
+        if (options.start) {
+          this.__timers.start = options.start;
+        }
+
+        if (options.end) {
+          this.__timers.end = options.end;
+        }
+
+        Object.keys(options).forEach(key => {
+          this.__timers.start[key] = options[key];
+          this.__timers.end[key] = options[key];
+        });
+      }
     }
 
     this._timers.set(label, Date.now());
     const message = this._meta();
 
-    const timerStart = this.__timers.start || {};
+    const timerStart = this.__timers.start;
 
     const __color = chalk[timerStart.color] || chalk.green;
     const __badge = timerStart.badge || this._types.start.badge;
@@ -274,7 +298,7 @@ class Signale {
 
       const __color = chalk[timerEnd.color] || chalk.red;
       const __badge = timerEnd.badge || this._types.pause.badge;
-      const __text = timerEnd.text || 'Timer run for:';
+      const __text = this.textType(timerEnd.text) === 'object' ? timerEnd.text.join(' ') : timerEnd.text || 'Timer run for:';
       const __executionColor = chalk[timerEnd.time] || chalk.yellow;
 
       const report = [
