@@ -298,14 +298,13 @@ class Signale {
 
       const __color = chalk[timerEnd.color] || chalk.red;
       const __badge = timerEnd.badge || this._types.pause.badge;
-      const __text = this.textType(timerEnd.text) === 'object' ? timerEnd.text.join(' ') : timerEnd.text || 'Timer run for:';
       const __executionColor = chalk[timerEnd.time] || chalk.yellow;
+      const __text = this.textType(timerEnd.text) === 'object' ? timerEnd.text.join().replace(',', ` ${__executionColor(executionTime)} `) : timerEnd.text || `Timer run for: ${__executionColor(executionTime)}`;
 
       const report = [
         __color(__badge.padEnd(4)),
         __color.underline(label).padEnd(this._longestLabel + 22),
-        __text,
-        __executionColor(executionTime)
+        __text
       ];
 
       message.push(...report);
