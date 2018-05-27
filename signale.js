@@ -132,10 +132,10 @@ class Signale {
 
     if (args.length === 1 && typeof (args[0]) === 'object' && args[0] !== null) {
       if (args[0] instanceof Error) {
-        [msg] = args;
+        [msg] = args; // See this github issue comment (https://github.com/nodejs/node/issues/9406#issuecomment-257724625)
       } else {
-        const [{prefix, message, suffix}] = args;
-        msg = message;
+        const [{prefix, suffix}] = args;
+        msg = util.format(util.inspect(...args));
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
