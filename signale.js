@@ -5,6 +5,7 @@ const figures = require('figures');
 const pkgConf = require('pkg-conf');
 const types = require('./types');
 const pkg = require('./package.json');
+const readline = require('readline');
 
 const defaults = pkg.options.default;
 const namespace = pkg.name;
@@ -250,6 +251,14 @@ class Signale {
       this._log(message.join(' '));
       return {label, span};
     }
+  }
+  
+  update(funct, ...args) {
+    readline.moveCursor(this._stream, 0, -1)
+    readline.clearLine(this._stream, 0);
+    readline.cursorTo(this._stream, 0);
+
+    funct(...args);
   }
 }
 
