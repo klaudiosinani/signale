@@ -78,11 +78,11 @@ class Signale {
   }
 
   _logger(type, ...messageObj) {
-    this._log(this._buildSignale(this._types[type], ...messageObj));
+    this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
   }
 
-  _log(message) {
-    this._stream.write(message + '\n');
+  _log(message, stream = this._stream) {
+    stream.write(message + '\n');
   }
 
   _formatDate() {
