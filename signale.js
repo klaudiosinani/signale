@@ -259,10 +259,12 @@ class Signale {
     }
   }
 
-  update(funct, ...args) {
-    readline.moveCursor(this._stream, 0, -1);
-    readline.clearLine(this._stream, 0);
-    readline.cursorTo(this._stream, 0);
+  update(streams = this._stream, funct, ...args) {
+    this._formatStream(streams).forEach(stream => {
+      readline.moveCursor(stream, 0, -1);
+      readline.clearLine(stream, 0);
+      readline.cursorTo(stream, 0);
+    });
 
     funct(...args);
   }
