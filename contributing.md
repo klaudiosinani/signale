@@ -28,7 +28,7 @@ You can use issue labels to discover issues you could help us out with!
 - [`bug` issues](https://github.com/klauscfhq/signale/labels/bug) are known bugs we would like to fix
 - [`needs testing` issues](https://github.com/klauscfhq/signale/labels/needs%20testing) are features that we are still working on improving
 - [`future` issues](https://github.com/klauscfhq/signale/labels/future) are those that we'd like to get to, but not anytime soon. Please check before working on these since we may not yet want to take on the burden of supporting those features
-- on the [`help wanted`](https://github.com/klauscfhq/signale/labels/future) label you can always find something exciting going on
+- on the [`help wanted`](https://github.com/klauscfhq/signale/labels/help%20wanted) label you can always find something exciting going on
 
 You may find an issue is assigned, or has the [`assigned` label](https://github.com/klauscfhq/signale/labels/assigned). Please double-check before starting on this issue because somebody else is likely already working on it
 
