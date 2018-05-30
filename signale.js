@@ -259,8 +259,8 @@ class Signale {
     }
   }
 
-  update(streams = this._stream, funct, ...args) {
-    this._formatStream(streams).forEach(stream => {
+  update(funct, ...args) {
+    this._formatStream(this._stream).forEach(stream => {
       readline.moveCursor(stream, 0, -1);
       readline.clearLine(stream, 0);
       readline.cursorTo(stream, 0);
