@@ -5,8 +5,7 @@ module.exports = {
   error: {
     badge: figures.cross,
     color: 'red',
-    label: 'error',
-    stream: process.stderr
+    label: 'error'
   },
   fatal: {
     badge: figures.cross,
