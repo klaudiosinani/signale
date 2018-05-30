@@ -259,14 +259,16 @@ class Signale {
     }
   }
 
-  update(funct, ...args) {
-    this._formatStream(this._stream).forEach(stream => {
+  update(type, ...args) {
+    const streams = type.stream || this._formatStream(this._stream);
+
+    streams.forEach(stream => {
       readline.moveCursor(stream, 0, -1);
       readline.clearLine(stream, 0);
       readline.cursorTo(stream, 0);
     });
 
-    funct(...args);
+    this._log(this._buildSignale(type, ...args), streams);
   }
 }
 
