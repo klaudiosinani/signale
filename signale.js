@@ -44,6 +44,7 @@ class Signale {
     return Object.assign({}, {
       config: this._config,
       types: this._customTypes,
+      interactive: this._interactive,
       timers: this._timers,
       stream: this._stream
     });
