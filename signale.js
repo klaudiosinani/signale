@@ -16,6 +16,7 @@ const timeSpan = then => {
 
 class Signale {
   constructor(options = {}) {
+    this._interactive = options.interactive || false;
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
@@ -85,8 +86,17 @@ class Signale {
 
   _log(message, streams = this._stream) {
     this._formatStream(streams).forEach(stream => {
-      stream.write(message + '\n');
+      this._write(stream, message);
     });
+  }
+
+  _write(stream, message) {
+    if (this._interactive) {
+      stream.moveCursor(0, -1);
+      stream.clearLine();
+      stream.cursorTo(0);
+    }
+    stream.write(message + '\n');
   }
 
   _formatStream(stream) {
