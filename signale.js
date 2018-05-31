@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-const readline = require('readline');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
@@ -17,6 +16,7 @@ const timeSpan = then => {
 
 class Signale {
   constructor(options = {}) {
+    this._interactive = options.interactive || false;
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
@@ -84,8 +84,17 @@ class Signale {
 
   _log(message, streams = this._stream) {
     this._formatStream(streams).forEach(stream => {
-      stream.write(message + '\n');
+      this._write(stream, message);
     });
+  }
+
+  _write(stream, message) {
+    if (this._interactive) {
+      stream.moveCursor(0, -1);
+      stream.clearLine();
+      stream.cursorTo(0);
+    }
+    stream.write(message + '\n');
   }
 
   _formatStream(stream) {
@@ -257,18 +266,6 @@ class Signale {
       this._log(message.join(' '));
       return {label, span};
     }
-  }
-
-  update(type, ...args) {
-    const streams = type.stream || this._formatStream(this._stream);
-
-    streams.forEach(stream => {
-      readline.moveCursor(stream, 0, -1);
-      readline.clearLine(stream, 0);
-      readline.cursorTo(stream, 0);
-    });
-
-    this._log(this._buildSignale(type, ...args), streams);
   }
 }
 
