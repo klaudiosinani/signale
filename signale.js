@@ -64,11 +64,13 @@ class Signale {
     const {stack} = new Error();
     Error.prepareStackTrace = _;
 
-    const callers = stack.map(x => path.basename(x.getFileName()));
+    const callers = stack.map(x => x.getFileName());
 
-    return callers.find(x => {
+    const firstExternalFilePath = callers.find(x => {
       return x !== callers[0];
     });
+
+    return firstExternalFilePath ? path.basename(firstExternalFilePath) : 'anonymous';
   }
 
   get packageConfiguration() {
