@@ -3,9 +3,10 @@ const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
-const types = require('./types');
 const pkg = require('./package.json');
+const defaultTypes = require('./types');
 
+let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
 
@@ -16,13 +17,14 @@ const timeSpan = then => {
 
 class Signale {
   constructor(options = {}) {
+    this._interactive = options.interactive || false;
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
-    this._types = Object.assign({}, types, this._customTypes);
+    this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
-    this._longestLabel = types.start.label.length;
+    this._longestLabel = defaultTypes.start.label.length;
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -43,6 +45,7 @@ class Signale {
     return Object.assign({}, {
       config: this._config,
       types: this._customTypes,
+      interactive: this._interactive,
       timers: this._timers,
       stream: this._stream
     });
@@ -62,11 +65,13 @@ class Signale {
     const {stack} = new Error();
     Error.prepareStackTrace = _;
 
-    const callers = stack.map(x => path.basename(x.getFileName()));
+    const callers = stack.map(x => x.getFileName());
 
-    return callers.find(x => {
+    const firstExternalFilePath = callers.find(x => {
       return x !== callers[0];
     });
+
+    return firstExternalFilePath ? path.basename(firstExternalFilePath) : 'anonymous';
   }
 
   get packageConfiguration() {
@@ -77,14 +82,31 @@ class Signale {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
 
+  _mergeTypes(standard, custom) {
+    Object.keys(custom).forEach(type => {
+      standard[type] = Object.assign({}, standard[type], custom[type]);
+    });
+    return standard;
+  }
+
   _logger(type, ...messageObj) {
     this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
   }
 
   _log(message, streams = this._stream) {
     this._formatStream(streams).forEach(stream => {
-      stream.write(message + '\n');
+      this._write(stream, message);
     });
+  }
+
+  _write(stream, message) {
+    if (this._interactive && isPreviousLogInteractive) {
+      stream.moveCursor(0, -1);
+      stream.clearLine();
+      stream.cursorTo(0);
+    }
+    stream.write(message + '\n');
+    isPreviousLogInteractive = this._interactive;
   }
 
   _formatStream(stream) {
