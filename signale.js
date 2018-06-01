@@ -6,6 +6,7 @@ const pkgConf = require('pkg-conf');
 const pkg = require('./package.json');
 const defaultTypes = require('./types');
 
+let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
 
@@ -99,12 +100,13 @@ class Signale {
   }
 
   _write(stream, message) {
-    if (this._interactive) {
+    if (this._interactive && isPreviousLogInteractive) {
       stream.moveCursor(0, -1);
       stream.clearLine();
       stream.cursorTo(0);
     }
     stream.write(message + '\n');
+    isPreviousLogInteractive = this._interactive;
   }
 
   _formatStream(stream) {
