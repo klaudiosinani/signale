@@ -3,8 +3,8 @@ const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
-const types = require('./types');
 const pkg = require('./package.json');
+const defaultTypes = require('./types');
 
 const defaults = pkg.options.default;
 const namespace = pkg.name;
@@ -21,9 +21,9 @@ class Signale {
     this._customTypes = Object.assign({}, options.types);
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
-    this._types = Object.assign({}, types, this._customTypes);
+    this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
-    this._longestLabel = types.start.label.length;
+    this._longestLabel = defaultTypes.start.label.length;
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -44,6 +44,7 @@ class Signale {
     return Object.assign({}, {
       config: this._config,
       types: this._customTypes,
+      interactive: this._interactive,
       timers: this._timers,
       stream: this._stream
     });
@@ -78,6 +79,13 @@ class Signale {
 
   set configuration(configObj) {
     this._config = Object.assign(this.packageConfiguration, configObj);
+  }
+
+  _mergeTypes(standard, custom) {
+    Object.keys(custom).forEach(type => {
+      standard[type] = Object.assign({}, standard[type], custom[type]);
+    });
+    return standard;
   }
 
   _logger(type, ...messageObj) {
