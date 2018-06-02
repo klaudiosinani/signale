@@ -54,7 +54,7 @@
   "files": [
 		"index.js",
 		"signale.js",
-		"types/index.d.ts"
+		"index.d.ts"
 	],
-	"types": "types/index.d.ts"
+  "types": "index.d.ts"
 }
