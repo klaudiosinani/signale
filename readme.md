@@ -601,6 +601,54 @@ signale.timeEnd('label');
 //=> ◼  label    Timer run for: 2ms
 ```
 
+## Custom badge
+
+Use below availabe badge methods for display custom badge.
+
+```js
+Badge.get('coffee') // returns the emoji code for coffee (displays emoji on terminals that support it)
+Badge.which(Badge.get('coffee')) // returns the string "coffee"
+Badge.get(':fast_forward:') // `.get` also supports github flavored markdown emoji (http://www.emoji-cheat-sheet.com/)
+Badge.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emoji, in this case: returns "I ❤️ ☕️!"
+Badge.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
+Badge.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
+Badge.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
+Badge.find('🍕') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+Badge.find('pizza') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+Badge.hasEmoji('🍕') // Validate if this library knows an emoji like `🍕`
+Badge.hasEmoji('pizza') // Validate if this library knowns a emoji with the name `pizza`
+Badge.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emoji's, in this case returns: "low disk space".
+Badge.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: "warning: low disk space"
+```
+
+**Example**
+
+```js
+const { Signale, Badge } = require('signale');
+
+const options = {
+    stream: process.stdout,
+    scope: 'custom',
+    types: {
+        remind: {
+            badge: Badge.get('coffee'),
+            color: 'yellow',
+            label: 'reminder'
+        },
+        santa: {
+            badge: Badge.get('santa'),
+            color: 'red',
+            label: 'santa'
+        }
+    }
+};
+
+const custom = new Signale(options);
+custom.remind('Improve documentation.');
+custom.santa('Hoho! You have an unused variable on L45.');
+```
+
+
 ## Development
 
 For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md).

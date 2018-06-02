@@ -1,4 +1,7 @@
 'use strict';
 const Signale = require('./signale');
+const Badge = require('node-emoji');
 
-module.exports = Object.assign(new Signale(), {Signale});
+console.log(Badge);
+
+module.exports = Object.assign(new Signale(), {Signale, Badge});
