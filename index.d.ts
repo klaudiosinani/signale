@@ -10,7 +10,7 @@ export interface Types { badge?: String, color?: String; label?: String; }
 export interface Stream { }
 export interface Config { displayScope?: Boolean; displayBadge?: Boolean; displayDate?: Boolean; displayFilename?: Boolean; displayLabel?: Boolean; displayTimestamp?: Boolean; underlineLabel?: Boolean; underlineMessage?: Boolean; underlinePrefix?: Boolean; underlineSuffix?: Boolean; uppercaseLabel?: Boolean; }
 export interface Options { times?: Times; types: Types; stream?: Stream; scope?: String; }
-export interface CompleteArrgumentType { prefix?: String; message: String; suffix?: String; }
+export interface CompleteArgumentType { prefix?: String; message: String; suffix?: String; }
 
 interface Constructor<T> { new(options?: Options): T;(options?: Options): T; prototype: T; }
 export interface Signale { constructor: Constructor<this>; }
@@ -29,9 +29,9 @@ export function await<T>(...args: String[]): T;
 
 /**
  * Print complete message
- * @param args It takes a arrgument of CompleteArrgumentType type
+ * @param args It takes a arrgument of CompleteArgumentType type
  */
-export function complete<T>(args: CompleteArrgumentType): T;
+export function complete<T>(args: CompleteArgumentType): T;
 
 /**
  * Print debug message
