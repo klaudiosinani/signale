@@ -16,6 +16,12 @@ interface Constructor<T> { new(options?: Options): T;(options?: Options): T; pro
 export interface Signale { constructor: Constructor<this>; }
 
 /**
+ * Configure signale
+ * @param opt configurable option
+ */
+export function config(opt?: Config): void;
+
+/**
  * Print error message
  * @param args It takes N number of arrguments of `String | Error` type
  */
