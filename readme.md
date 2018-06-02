@@ -601,7 +601,7 @@ signale.timeEnd('label');
 //=> ◼  label    Timer run for: 2ms
 ```
 
-## Custom badge
+## Custom emoji badge
 
 Use below availabe badge methods for display custom badge.
 
