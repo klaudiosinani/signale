@@ -77,6 +77,11 @@ module.exports = {
     color: 'yellow',
     label: 'watching'
   },
+  progress: {
+    badge: figures.pointer,
+    color: 'yellowBright',
+    label: 'progress'
+  },
   log: {
     badge: '',
     color: '',
