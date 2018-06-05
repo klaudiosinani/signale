@@ -90,6 +90,17 @@ class Signale {
   }
 
   _logger(type, ...messageObj) {
+    if (type === 'progress' && Object.prototype.hasOwnProperty.call(messageObj[0], 'label')) {
+      let base = '';
+      let i = 0;
+      for (; i < messageObj[0].current || 0; i++) {
+        base += '=';
+      }
+      for (; i < messageObj[0].total || 0; i++) {
+        base += ' ';
+      }
+      messageObj[0] = messageObj[0].label + ' [' + base + '] ' + (Math.round((messageObj[0].current / messageObj[0].total) * 100) || 0) + '%';
+    }
     this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
   }
 
