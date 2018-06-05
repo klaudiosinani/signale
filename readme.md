@@ -275,6 +275,37 @@ setTimeout(() => {
   <img alt="Timers" src="media/timers.png" width="60%">
 </div>
 
+### Progress Bar
+
+A progress bar can be created using the `progress()` function while passing an object with a 'label' property. The `progress()` function will act like a normal logger if this object is not given. To get the best effect use the interactive signale option.
+
+```js
+const {Signale} = require('./index');
+
+const signale = new Signale({interactive: true});
+signale.progress({label:'Downloading', current: 5, total: 10});
+```
+
+##### `label`
+
+- Type: `String`
+
+The label to be added before the progress bar.
+
+##### `current`
+
+- Type: `int`
+- Default: `0`
+
+Amount competed.
+
+##### `total`
+
+- Type: `int`
+- Default: `0`
+
+Total progress needed.
+
 ## Configuration
 
 ### Global
