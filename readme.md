@@ -280,7 +280,7 @@ setTimeout(() => {
 A progress bar can be created using the `progress()` function while passing an object with a 'label' property. The `progress()` function will act like a normal logger if this object is not given. To get the best effect use the interactive signale option.
 
 ```js
-const {Signale} = require('./index');
+const {Signale} = require('signale');
 
 const signale = new Signale({interactive: true});
 signale.progress({label:'Downloading', current: 5, total: 10});
