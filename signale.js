@@ -192,7 +192,7 @@ class Signale {
       }
     }
 
-    if (msg instanceof Error) {
+    if (msg instanceof Error && typeof msg.stack !== 'undefined') {
       const [name, ...rest] = msg.stack.split('\n');
       if (this._config.underlineMessage) {
         signale.push(chalk.underline(name));
