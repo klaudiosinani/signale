@@ -90,26 +90,6 @@ class Signale {
     return standard;
   }
 
-  _logger(type, ...messageObj) {
-    this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
-  }
-
-  _log(message, streams = this._stream) {
-    this._formatStream(streams).forEach(stream => {
-      this._write(stream, message);
-    });
-  }
-
-  _write(stream, message) {
-    if (this._interactive && isPreviousLogInteractive) {
-      stream.moveCursor(0, -1);
-      stream.clearLine();
-      stream.cursorTo(0);
-    }
-    stream.write(message + '\n');
-    isPreviousLogInteractive = this._interactive;
-  }
-
   _formatStream(stream) {
     return Array.isArray(stream) ? stream : [stream];
   }
@@ -223,6 +203,26 @@ class Signale {
     }
 
     return signale.join(' ');
+  }
+
+  _write(stream, message) {
+    if (this._interactive && isPreviousLogInteractive) {
+      stream.moveCursor(0, -1);
+      stream.clearLine();
+      stream.cursorTo(0);
+    }
+    stream.write(message + '\n');
+    isPreviousLogInteractive = this._interactive;
+  }
+
+  _log(message, streams = this._stream) {
+    this._formatStream(streams).forEach(stream => {
+      this._write(stream, message);
+    });
+  }
+
+  _logger(type, ...messageObj) {
+    this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
   }
 
   config(configObj) {
