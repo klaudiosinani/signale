@@ -163,10 +163,7 @@ class Signale {
         [msg] = args;
       } else {
         let [{prefix, message, suffix}] = args;
-        if (message === undefined) {
-          message = args;
-        }
-        msg = util.format(util.inspect(...message));
+        msg = message ? util.format(...message) : util.format(...args);
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
