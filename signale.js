@@ -132,14 +132,14 @@ class Signale {
 
     if (args.length === 1 && typeof (args[0]) === 'object' && args[0] !== null) {
       if (args[0] instanceof Error) {
-        [msg] = args; // See this github issue comment (https://github.com/nodejs/node/issues/9406#issuecomment-257724625)
+        [msg] = args;
       } else {
         const [{prefix, suffix}] = args;
         msg = util.format(util.inspect(...args));
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
-      msg = util.format(args[0], ...args.slice(1, args.length));
+      msg = util.format(...args);
     }
 
     const signale = this._meta();

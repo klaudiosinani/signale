@@ -2,9 +2,6 @@
 node_modules
 yarn.lock
 
-# folder
-example
-
 # logs
 *.log
 
