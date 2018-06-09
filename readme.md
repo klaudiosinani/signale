@@ -45,6 +45,8 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - [Configuration](#configuration)
 - [API](#api)
 - [Development](#development)
+- [Related](#related)
+- [Team](#team)
 - [License](#license)
 
 ## Install
@@ -607,6 +609,11 @@ For more info on how to contribute to the project, please read the [contributing
 - Navigate to your local fork: `cd signale`
 - Install the project dependencies: `npm install` or `yarn install`
 - Lint code for errors: `npm test` or `yarn test`
+
+## Related
+
+- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+- [figures](https://github.com/sindresorhus/figures) - Unicode symbols
 
 ## Team
 
