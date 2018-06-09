@@ -162,8 +162,11 @@ class Signale {
       if (args[0] instanceof Error) {
         [msg] = args;
       } else {
-        const [{prefix, suffix}] = args;
-        msg = util.format(util.inspect(...args));
+        let [{prefix, message, suffix}] = args;
+        if(message === undefined) {
+          message = args;
+        }
+        msg = util.format(util.inspect(...message));
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
