@@ -163,7 +163,7 @@ class Signale {
         [msg] = args;
       } else {
         let [{prefix, message, suffix}] = args;
-        if(message === undefined) {
+        if (message === undefined) {
           message = args;
         }
         msg = util.format(util.inspect(...message));
