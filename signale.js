@@ -155,6 +155,10 @@ class Signale {
     return meta;
   }
 
+  _prefixSufixNestedTernary(prefix, suffix, args) {
+    return prefix || suffix ? '' : util.format(args);
+  }
+
   _buildSignale(type, ...args) {
     let [msg, additional] = [{}, {}];
 
@@ -163,7 +167,7 @@ class Signale {
         [msg] = args;
       } else {
         const [{prefix, message, suffix}] = args;
-        msg = message ? util.format(...message) : util.format(...args);
+        msg = message ? util.format(...message) : this._prefixSufixNestedTernary(prefix, suffix, ...args);
         additional = Object.assign({}, {suffix, prefix});
       }
     } else {
