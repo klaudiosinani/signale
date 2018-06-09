@@ -117,6 +117,24 @@ class Signale {
     return `[${this.timestamp}]`;
   }
 
+  _formatMessage(str, type) {
+    str = arrayify(str);
+
+    if (this._config.coloredInterpolation) {
+      const _ = Object.assign({}, util.inspect.styles);
+
+      Object.keys(util.inspect.styles).forEach(x => {
+        util.inspect.styles[x] = type.color || _[x];
+      });
+
+      str = util.formatWithOptions({colors: true}, ...str);
+      util.inspect.styles = Object.assign({}, _);
+      return str;
+    }
+
+    return util.format(...str);
+  }
+
   _meta() {
     const meta = [];
     if (this._config.displayDate) {
@@ -138,8 +156,8 @@ class Signale {
     return meta;
   }
 
-  _hasAdditional({suffix, prefix}, args) {
-    return (suffix || prefix) ? '' : util.format(...args);
+  _hasAdditional({suffix, prefix}, args, type) {
+    return (suffix || prefix) ? '' : this._formatMessage(args, type);
   }
 
   _buildSignale(type, ...args) {
@@ -151,10 +169,10 @@ class Signale {
       } else {
         const [{prefix, message, suffix}] = args;
         additional = Object.assign({}, {suffix, prefix});
-        msg = message ? util.format(...message) : this._hasAdditional(additional, args);
+        msg = message ? this._formatMessage(message, type) : this._hasAdditional(additional, args, type);
       }
     } else {
-      msg = util.format(...args);
+      msg = this._formatMessage(args, type);
     }
 
     const signale = this._meta();
