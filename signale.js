@@ -11,6 +11,9 @@ let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
 
+const arrayify = x => {
+  return Array.isArray(x) ? x : [x];
+};
 const now = () => Date.now();
 const timeSpan = then => {
   return (now() - then);
@@ -91,7 +94,7 @@ class Signale {
   }
 
   _formatStream(stream) {
-    return Array.isArray(stream) ? stream : [stream];
+    return arrayify(stream);
   }
 
   _formatDate() {
