@@ -3,6 +3,7 @@ const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
+const ProgressBar = require('progress');
 const pkg = require('./package.json');
 const defaultTypes = require('./types');
 
@@ -90,7 +91,27 @@ class Signale {
   }
 
   _logger(type, ...messageObj) {
+    if (type === 'progress' && Object.prototype.hasOwnProperty.call(messageObj[0], 'fmt')) {
+      this.clearBar();
+      messageObj[0].stream = this._types[type].stream || this._stream;
+      this._progressBar = new ProgressBar(this._buildSignale(this._types[type]) + messageObj[0].fmt, messageObj[0]);
+      this._progressBar.render();
+      return;
+    }
     this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
+  }
+
+  tick(amount, tokens) {
+    this._progressBar.tick(amount, tokens);
+  }
+
+  clearBar() {
+    if (this._progressBar) {
+      if (this._progressBar.curr < this._progressBar.total) {
+        this._progressBar.terminate();
+      }
+      this._progressBar = null;
+    }
   }
 
   _log(message, streams = this._stream) {
@@ -100,6 +121,10 @@ class Signale {
   }
 
   _write(stream, message) {
+    if (this._progressBar) {
+      this._progressBar.interrupt(message);
+      return;
+    }
     if (this._interactive && isPreviousLogInteractive) {
       stream.moveCursor(0, -1);
       stream.clearLine();
