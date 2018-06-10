@@ -31,6 +31,7 @@
     "pkg-conf": "^2.1.0"
   },
   "devDependencies": {
+    "@types/node": "^10.3.2",
     "xo": "*"
   },
   "options": {
@@ -52,9 +53,9 @@
     "space": 2
   },
   "files": [
-		"index.js",
-		"signale.js",
-		"index.d.ts"
-	],
-  "types": "index.d.ts"
+    "index.js",
+    "signale.js",
+    "signale.d.ts"
+  ],
+  "typings": "signale.d.ts"
 }
