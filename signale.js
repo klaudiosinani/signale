@@ -167,12 +167,21 @@ class Signale {
       if (args[0] instanceof Error) {
         [msg] = args;
       } else {
+<<<<<<< HEAD
+        const [{prefix, suffix}] = args;
+        msg = util.format(util.inspect(...args));
+=======
         const [{prefix, message, suffix}] = args;
+>>>>>>> 6e570957f45496403a055ea5c8994d9389c7eeaa
         additional = Object.assign({}, {suffix, prefix});
         msg = message ? this._formatMessage(message, type) : this._hasAdditional(additional, args, type);
       }
     } else {
+<<<<<<< HEAD
+      msg = util.format(...args);
+=======
       msg = this._formatMessage(args, type);
+>>>>>>> 6e570957f45496403a055ea5c8994d9389c7eeaa
     }
 
     const signale = this._meta();
