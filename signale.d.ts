@@ -4,8 +4,6 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.7
 
-/// <reference types="node" />
-
 interface Map<v, k> {}
 interface Set<T> {}
 
@@ -135,7 +133,6 @@ declare const Signale: Signale.Signale<Signale.DefaultMethods> & {
 };
 
 declare function signale<T>(opt?: Signale.SignaleOptions): Signale.Signale<Signale.DefaultMethods> & {
-    // Signale: Signale.SignaleConstructor;
     new <TTypes extends Signale.DefaultMethods>(
         options?: Signale.SignaleOptions
     ): Signale.DefaultMethods;
