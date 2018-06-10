@@ -9,13 +9,11 @@
     "email": "klauscfhq@protonmail.com",
     "url": "https://klauscfhq.github.io"
   },
-  "maintainers": [
-    {
-      "name": "Mario Sinani",
-      "email": "mariosinani@protonmail.ch",
-      "url": "https://mariocfhq.github.io"
-    }
-  ],
+  "maintainers": [{
+    "name": "Mario Sinani",
+    "email": "mariosinani@protonmail.ch",
+    "url": "https://mariocfhq.github.io"
+  }],
   "keywords": [
     "hackable",
     "colorful",
@@ -50,7 +48,10 @@
     }
   },
   "xo": {
-    "space": 2
+    "space": 2,
+    "ignores": [
+      "test/**"
+    ]
   },
   "files": [
     "index.js",
