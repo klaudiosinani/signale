@@ -13,3 +13,6 @@ yarn.lock
 .idea
 *.swp
 *.swo
+
+# test
+test/**/*.js
