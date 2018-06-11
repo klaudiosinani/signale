@@ -24,6 +24,7 @@ class Signale {
     this._interactive = options.interactive || false;
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
+    this._disabled = options.disabled || false;
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
@@ -48,11 +49,16 @@ class Signale {
   get currentOptions() {
     return Object.assign({}, {
       config: this._config,
+      disabled: this._disabled,
       types: this._customTypes,
       interactive: this._interactive,
       timers: this._timers,
       stream: this._stream
     });
+  }
+
+  get isEnabled() {
+    return !this._disabled;
   }
 
   get date() {
@@ -237,9 +243,11 @@ class Signale {
   }
 
   _log(message, streams = this._stream) {
-    this._formatStream(streams).forEach(stream => {
-      this._write(stream, message);
-    });
+    if (this.isEnabled) {
+      this._formatStream(streams).forEach(stream => {
+        this._write(stream, message);
+      });
+    }
   }
 
   _logger(type, ...messageObj) {
@@ -248,6 +256,14 @@ class Signale {
 
   config(configObj) {
     this.configuration = configObj;
+  }
+
+  disable() {
+    this._disabled = true;
+  }
+
+  enable() {
+    this._disabled = false;
   }
 
   scope(...name) {
