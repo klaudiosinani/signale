@@ -135,6 +135,26 @@ custom.santa('Hoho! You have an unused variable on L45.');
   <img alt="Custom Loggers" src="media/custom-loggers.png" width="70%">
 </div>
 
+Setting the stream property of a type will write to that stream (or streams) for that specific type.
+
+```js
+const {Signale} = require('signale');
+
+const options = {
+  types: {
+    error: {
+      badge: figures.cross,
+      color: 'red',
+      label: 'error',
+      stream: [process.stdout, process.stderr]
+    }
+  }
+};
+
+const custom = new Signale(options);
+custom.error('I\'m going to two streams!');
+```
+
 Additionally, all default loggers can be overridden to your own preference.
 
 Here is an example where we override the default `error` and `success` loggers.
@@ -174,10 +194,10 @@ The `options` object can hold the `stream`, `scope` and `types` attributes, wher
 
 ##### `stream`
 
-- Type: `Writable stream`
+- Type: `Writable stream` or `Array of writable streams`
 - Default: `process.stdout`
 
-Destination to which the data is written, can be any valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams).
+Destination to which the data is written, can be any valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams). All streams in an array will be written to.
 
 ##### `scope`
 
