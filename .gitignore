@@ -15,4 +15,4 @@ yarn.lock
 *.swo
 
 # test
-test/**/*.js
+types/**/*.js
