@@ -9,11 +9,13 @@
     "email": "klauscfhq@protonmail.com",
     "url": "https://klauscfhq.github.io"
   },
-  "maintainers": [{
-    "name": "Mario Sinani",
-    "email": "mariosinani@protonmail.ch",
-    "url": "https://mariocfhq.github.io"
-  }],
+  "maintainers": [
+    {
+      "name": "Mario Sinani",
+      "email": "mariosinani@protonmail.ch",
+      "url": "https://mariocfhq.github.io"
+    }
+  ],
   "keywords": [
     "hackable",
     "colorful",
@@ -57,7 +59,7 @@
   "files": [
     "index.js",
     "signale.js",
-    "signale.d.ts"
+    "types"
   ],
-  "typings": "signale.d.ts"
+  "typings": "./types/signale.d.ts"
 }
