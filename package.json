@@ -28,6 +28,7 @@
   "dependencies": {
     "chalk": "^2.3.2",
     "figures": "^2.0.0",
+    "node-emoji": "^1.8.1",
     "pkg-conf": "^2.1.0"
   },
   "devDependencies": {
