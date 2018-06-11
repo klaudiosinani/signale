@@ -6,9 +6,6 @@
 
 /// <reference types="node" />
 
-interface Map<v, k> {}
-interface Set<T> {}
-
 declare namespace Signale {
   type DefaultMethods =
     | "await"
