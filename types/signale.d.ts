@@ -6,7 +6,7 @@
 
 /// <reference types="node" />
 
-declare namespace Signale {
+declare namespace signale {
   type DefaultMethods =
     | "await"
     | "complete"
@@ -121,23 +121,12 @@ declare namespace Signale {
     Record<DefaultMethods, LoggerFunc>;
 }
 
-declare const Signale: Signale.Signale<Signale.DefaultMethods> & {
-  Signale: Signale.SignaleConstructor;
-  SignaleConfig: Signale.SignaleConfig;
-  SignaleOptions: Signale.SignaleOptions;
-  DefaultMethods: Signale.DefaultMethods;
+declare const signale: signale.Signale<signale.DefaultMethods> & {
+  Signale: signale.SignaleConstructor;
+  SignaleConfig: signale.SignaleConfig;
+  SignaleOptions: signale.SignaleOptions;
+  DefaultMethods: signale.DefaultMethods;
 };
 
-declare function signale<T>(
-  opt?: Signale.SignaleOptions
-): Signale.Signale<Signale.DefaultMethods> & {
-  new <TTypes extends Signale.DefaultMethods>(
-    options?: Signale.SignaleOptions
-  ): Signale.DefaultMethods;
-  SignaleConfig: Signale.SignaleConfig;
-  SignaleOptions: Signale.SignaleOptions;
-  DefaultMethods: Signale.DefaultMethods;
-};
-
-export as namespace Signale;
-export = Signale;
+export as namespace signale;
+export = signale;
