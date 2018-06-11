@@ -102,6 +102,7 @@ setTimeout(() => {
 }, 500);
 
 // --- Test 6: Configuration --- //
+
 // Overrides any existing `package.json` config
 signale.config({
   displayFilename: true,
