@@ -29,7 +29,7 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - Clean and beautiful output
 - Integrated timers
 - Custom pluggable loggers
-- Interactive mode for loggers
+- Interactive and regular modes
 - Filename, date and timestamp support
 - Scoped loggers and timers
 - String interpolation support
@@ -170,7 +170,7 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold the `disabled`, `interactive`, `stream`, `scope` and `types` attributes; 
+The `options` object can hold any of the following attributes: `disabled`, `interactive`, `stream`, `scope` and `types`. 
 
 ##### `disabled`
 
