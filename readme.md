@@ -318,7 +318,7 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 ```
 
 <div align="center">
-  <img alt="Writable Streams" src="media/writable-streams.png" width="69%">
+  <img alt="Writable Streams" src="media/writable-streams.png" width="73%">
 </div>
 
 ### Timers
