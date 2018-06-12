@@ -290,6 +290,11 @@ setTimeout(() => {
 }, 1000);
 ```
 
+<div align="center">
+  <img alt="Interactive Mode" src="media/interactive-mode.gif" width="65%">
+</div>
+
+
 ### Writable Streams
 
 By default, all signale instances log their messages to the `process.stdout` stream. This can be modified, to match your own preference, through the [`stream`](#stream) property, where you can define a single or multiple valid Writable streams, which will be used by all logger types to log your data. Additionally, it is possible to define one or more Writable streams exclusively for a specific logger type, thus write data independently from the rest logger types.
@@ -311,6 +316,10 @@ const signale = new Signale(options);
 signale.success('Message will appear on `process.stderr`');
 signale.error('Message will appear on both `process.stdout` & `process.stderr`');
 ```
+
+<div align="center">
+  <img alt="Writable Streams" src="media/writable-streams.png" width="69%">
+</div>
 
 ### Timers
 
