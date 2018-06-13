@@ -542,6 +542,9 @@ signale.success('Successful operation');
 
 signale.success('Successful', 'operation');
 //=> ✔  success  Successful operation
+
+signale.success('Successful %s', 'operation');
+//=> ✔  success  Successful operation
 ```
 
 ##### **`errorObj`**
@@ -568,6 +571,9 @@ Can be an object holding the `prefix`, `message` and `suffix` attributes, with `
 
 ```js
 const signale = require('signale');
+
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
+//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
 
 signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klauscfhq)'});
 //=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
