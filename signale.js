@@ -93,10 +93,13 @@ class Signale {
   }
 
   _mergeTypes(standard, custom) {
+    const types = Object.assign({}, standard);
+
     Object.keys(custom).forEach(type => {
-      standard[type] = Object.assign({}, standard[type], custom[type]);
+      types[type] = Object.assign({}, types[type], custom[type]);
     });
-    return standard;
+
+    return types;
   }
 
   _formatStream(stream) {
