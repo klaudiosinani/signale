@@ -56,11 +56,15 @@ declare namespace signale {
     underlineLabel?: boolean;
     /** Underline the logger message. */
     underlineMessage?: boolean;
+    underlinePrefix?: boolean;
+    underlineSuffix?: boolean;
+    uppercaseLabel?: boolean;
   }
 
   interface SignaleOptions<TTypes extends string = DefaultMethods> {
     /** Sets the configuration of an instance overriding any existing global or local configuration. */
     config?: SignaleConfig;
+    disabled?: boolean;
     /**
      * Name of the scope.
      */
