@@ -29,9 +29,11 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - Clean and beautiful output
 - Integrated timers
 - Custom pluggable loggers
+- Interactive and regular modes
 - Filename, date and timestamp support
 - Scoped loggers and timers
-- Configurable writable streams
+- String interpolation support
+- Multiple configurable writable streams
 - Simple and minimal syntax
 - Globally configurable through `package.json`
 - Overridable configuration per file and logger
@@ -92,7 +94,7 @@ const signale = require('signale');
 
 signale.success('Operation successful');
 signale.debug('Hello', 'from', 'L59');
-signale.pending('Write release notes for 1.2.0');
+signale.pending('Write release notes for %s', '1.2.0');
 signale.fatal(new Error('Unable to acquire lock'));
 signale.watch('Recursively watching build directory...');
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
@@ -110,6 +112,8 @@ To create a custom logger define an `options` object yielding a `types` field wi
 const {Signale} = require('signale');
 
 const options = {
+  disabled: false,
+  interactive: false,
   stream: process.stdout,
   scope: 'custom',
   types: {
@@ -135,8 +139,6 @@ custom.santa('Hoho! You have an unused variable on L45.');
   <img alt="Custom Loggers" src="media/custom-loggers.png" width="70%">
 </div>
 
-Additionally, all default loggers can be overridden to your own preference.
-
 Here is an example where we override the default `error` and `success` loggers.
 
 ```js
@@ -146,12 +148,10 @@ const options = {
   types: {
     error: {
       badge: '!!',
-      color: 'red',
       label: 'fatal error'
     },
     success: {
       badge: '++',
-      color: 'green',
       label: 'huge success'
     }
   }
@@ -170,20 +170,34 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold the `stream`, `scope` and `types` attributes, where the first yields the destination to which the logged data is written, the second corresponds to the name of the scope the logger is reporting from and the third is where the objects named after the custom loggers reside.
+The `options` object can hold any of the following attributes: `disabled`, `interactive`, `stream`, `scope` and `types`. 
+
+##### `disabled`
+
+- Type: `Boolean`
+- Default: `false`
+
+Disables the logging functionality of all loggers belonging to the created instance.
+
+##### `interactive`
+
+- Type: `Boolean`
+- Default: `false`
+
+Switches all loggers belonging to the created instance into the interactive mode.
 
 ##### `stream`
 
-- Type: `Writable stream`
+- Type: `Writable stream` or `Array of Writable streams`
 - Default: `process.stdout`
 
-Destination to which the data is written, can be any valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams).
+Destination to which the data is written, can be a single valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) or an array holding multiple valid Writable streams.
 
 ##### `scope`
 
-- Type: `String`
+- Type: `String` or `Array of Strings`
 
-Name of the scope.
+Name of the scope the logger is reporting from.
 
 ##### `types`
 
@@ -228,7 +242,7 @@ global.success('Successful Operation');
   <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
 </div>
 
-To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, stream and configuration from the initial one.
+To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, streams, configuration, interactive mode & disabled statuses from the initial one.
 
 ```js
 const signale = require('signale');
@@ -251,6 +265,60 @@ foo();
 
 <div align="center">
   <img alt="Scope Existing" src="media/scope-existing.png" width="65%">
+</div>
+
+### Interactive Loggers
+
+To initialize an interactive logger, create a new signale instance with the [`interactive`](#interactive) attribute set to `true`. While into the interactive mode, previously logged messages originating from an interactive logger, will be overridden only by new ones originating from the same or a different interactive logger. Note that regular messages originating from regular loggers are not overridden by the interactive ones.
+
+```js
+const {Signale} = require('signale');
+
+const interactive = new Signale({interactive: true, scope: 'interactive'});
+
+interactive.await('[%d/4] - Process A', 1);
+
+setTimeout(() => {
+  interactive.success('[%d/4] - Process A', 2);
+  setTimeout(() => {
+    interactive.await('[%d/4] - Process B', 3);
+    setTimeout(() => {
+      interactive.error('[%d/4] - Process B', 4);
+      setTimeout(() => {}, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
+```
+
+<div align="center">
+  <img alt="Interactive Mode" src="media/interactive-mode.gif" width="65%">
+</div>
+
+
+### Writable Streams
+
+By default, all signale instances log their messages to the `process.stdout` stream. This can be modified, to match your own preference, through the [`stream`](#stream) property, where you can define a single or multiple valid Writable streams, which will be used by all logger types to log your data. Additionally, it is possible to define one or more Writable streams exclusively for a specific logger type, thus write data independently from the rest logger types.
+
+```js
+const {Signale} = require('signale');
+
+const options = {
+  stream: process.stderr, // All loggers will now write to `process.stderr`
+  types: {
+    error: {
+      // Only `error` will write to both `process.stdout` & `process.stderr`
+      stream: [process.stdout, process.stderr]
+    }
+  }
+};
+
+const signale = new Signale(options);
+signale.success('Message will appear on `process.stderr`');
+signale.error('Message will appear on both `process.stdout` & `process.stderr`');
+```
+
+<div align="center">
+  <img alt="Writable Streams" src="media/writable-streams.png" width="73%">
 </div>
 
 ### Timers
@@ -286,6 +354,7 @@ The following illustrates all the available options with their respective defaul
 ```json
 {
   "signale": {
+    "coloredInterpolation": false,
     "displayScope": true,
     "displayBadge": true,
     "displayDate": false,
@@ -293,13 +362,23 @@ The following illustrates all the available options with their respective defaul
     "displayLabel": true,
     "displayTimestamp": false,
     "underlineLabel": true,
-    "underlineMessage": false
+    "underlineMessage": false,
+    "underlinePrefix": false,
+    "underlineSuffix": false,
+    "uppercaseLabel": false
   }
 }
 ```
 
 <details>
 <summary>View all of the available options in detail.</summary>
+
+##### `coloredInterpolation`
+
+- Type: `Boolean`
+- Default: `false`
+
+Display the arguments, which replace the placeholder tokens on string interpolation, colored. 
 
 ##### `displayScope`
 
@@ -356,6 +435,27 @@ Underline the logger label.
 - Default: `false`
 
 Underline the logger message.
+
+##### `underlinePrefix`
+
+- Type: `Boolean`
+- Default: `false`
+
+Underline the logger prefix.
+
+##### `underlineSuffix`
+
+- Type: `Boolean`
+- Default: `false`
+
+Underline the logger suffix.
+
+##### `uppercaseLabel`
+
+- Type: `Boolean`
+- Default: `false`
+
+Display the label of the logger in uppercase.
 
 </details>
 
@@ -442,6 +542,9 @@ signale.success('Successful operation');
 
 signale.success('Successful', 'operation');
 //=> ✔  success  Successful operation
+
+signale.success('Successful %s', 'operation');
+//=> ✔  success  Successful operation
 ```
 
 ##### **`errorObj`**
@@ -470,6 +573,9 @@ Can be an object holding the `prefix`, `message` and `suffix` attributes, with `
 const signale = require('signale');
 
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
+//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
+
+signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klauscfhq)'});
 //=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
 ```
 
@@ -599,6 +705,40 @@ signale.timeEnd();
 
 signale.timeEnd('label');
 //=> ◼  label    Timer run for: 2ms
+```
+
+#### signale.`disable()`
+
+Disables the logging functionality of all loggers belonging to a specific instance.
+
+```js
+const signale = require('signale');
+
+signale.success('foo');
+//=> ✔  success  foo
+
+signale.disable();
+
+signale.success('foo');
+//=>
+```
+
+#### signale.`enable()`
+
+Enables the logging functionality of all loggers belonging to a specific instance.
+
+```js
+const signale = require('signale');
+
+signale.disable();
+
+signale.success('foo');
+//=>
+
+signale.enable();
+
+signale.success('foo');
+//=> ✔  success  foo
 ```
 
 ## Development
