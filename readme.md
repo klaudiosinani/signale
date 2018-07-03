@@ -22,6 +22,8 @@ Hackable and configurable to the core, signale can be used for logging purposes,
 
 Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://twitter.com/klauscfhq) to share your thoughts on the project.
 
+Visit the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
+
 ## Highlights
 
 - 16 out-of-the-box loggers
