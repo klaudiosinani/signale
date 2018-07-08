@@ -103,7 +103,7 @@ signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscf
 ```
 
 <div align="center">
-  <img alt="Default Loggers" src="media/default-loggers.png" width="65%">
+  <img alt="Default Loggers" src="../media/default-loggers.png" width="65%">
 </div>
 
 ### 自定义记录器 
@@ -138,7 +138,7 @@ custom.santa('Hoho! You have an unused variable on L45.');
 ```
 
 <div align="center">
-  <img alt="Custom Loggers" src="media/custom-loggers.png" width="70%">
+  <img alt="Custom Loggers" src="../media/custom-loggers.png" width="70%">
 </div>
 
 下面是一个覆盖默认记录器 `error` 和 `success` 的例子
@@ -169,7 +169,7 @@ custom.success('Custom Success Log');
 ```
 
 <div align="center">
-  <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
+  <img alt="Default Loggers" src="../media/override-defaults.png" width="65%">
 </div>
 
 `options` 对象可以包含以下任何属性： `disabled`, `interactive`, `stream`, `scope` and `types`. 
@@ -241,7 +241,7 @@ global.success('Successful Operation');
 ```
 
 <div align="center">
-  <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
+  <img alt="Scope Vanilla" src="../media/scope-vanilla.png" width="65%">
 </div>
 
 可以使用 `scope()` 函数基于现有的记录器创建局部记录器，该函数将返回新的signale实例，该实例继承已有实例的所有自定义记录器、计时器、流、配置、禁用状态和交互模式信息。
@@ -266,7 +266,7 @@ foo();
 ```
 
 <div align="center">
-  <img alt="Scope Existing" src="media/scope-existing.png" width="65%">
+  <img alt="Scope Existing" src="../media/scope-existing.png" width="65%">
 </div>
 
 ### 交互式记录器 
@@ -293,7 +293,7 @@ setTimeout(() => {
 ```
 
 <div align="center">
-  <img alt="Interactive Mode" src="media/interactive-mode.gif" width="65%">
+  <img alt="Interactive Mode" src="../media/interactive-mode.gif" width="65%">
 </div>
 
 
@@ -320,7 +320,7 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 ```
 
 <div align="center">
-  <img alt="Writable Streams" src="media/writable-streams.png" width="73%">
+  <img alt="Writable Streams" src="../media/writable-streams.png" width="73%">
 </div>
 
 ### 计时器
@@ -342,7 +342,7 @@ setTimeout(() => {
 ```
 
 <div align="center">
-  <img alt="Timers" src="media/timers.png" width="60%">
+  <img alt="Timers" src="../media/timers.png" width="60%">
 </div>
 
 ## 配置
@@ -482,7 +482,7 @@ signale.success('Hello from the Global scope');
 ```
 
 <div align="center">
-  <img alt="Local Config" src="media/local-config.png" width="65%">
+  <img alt="Local Config" src="../media/local-config.png" width="65%">
 </div>
 
 此外，局部记录器可以拥有自己的独立配置，以覆盖父实例或继承自 `package.json` 的配置。
@@ -517,7 +517,7 @@ foo();
 ```
 
 <div align="center">
-  <img alt="Scope Config" src="media/scope-config.png" width="65%">
+  <img alt="Scope Config" src="../media/scope-config.png" width="65%">
 </div>
 
 ## API
