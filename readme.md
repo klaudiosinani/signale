@@ -20,9 +20,11 @@
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://twitter.com/klauscfhq) to share your thoughts on the project.
+Read this document in: [简体中文](https://github.com/klauscfhq/signale/blob/master/docs/readme.zh_CN.md)
 
 Visit the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
+
+Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://twitter.com/klauscfhq) to share your thoughts on the project.
 
 ## Highlights
 
