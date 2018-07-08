@@ -63,11 +63,10 @@ npm install signale
 
 ### 默认记录器
 
-Import signale and start using any of the default loggers.
 导入 signale 即可开始用任意的默认记录器。
 
 <details>
-<summary>查看所有可用的记录器。</summary>
+<summary>查看所有可用的默认记录器。</summary>
 
 <br/>
 
@@ -109,7 +108,7 @@ signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscf
 
 ### 自定义记录器 
 
-要创建自定义记录器，请先定义一个 `options` 对象，在其 `types` 属性中填入记录器数据，然后将其作为参数传递给新的signale实例。
+要创建自定义记录器，先定义一个 `options` 对象，在其 `types` 属性中填入记录器相关数据，然后将该对象作为参数传递给新的 signale 实例。
 
 ```js
 const {Signale} = require('signale');
@@ -194,25 +193,25 @@ custom.success('Custom Success Log');
 - 类型: `Writable stream` (输出流) 或 `Array of Writable streams` (包含输出流的数组)
 - 默认: `process.stdout`
 
-写入数据的目标可以是单个有效的[输出流](https://nodejs.org/api/stream.html#stream_writable_streams)或包含多个有效输出流的数组。
+写入数据的目标可以是单个有效的 [输出流(Writable stream)](https://nodejs.org/api/stream.html#stream_writable_streams) 或包含多个有效输出流的数组。
 
 ##### `scope`
 
 - 类型: `String` 或 `Array of Strings`
 
-记录器的报告作用域的名称。
+记录器的作用域名称。
 
 ##### `types`
 
 - 类型: `Object`
 
-保存自定义记录器和默认记录器的配置。
+持有自定义记录器和默认记录器的配置。
 
 ##### `badge`
 
 - 类型: `String`
 
-与记录器对应的图标。
+与记录器对应的徽章图标。
 
 ##### `label`
 
@@ -245,7 +244,7 @@ global.success('Successful Operation');
   <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
 </div>
 
-可以使用 `scope()` 函数基于现有的记录器创建局部记录器，该函数将返回新的signale实例，该实例继承已有实例的所有自定义记录器、计时器、流、配置、交互模式和禁用状态。
+可以使用 `scope()` 函数基于现有的记录器创建局部记录器，该函数将返回新的signale实例，该实例继承已有实例的所有自定义记录器、计时器、流、配置、禁用状态和交互模式信息。
 
 ```js
 const signale = require('signale');
@@ -300,8 +299,7 @@ setTimeout(() => {
 
 ### 输出流
 
-By default, all signale instances log their messages to the `process.stdout` stream. This can be modified, to match your own preference, through the [`stream`](#stream) property, where you can define a single or multiple valid Writable streams, which will be used by all logger types to log your data. Additionally, it is possible to define one or more Writable streams exclusively for a specific logger type, thus write data independently from the rest logger types.
-默认情况下，所有 signale 实例都将其消息记录到 `process.stdout` 输出流。 可以通过stream属性进行修改以匹配您自己的选项，你可以在其中定义单个或多个有效的输出流，所有类型的记录器都将使用这些流来记录您的数据。 此外，可以专门为特定记录器类型定义一个或多个可写流，从而独立于其余记录器类型写入数据。
+默认情况下，所有 signale 实例都将其消息记录到 `process.stdout` 输出流。 可以通过 stream 属性进行修改以匹配您自己的选项，你可以在其中定义单个或多个有效的输出流，所有类型的记录器都将使用这些流来记录您的数据。 此外，可以专门为特定记录器类型定义一个或多个可写流，从而独立于其余记录器类型写入数据。
 
 ```js
 const {Signale} = require('signale');
@@ -327,7 +325,6 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 ### 计时器
 
-Timer are managed by the `time()` and `timeEnd()` functions. A unique label can be used to identify a timer on initialization, though if none is provided the timer will be assigned one automatically. In addition, calling the `timeEnd()` function without a specified label will have as effect the termination of the most recently initialized timer, that was created without providing a label.
 计时器由 `time()` 和 `timeEnd()` 函数管理。 可以使用标签在初始化时唯一标识一个计时器，如果没有提供则计时器将自动分配一个。 此外，调用没有指定标签的 `timeEnd()` 函数将终止最近一个初始化时没有指定标签的计时器。
 
 ```js
@@ -468,7 +465,7 @@ setTimeout(() => {
 
 要启用本地配置，请在您的 signale 实例上调用 `config()` 函数。本地配置将始终覆盖从 `package.json` 继承的任何预先存在的配置。
 
-在以下示例中， `foo.js` 文件中的记录器将在其自己的配置下运行，从而覆盖 `package.json` 文件。
+在以下示例中， `foo.js` 文件中的记录器将在其自己的配置下运行，从而覆盖 `package.json` 文件中的配置。
 
 ```js
 // foo.js
@@ -488,7 +485,6 @@ signale.success('Hello from the Global scope');
   <img alt="Local Config" src="media/local-config.png" width="65%">
 </div>
 
-Also, scoped loggers can have their own independent configuration, overriding the one inherited by the parent instance or `package.json`. 
 此外，局部记录器可以拥有自己的独立配置，以覆盖父实例或继承自 `package.json` 的配置。
 
 ```js
