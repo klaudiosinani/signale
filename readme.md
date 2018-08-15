@@ -174,7 +174,7 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold any of the following attributes: `disabled`, `interactive`, `stream`, `scope` and `types`. 
+The `options` object can hold any of the following attributes: `disabled`, `interactive`, `stream`, `scope` and `types`.
 
 ##### `disabled`
 
@@ -202,6 +202,13 @@ Destination to which the data is written, can be a single valid [Writable stream
 - Type: `String` or `Array of Strings`
 
 Name of the scope the logger is reporting from.
+
+##### `alignScopes`
+
+- Type: `Boolean`
+- Default: `false`
+
+Align the scope names across multiple logger instances.
 
 ##### `types`
 
@@ -257,9 +264,9 @@ global.success('Hello from the global scope');
 function foo() {
   const outer = global.scope('outer', 'scope');
   outer.success('Hello from the outer scope');
-  
+
   setTimeout(() => {
-    const inner = outer.scope('inner', 'scope'); 
+    const inner = outer.scope('inner', 'scope');
     inner.success('Hello from the inner scope');
   }, 500);
 }
@@ -382,14 +389,14 @@ The following illustrates all the available options with their respective defaul
 - Type: `Boolean`
 - Default: `false`
 
-Display the arguments, which replace the placeholder tokens on string interpolation, colored. 
+Display the arguments, which replace the placeholder tokens on string interpolation, colored.
 
 ##### `displayScope`
 
 - Type: `Boolean`
 - Default: `true`
 
-Display the scope name of the logger. 
+Display the scope name of the logger.
 
 ##### `displayBadge`
 
@@ -403,7 +410,7 @@ Display the badge of the logger.
 - Type: `Boolean`
 - Default: `false`
 
-Display the current local date in `YYYY-MM-DD` format. 
+Display the current local date in `YYYY-MM-DD` format.
 
 ##### `displayFilename`
 
@@ -478,7 +485,7 @@ signale.config({
   displayFilename: true,
   displayTimestamp: true,
   displayDate: false
-}); 
+});
 
 signale.success('Hello from the Global scope');
 ```
@@ -487,7 +494,7 @@ signale.success('Hello from the Global scope');
   <img alt="Local Config" src="media/local-config.png" width="65%">
 </div>
 
-Also, scoped loggers can have their own independent configuration, overriding the one inherited by the parent instance or `package.json`. 
+Also, scoped loggers can have their own independent configuration, overriding the one inherited by the parent instance or `package.json`.
 
 ```js
 // foo.js
@@ -596,7 +603,7 @@ Can be one or more comma delimited strings.
 ```js
 const signale = require('signale');
 
-const foo = signale.scope('foo'); 
+const foo = signale.scope('foo');
 const fooBar = signale.scope('foo', 'bar');
 
 foo.success('foo');
@@ -613,7 +620,7 @@ Clears the scope name of the logger.
 ```js
 const signale = require('signale');
 
-const foo = signale.scope('foo'); 
+const foo = signale.scope('foo');
 
 foo.success('foo');
 //=> [foo] › ✔  success  foo
@@ -654,7 +661,7 @@ signale.success('Successful operations');
 
 Sets a timers and accepts an optional label. If none provided the timer will receive a unique label automatically.
 
-Returns a string corresponding to the timer label. 
+Returns a string corresponding to the timer label.
 
 ##### **`label`**
 

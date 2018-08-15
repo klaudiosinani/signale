@@ -26,10 +26,14 @@ class Signale {
     this._customTypes = Object.assign({}, options.types);
     this._disabled = options.disabled || false;
     this._scopeName = options.scope || '';
+    this._alignScopes = options.alignScopes || false;
     this._timers = options.timers || new Map();
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
     this._longestLabel = defaultTypes.start.label.length;
+
+    this.constructor._scopeNames = this.constructor._scopeNames || [];
+    this.constructor._scopeNames.push(this._scopeName);
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -114,8 +118,8 @@ class Signale {
     return `[${this.filename}]`;
   }
 
-  _formatScopeName() {
-    let scopeNames = Array.isArray(this._scopeName) ? this._scopeName : [this._scopeName];
+  _formatScopeName(scopeNames) {
+    scopeNames = Array.isArray(scopeNames) ? scopeNames : [scopeNames];
     scopeNames = scopeNames.filter(x => x.length !== 0);
 
     return scopeNames.map(x => `[${x.trim()}]`).join(' ');
@@ -155,7 +159,16 @@ class Signale {
       meta.push(this._formatFilename());
     }
     if (this._scopeName.length !== 0 && this._config.displayScope) {
-      meta.push(this._formatScopeName());
+      let scopeName = this._formatScopeName(this._scopeName);
+
+      if (this._alignScopes) {
+        const scopeLengths = this.constructor._scopeNames.map(scopeName => this._formatScopeName(scopeName).length);
+        const maxScopeLength = Math.max(...scopeLengths);
+
+        scopeName = scopeName.padEnd(maxScopeLength);
+      }
+
+      meta.push(scopeName);
     }
     if (meta.length !== 0) {
       meta.push(`${figures.pointerSmall}`);
