@@ -115,11 +115,10 @@ class Signale {
   }
 
   _formatScopeName() {
-    if (Array.isArray(this._scopeName)) {
-      const scopes = this._scopeName.filter(x => x.length !== 0);
-      return scopes.map(x => `[${x.trim()}]`).join(' ');
-    }
-    return `[${this._scopeName}]`;
+    let scopeNames = Array.isArray(this._scopeName) ? this._scopeName : [this._scopeName];
+    scopeNames = scopeNames.filter(x => x.length !== 0);
+
+    return scopeNames.map(x => `[${x.trim()}]`).join(' ');
   }
 
   _formatTimestamp() {
