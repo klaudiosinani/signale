@@ -117,7 +117,7 @@ class Signale {
   _formatScopeName() {
     if (Array.isArray(this._scopeName)) {
       const scopes = this._scopeName.filter(x => x.length !== 0);
-      return `${scopes.map(x => `[${x.trim()}]`).join(' ')}`;
+      return scopes.map(x => `[${x.trim()}]`).join(' ');
     }
     return `[${this._scopeName}]`;
   }
