@@ -14,13 +14,16 @@
   <a href="https://travis-ci.org/klauscfhq/signale">
     <img alt="Build Status" src="https://travis-ci.com/klauscfhq/signale.svg?branch=master">
   </a>
+  <a href="https://www.npmjs.com/package/signale">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
+  </a>
 </p>
 
 ## Description
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Read this document in: [简体中文](https://github.com/klauscfhq/signale/blob/master/docs/readme.zh_CN.md)
+Read this document in: [简体中文](https://github.com/klauscfhq/signale/blob/master/docs/readme.zh_CN.md).
 
 Visit the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
