@@ -31,6 +31,10 @@ class Signale {
     this._stream = options.stream || process.stdout;
     this._longestLabel = defaultTypes.start.label.length;
 
+    Object.keys(options).forEach(type => {
+      this[type] = options[type];
+    });
+
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
     });
@@ -280,22 +284,70 @@ class Signale {
     this._scopeName = '';
   }
 
-  time(label) {
+  textType(text) {
+    let textType = null;
+    switch (typeof text) {
+      case 'string':
+        textType = 'string';
+        break;
+      case 'object':
+        textType = 'object';
+        break;
+      case 'boolean':
+        textType = 'boolean';
+        break;
+      default:
+        textType = null;
+        break;
+    }
+    return textType;
+  }
+
+  time(label, options) {
     if (!label) {
       label = `timer_${this._timers.size}`;
+    }
+
+    if (options) {
+      if (options.both) {
+        Object.keys(options.both).forEach(key => {
+          this.__timers.start[key] = options.both[key];
+          this.__timers.end[key] = options.both[key];
+        });
+      } else {
+        if (options.start) {
+          this.__timers.start = options.start;
+        }
+
+        if (options.end) {
+          this.__timers.end = options.end;
+        }
+
+        Object.keys(options).forEach(key => {
+          this.__timers.start[key] = options[key];
+          this.__timers.end[key] = options[key];
+        });
+      }
     }
 
     this._timers.set(label, Date.now());
     const message = this._meta();
 
+    const timerStart = this.__timers.start;
+
+    const __color = chalk[timerStart.color] || chalk.green;
+    const __badge = timerStart.badge || this._types.start.badge;
+    const __text = this.textType(timerStart.text) === 'object' ? timerStart.text.join(' ') : timerStart.text || 'Initialized timer...';
+
     const report = [
-      chalk.green(this._types.start.badge.padEnd(2)),
-      chalk.green.underline(label).padEnd(this._longestLabel + 20),
-      'Initialized timer...'
+      __color(__badge.padEnd(4)),
+      __color.underline(label).padEnd(this._longestLabel + 22),
+      __text
     ];
 
     message.push(...report);
     this._log(message.join(' '));
+
     return label;
   }
 
@@ -306,16 +358,25 @@ class Signale {
         return is(x) ? x : (is(y) ? y : null);
       });
     }
+
     if (this._timers.has(label)) {
       const span = timeSpan(this._timers.get(label));
       this._timers.delete(label);
 
       const message = this._meta();
+
+      const executionTime = span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's';
+      const timerEnd = this.__timers.end || {};
+
+      const __color = chalk[timerEnd.color] || chalk.red;
+      const __badge = timerEnd.badge || this._types.pause.badge;
+      const __executionColor = chalk[timerEnd.time] || chalk.yellow;
+      const __text = this.textType(timerEnd.text) === 'object' ? timerEnd.text.join().replace(',', ` ${__executionColor(executionTime)} `) : timerEnd.text || `Timer run for: ${__executionColor(executionTime)}`;
+
       const report = [
-        chalk.red(this._types.pause.badge.padEnd(2)),
-        chalk.red.underline(label).padEnd(this._longestLabel + 20),
-        'Timer run for:',
-        chalk.yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
+        __color(__badge.padEnd(4)),
+        __color.underline(label).padEnd(this._longestLabel + 22),
+        __text
       ];
 
       message.push(...report);
