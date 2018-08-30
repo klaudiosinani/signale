@@ -55,6 +55,7 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - [API](#api)
 - [Development](#development)
 - [Related](#related)
+- [Who's Using It?](#who's-using-it?)
 - [Team](#team)
 - [License](#license)
 
@@ -761,6 +762,18 @@ For more info on how to contribute to the project, please read the [contributing
 
 - [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
 - [figures](https://github.com/sindresorhus/figures) - Unicode symbols
+
+## Who's Using It?
+
+- [Boostnote](https://github.com/BoostIO/Boostnote)
+- [Docz](https://github.com/pedronauck/docz)
+- [Remix by Ethereum](https://github.com/ethereum/remix)
+- [Semantic Release](https://github.com/semantic-release/semantic-release)
+- [Shower](https://github.com/shower/shower)
+- [Taskbook](https://github.com/klauscfhq/taskbook)
+- [Vant](https://github.com/youzan/vant)
+
+View in detail all the packages and repositories that are using Signale [here](https://github.com/klauscfhq/signale/network/dependents).
 
 ## Team
 
