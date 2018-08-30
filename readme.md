@@ -55,7 +55,7 @@ Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://
 - [API](#api)
 - [Development](#development)
 - [Related](#related)
-- [Who's Using It?](#who's-using-it?)
+- [Who's Using It?](#whos-using-it?)
 - [Team](#team)
 - [License](#license)
 
