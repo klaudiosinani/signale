@@ -195,15 +195,15 @@ class Signale {
     }
 
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](type.badge.padEnd(type.badge.length + 1)));
+      signale.push(chalk[type.color](this._padEnd(type.badge, type.badge.length + 1)));
     }
 
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color].underline(label).padEnd(this._longestLabel + 20));
+        signale.push(this._padEnd(chalk[type.color].underline(label), this._longestLabel + 20));
       } else {
-        signale.push(chalk[type.color](label.padEnd(this._longestLabel + 1)));
+        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel + 1)));
       }
     }
 
@@ -257,6 +257,21 @@ class Signale {
     this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
   }
 
+  _padEnd(str, targetLength) {
+    str = String(str);
+    targetLength = parseInt(targetLength, 10) || 0;
+
+    if (str.length >= targetLength) {
+      return str;
+    }
+
+    if (String.prototype.padEnd) {
+      return str.padEnd(targetLength);
+    }
+    targetLength -= str.length;
+    return str + ' '.repeat(targetLength);
+  }
+
   config(configObj) {
     this.configuration = configObj;
   }
@@ -289,8 +304,8 @@ class Signale {
     const message = this._meta();
 
     const report = [
-      chalk.green(this._types.start.badge.padEnd(2)),
-      chalk.green.underline(label).padEnd(this._longestLabel + 20),
+      chalk.green(this._padEnd(this._types.start.badge, 2)),
+      this._padEnd(chalk.green.underline(label), this._longestLabel + 20),
       'Initialized timer...'
     ];
 
@@ -312,8 +327,8 @@ class Signale {
 
       const message = this._meta();
       const report = [
-        chalk.red(this._types.pause.badge.padEnd(2)),
-        chalk.red.underline(label).padEnd(this._longestLabel + 20),
+        chalk.red(this._padEnd(this._types.pause.badge, 2)),
+        this._padEnd(chalk.red.underline(label), this._longestLabel + 20),
         'Timer run for:',
         chalk.yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
       ];
