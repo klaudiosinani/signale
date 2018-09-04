@@ -16,6 +16,9 @@
       "url": "https://mariocfhq.github.io"
     }
   ],
+  "engines": {
+    "node": ">=6"
+  },
   "files": [
     "index.js",
     "signale.js",
