@@ -11,14 +11,6 @@ let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
 
-const arrayify = x => {
-  return Array.isArray(x) ? x : [x];
-};
-const now = () => Date.now();
-const timeSpan = then => {
-  return (now() - then);
-};
-
 class Signale {
   constructor(options = {}) {
     this._interactive = options.interactive || false;
@@ -34,6 +26,10 @@ class Signale {
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
     });
+  }
+
+  get _now() {
+    return Date.now();
   }
 
   get scopeName() {
@@ -86,6 +82,14 @@ class Signale {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
 
+  _arrayify(x) {
+    return Array.isArray(x) ? x : [x];
+  }
+
+  _timeSpan(then) {
+    return (this._now - then);
+  }
+
   _getLongestLabel() {
     const {_types} = this;
     const labels = Object.keys(_types).map(x => _types[x].label);
@@ -103,7 +107,7 @@ class Signale {
   }
 
   _formatStream(stream) {
-    return arrayify(stream);
+    return this._arrayify(stream);
   }
 
   _formatDate() {
@@ -127,7 +131,7 @@ class Signale {
   }
 
   _formatMessage(str, type) {
-    str = arrayify(str);
+    str = this._arrayify(str);
 
     if (this._config.coloredInterpolation) {
       const _ = Object.assign({}, util.inspect.styles);
@@ -146,22 +150,28 @@ class Signale {
 
   _meta() {
     const meta = [];
+
     if (this._config.displayDate) {
       meta.push(this._formatDate());
     }
+
     if (this._config.displayTimestamp) {
       meta.push(this._formatTimestamp());
     }
+
     if (this._config.displayFilename) {
       meta.push(this._formatFilename());
     }
+
     if (this._scopeName.length !== 0 && this._config.displayScope) {
       meta.push(this._formatScopeName());
     }
+
     if (meta.length !== 0) {
       meta.push(`${figures.pointerSmall}`);
       return meta.map(item => chalk.grey(item));
     }
+
     return meta;
   }
 
@@ -268,6 +278,7 @@ class Signale {
     if (String.prototype.padEnd) {
       return str.padEnd(targetLength);
     }
+
     targetLength -= str.length;
     return str + ' '.repeat(targetLength);
   }
@@ -300,7 +311,7 @@ class Signale {
       label = `timer_${this._timers.size}`;
     }
 
-    this._timers.set(label, Date.now());
+    this._timers.set(label, this._now);
     const message = this._meta();
 
     const report = [
@@ -322,7 +333,7 @@ class Signale {
       });
     }
     if (this._timers.has(label)) {
-      const span = timeSpan(this._timers.get(label));
+      const span = this._timeSpan(this._timers.get(label));
       this._timers.delete(label);
 
       const message = this._meta();
