@@ -29,17 +29,11 @@ class Signale {
     this._timers = options.timers || new Map();
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
-    this._longestLabel = defaultTypes.start.label.length;
+    this._longestLabel = this._getLongestLabel();
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
     });
-
-    for (const type in this._types) {
-      if (this._types[type].label && this._types[type].label.length > this._longestLabel) {
-        this._longestLabel = this._types[type].label.length;
-      }
-    }
   }
 
   get scopeName() {
@@ -90,6 +84,12 @@ class Signale {
 
   set configuration(configObj) {
     this._config = Object.assign(this.packageConfiguration, configObj);
+  }
+
+  _getLongestLabel() {
+    const {_types} = this;
+    const labels = Object.keys(_types).map(x => _types[x].label);
+    return Math.max(...labels.filter(x => x).map(x => x.length));
   }
 
   _mergeTypes(standard, custom) {
