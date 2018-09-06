@@ -47,10 +47,6 @@ class Signale {
     });
   }
 
-  get isEnabled() {
-    return !this._disabled;
-  }
-
   get date() {
     return new Date().toLocaleDateString();
   }
@@ -256,7 +252,7 @@ class Signale {
   }
 
   _log(message, streams = this._stream) {
-    if (this.isEnabled) {
+    if (this.isEnabled()) {
       this._formatStream(streams).forEach(stream => {
         this._write(stream, message);
       });
@@ -293,6 +289,10 @@ class Signale {
 
   enable() {
     this._disabled = false;
+  }
+
+  isEnabled() {
+    return !this._disabled;
   }
 
   scope(...name) {
