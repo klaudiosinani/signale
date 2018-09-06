@@ -749,6 +749,28 @@ signale.success('foo');
 //=> ✔  success  foo
 ```
 
+#### signale.`isEnabled()`
+
+Checks whether the logging functionality of a specific instance is enabled.
+
+```js
+const signale = require('signale');
+
+signale.success('foo');
+//=> ✔  success  foo
+
+signale.isEnabled();
+// => true
+
+signale.disable();
+
+signale.success('foo');
+//=>
+
+signale.isEnabled();
+// => false
+```
+
 ## Development
 
 For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md).
