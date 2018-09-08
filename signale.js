@@ -7,6 +7,8 @@ const pkgConf = require('pkg-conf');
 const pkg = require('./package.json');
 const defaultTypes = require('./types');
 
+const {green, grey, red, underline, yellow} = chalk;
+
 let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
 const namespace = pkg.name;
@@ -165,7 +167,7 @@ class Signale {
 
     if (meta.length !== 0) {
       meta.push(`${figures.pointerSmall}`);
-      return meta.map(item => chalk.grey(item));
+      return meta.map(item => grey(item));
     }
 
     return meta;
@@ -194,7 +196,7 @@ class Signale {
 
     if (additional.prefix) {
       if (this._config.underlinePrefix) {
-        signale.push(chalk.underline(additional.prefix));
+        signale.push(underline(additional.prefix));
       } else {
         signale.push(additional.prefix);
       }
@@ -216,23 +218,23 @@ class Signale {
     if (msg instanceof Error && msg.stack) {
       const [name, ...rest] = msg.stack.split('\n');
       if (this._config.underlineMessage) {
-        signale.push(chalk.underline(name));
+        signale.push(underline(name));
       } else {
         signale.push(name);
       }
-      signale.push(chalk.grey(rest.map(l => l.replace(/^/, '\n')).join('')));
+      signale.push(grey(rest.map(l => l.replace(/^/, '\n')).join('')));
       return signale.join(' ');
     }
 
     if (this._config.underlineMessage) {
-      signale.push(chalk.underline(msg));
+      signale.push(underline(msg));
     } else {
       signale.push(msg);
     }
 
     if (additional.suffix) {
       if (this._config.underlineSuffix) {
-        signale.push(chalk.underline(additional.suffix));
+        signale.push(underline(additional.suffix));
       } else {
         signale.push(additional.suffix);
       }
@@ -315,8 +317,8 @@ class Signale {
     const message = this._meta();
 
     const report = [
-      chalk.green(this._padEnd(this._types.start.badge, 2)),
-      this._padEnd(chalk.green.underline(label), this._longestLabel + 20),
+      green(this._padEnd(this._types.start.badge, 2)),
+      this._padEnd(green.underline(label), this._longestLabel + 20),
       'Initialized timer...'
     ];
 
@@ -338,10 +340,10 @@ class Signale {
 
       const message = this._meta();
       const report = [
-        chalk.red(this._padEnd(this._types.pause.badge, 2)),
-        this._padEnd(chalk.red.underline(label), this._longestLabel + 20),
+        red(this._padEnd(this._types.pause.badge, 2)),
+        this._padEnd(red.underline(label), this._longestLabel + 20),
         'Timer run for:',
-        chalk.yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
+        yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
       ];
 
       message.push(...report);
