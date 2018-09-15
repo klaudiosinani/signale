@@ -263,7 +263,9 @@ class Signale {
 
   _logger(type, ...messageObj) {
     this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
-    if (this._types[type].done) this._types[type].done(...messageObj);
+    if (this._types[type].done) {
+      this._types[type].done(...messageObj);
+    }
   }
 
   _padEnd(str, targetLength) {
