@@ -64,7 +64,7 @@ module.exports = {
   },
   debug: {
     badge: figures('⬤'),
-    color: 'red',
+    color: 'blue',
     label: 'debug'
   },
   await: {
