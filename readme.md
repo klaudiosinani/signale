@@ -366,6 +366,7 @@ The following illustrates all the available options with their respective defaul
     "displayScope": true,
     "displayBadge": true,
     "displayDate": false,
+    "displayISODate": false,
     "displayFilename": false,
     "displayLabel": true,
     "displayTimestamp": false,
@@ -407,7 +408,14 @@ Display the badge of the logger.
 - Type: `Boolean`
 - Default: `false`
 
-Display the current local date in `YYYY-MM-DD` format. 
+Display the current local date in `YYYY-MM-DD` format.
+
+##### `displayISODate`
+
+- Type: `Boolean`
+- Default: `false`
+
+Override `displayDate` format and show the current local date in ISO 8601 `YYYY-MM-DDTHH:mm:ss.TDZ` format. 
 
 ##### `displayFilename`
 

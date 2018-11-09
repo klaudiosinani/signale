@@ -9,13 +9,11 @@
     "email": "klauscfhq@protonmail.com",
     "url": "https://klauscfhq.github.io"
   },
-  "maintainers": [
-    {
-      "name": "Mario Sinani",
-      "email": "mariosinani@protonmail.ch",
-      "url": "https://mariocfhq.github.io"
-    }
-  ],
+  "maintainers": [{
+    "name": "Mario Sinani",
+    "email": "mariosinani@protonmail.ch",
+    "url": "https://mariocfhq.github.io"
+  }],
   "engines": {
     "node": ">=6"
   },
@@ -47,6 +45,7 @@
       "displayScope": true,
       "displayBadge": true,
       "displayDate": false,
+      "displayISODate": false,
       "displayFilename": false,
       "displayLabel": true,
       "displayTimestamp": false,
