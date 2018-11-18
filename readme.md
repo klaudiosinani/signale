@@ -7,12 +7,12 @@
 </h4>
 
 <div align="center">
-  <img alt="Header" src="https://cdn.rawgit.com/klauscfhq/signale/2d8bcff8/media/header.png" width="88%">
+  <img alt="Header" src="media/header.png" width="88%">
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.org/klauscfhq/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klauscfhq/signale.svg?branch=master">
+  <a href="https://travis-ci.org/klaussinani/signale">
+    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/signale">
     <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
@@ -23,11 +23,11 @@
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Read this document in: [简体中文](https://github.com/klauscfhq/signale/blob/master/docs/readme.zh_CN.md).
+Read this document in: [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md).
 
-Visit the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
+Visit the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
-Come over to [Gitter](https://gitter.im/klauscfhq/signale) or [Twitter](https://twitter.com/klauscfhq) to share your thoughts on the project.
+Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https://twitter.com/klaussinani) to share your thoughts on the project.
 
 ## Highlights
 
@@ -580,11 +580,11 @@ Can be an object holding the `prefix`, `message` and `suffix` attributes, with `
 ```js
 const signale = require('signale');
 
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
-//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
 
-signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klauscfhq)'});
-//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
+signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaussinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
 ```
 
 #### signale.`scope(name[, name])`
@@ -773,7 +773,7 @@ signale.isEnabled();
 
 ## Development
 
-For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md).
+For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
 
 - Fork the repository and clone it to your machine
 - Navigate to your local fork: `cd signale`
@@ -792,15 +792,15 @@ For more info on how to contribute to the project, please read the [contributing
 - [Remix by Ethereum](https://github.com/ethereum/remix)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Shower](https://github.com/shower/shower)
-- [Taskbook](https://github.com/klauscfhq/taskbook)
+- [Taskbook](https://github.com/klaussinani/taskbook)
 - [Vant](https://github.com/youzan/vant)
 
-View in detail all the packages and repositories that are using Signale [here](https://github.com/klauscfhq/signale/network/dependents).
+View in detail all the packages and repositories that are using Signale [here](https://github.com/klaussinani/signale/network/dependents).
 
 ## Team
 
-- Klaus Sinani [(@klauscfhq)](https://github.com/klauscfhq)
+- Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
 
 ## License
 
-[MIT](https://github.com/klauscfhq/signale/blob/master/license.md)
+[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
