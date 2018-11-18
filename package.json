@@ -3,11 +3,11 @@
   "version": "1.3.0",
   "description": "👋 Hackable console logger",
   "license": "MIT",
-  "repository": "klauscfhq/signale",
+  "repository": "klaussinani/signale",
   "author": {
     "name": "Klaus Sinani",
-    "email": "klauscfhq@protonmail.com",
-    "url": "https://klauscfhq.github.io"
+    "email": "klaussinani@gmail.com",
+    "url": "https://klaussinani.github.io"
   },
   "maintainers": [
     {
