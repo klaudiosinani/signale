@@ -65,11 +65,24 @@ class Signale {
 
     const callers = stack.map(x => x.getFileName());
 
-    const firstExternalFilePath = callers.find(x => {
-      return x !== callers[0];
-    });
-
-    return firstExternalFilePath ? path.basename(firstExternalFilePath) : 'anonymous';
+    let res = '';
+    for (let i = 1; i < callers.length; i++) {
+      if (callers[0] === callers[i]) {
+        continue;
+      }
+      if (i + 1 < callers.length) {
+        const isInternalFile = /node_modules/[Symbol.match](callers[i + 1]) || /^internal\//[Symbol.match](callers[i + 1]) || /^[a-zA-Z\-_]+\.js$/[Symbol.match](callers[i + 1]);
+        if (isInternalFile) {
+          res = callers[i];
+          break;
+        }
+        res = callers[i + 1];
+      } else {
+        res = callers[i];
+        break;
+      }
+    }
+    return res ? path.basename(res) : 'anonymous';
   }
 
   get packageConfiguration() {
