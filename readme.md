@@ -44,7 +44,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 - Simple and minimal syntax
 - Globally configurable through `package.json`
 - Overridable configuration per file and logger
-- The ability to blacklist words (to not leak secrets)
+- The ability to filter words (to not leak secrets)
 
 ## Contents
 
@@ -375,7 +375,7 @@ The following illustrates all the available options with their respective defaul
     "underlinePrefix": false,
     "underlineSuffix": false,
     "uppercaseLabel": false,
-    "blacklistWords": {}
+    "filterWords": {}
   }
 }
 ```
@@ -467,7 +467,7 @@ Underline the logger suffix.
 
 Display the label of the logger in uppercase.
 
-##### `blacklistWords`
+##### `filterWords`
 
 - Type: `Object`
 - Default: `{}`

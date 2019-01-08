@@ -24,7 +24,7 @@ class Signale {
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
     this._longestLabel = this._getLongestLabel();
-    this._blacklistWords = options.blacklistWords || {};
+    this._filterWords = options.filterWords || {};
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -47,7 +47,7 @@ class Signale {
       interactive: this._interactive,
       timers: this._timers,
       stream: this._stream,
-      blacklistWords: this._blacklistWords
+      filterWords: this._filterWords
     });
   }
 
@@ -245,17 +245,17 @@ class Signale {
     return signale.join(' ');
   }
 
-  _removeBlackListedWords(message) {
-    let wordsToRemove = Object.keys(this._blacklistWords);
+  _removeFilteredWords(message) {
+    const wordsToRemove = Object.keys(this._filterWords);
     if (wordsToRemove.length === 0) {
       return message;
-    } else {
-      let filteredMessage = message;
-      wordsToRemove.forEach(word => {
-        filteredMessage = filteredMessage.replace(new RegExp(word), this._blacklistWords[word]);
-      })
-      return filteredMessage;
     }
+
+    let filteredMessage = message;
+    wordsToRemove.forEach(word => {
+      filteredMessage = filteredMessage.replace(new RegExp(word), this._filterWords[word]);
+    });
+    return filteredMessage;
   }
 
   _write(stream, message) {
@@ -264,7 +264,7 @@ class Signale {
       stream.clearLine();
       stream.cursorTo(0);
     }
-    let safeMessage = this._removeBlackListedWords(message)
+    const safeMessage = this._removeFilteredWords(message);
     stream.write(safeMessage + '\n');
     isPreviousLogInteractive = this._interactive;
   }
