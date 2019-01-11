@@ -7,12 +7,12 @@
 </h4>
 
 <div align="center">
-  <img alt="Header" src="https://cdn.rawgit.com/klauscfhq/signale/2d8bcff8/media/header.png" width="88%">
+  <img alt="Header" src="../media/header.png" width="88%">
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.org/klauscfhq/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klauscfhq/signale.svg?branch=master">
+  <a href="https://travis-ci.org/klaussinani/signale">
+    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
   </a>
 </p>
 
@@ -20,9 +20,9 @@
 
 Signale 的核心是可扩展和可配置的，可将其用于日志记录、状态报告以及处理其他 Node 模块和应用的输出渲染方式。
 
-来 [Gitter](https://gitter.im/klauscfhq/signale) 或 [Twitter](https://twitter.com/klauscfhq) 分享你对该项目的看法。
+来 [Gitter](https://gitter.im/klaussinani/signale) 或 [Twitter](https://twitter.com/klaussinani) 分享你对该项目的看法。
 
-浏览 [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
+浏览 [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
 
 ## 亮点
 
@@ -574,11 +574,11 @@ signale.error(new Error('Unsuccessful operation'));
 ```js
 const signale = require('signale');
 
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
-//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
 
-signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klauscfhq)'});
-//=> [task] ☒  complete  Fix issue #59 (@klauscfhq)
+signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaussinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
 ```
 
 #### signale.`scope(name[, name])`
@@ -745,7 +745,7 @@ signale.success('foo');
 
 ## 开发
 
-想知道如何参与到该项目的更多信息, 请阅读 [contributing guidelines](https://github.com/klauscfhq/signale/blob/master/contributing.md) 。
+想知道如何参与到该项目的更多信息, 请阅读 [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md) 。
 
 - Fork 该仓库并 clone 到你的本地机器上
 - 进入你的本地仓库: `cd signale`
@@ -759,8 +759,8 @@ signale.success('foo');
 
 ## 团队
 
-- Klaus Sinani [(@klauscfhq)](https://github.com/klauscfhq)
+- Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
 
 ## 许可
 
-[MIT](https://github.com/klauscfhq/signale/blob/master/license.md)
+[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
