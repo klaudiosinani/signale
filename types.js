@@ -32,6 +32,11 @@ module.exports = {
     color: 'green',
     label: 'success'
   },
+  wait: {
+    badge: figures.ellipsis,
+    color: 'blue',
+    label: 'waiting'
+  },
   warn: {
     badge: figures.warning,
     color: 'yellow',
