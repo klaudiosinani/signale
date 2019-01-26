@@ -7,7 +7,13 @@ const pkgConf = require('pkg-conf');
 const pkg = require('./package.json');
 const defaultTypes = require('./types');
 
-const {green, grey, red, underline, yellow} = chalk;
+const {
+  green,
+  grey,
+  red,
+  underline,
+  yellow
+} = chalk;
 
 let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
@@ -50,6 +56,9 @@ class Signale {
   }
 
   get date() {
+    if (this._config.displayISODate) {
+      return new Date().toISOString();
+    }
     return new Date().toLocaleDateString();
   }
 
@@ -60,7 +69,9 @@ class Signale {
   get filename() {
     const _ = Error.prepareStackTrace;
     Error.prepareStackTrace = (error, stack) => stack;
-    const {stack} = new Error();
+    const {
+      stack
+    } = new Error();
     Error.prepareStackTrace = _;
 
     const callers = stack.map(x => x.getFileName());
@@ -73,7 +84,9 @@ class Signale {
   }
 
   get packageConfiguration() {
-    return pkgConf.sync(namespace, {defaults});
+    return pkgConf.sync(namespace, {
+      defaults
+    });
   }
 
   set configuration(configObj) {
@@ -89,7 +102,9 @@ class Signale {
   }
 
   _getLongestLabel() {
-    const {_types} = this;
+    const {
+      _types
+    } = this;
     const labels = Object.keys(_types).map(x => _types[x].label);
     return Math.max(...labels.filter(x => x).map(x => x.length));
   }
@@ -138,7 +153,9 @@ class Signale {
         util.inspect.styles[x] = type.color || _[x];
       });
 
-      str = util.formatWithOptions({colors: true}, ...str);
+      str = util.formatWithOptions({
+        colors: true
+      }, ...str);
       util.inspect.styles = Object.assign({}, _);
       return str;
     }
@@ -173,7 +190,10 @@ class Signale {
     return meta;
   }
 
-  _hasAdditional({suffix, prefix}, args, type) {
+  _hasAdditional({
+    suffix,
+    prefix
+  }, args, type) {
     return (suffix || prefix) ? '' : this._formatMessage(args, type);
   }
 
@@ -184,8 +204,15 @@ class Signale {
       if (args[0] instanceof Error) {
         [msg] = args;
       } else {
-        const [{prefix, message, suffix}] = args;
-        additional = Object.assign({}, {suffix, prefix});
+        const [{
+          prefix,
+          message,
+          suffix
+        }] = args;
+        additional = Object.assign({}, {
+          suffix,
+          prefix
+        });
         msg = message ? this._formatMessage(message, type) : this._hasAdditional(additional, args, type);
       }
     } else {
@@ -301,7 +328,9 @@ class Signale {
     if (name.length === 0) {
       throw new Error('No scope name was defined.');
     }
-    return new Signale(Object.assign(this.currentOptions, {scope: name}));
+    return new Signale(Object.assign(this.currentOptions, {
+      scope: name
+    }));
   }
 
   unscope() {
@@ -349,7 +378,10 @@ class Signale {
       message.push(...report);
 
       this._log(message.join(' '));
-      return {label, span};
+      return {
+        label,
+        span
+      };
     }
   }
 }
