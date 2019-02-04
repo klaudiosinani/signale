@@ -11,7 +11,7 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.org/klaussinani/signale">
+  <a href="https://travis-ci.com/klaussinani/signale">
     <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/signale">
