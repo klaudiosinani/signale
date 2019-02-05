@@ -121,6 +121,7 @@ class Signale {
       const scopes = this._scopeName.filter(x => x.length !== 0);
       return `${scopes.map(x => `[${x.trim()}]`).join(' ')}`;
     }
+
     return `[${this._scopeName}]`;
   }
 
@@ -222,6 +223,7 @@ class Signale {
       } else {
         signale.push(name);
       }
+
       signale.push(grey(rest.map(l => l.replace(/^/, '\n')).join('')));
       return signale.join(' ');
     }
@@ -249,6 +251,7 @@ class Signale {
       stream.clearLine();
       stream.cursorTo(0);
     }
+
     stream.write(message + '\n');
     isPreviousLogInteractive = this._interactive;
   }
@@ -301,6 +304,7 @@ class Signale {
     if (name.length === 0) {
       throw new Error('No scope name was defined.');
     }
+
     return new Signale(Object.assign(this.currentOptions, {scope: name}));
   }
 
@@ -334,6 +338,7 @@ class Signale {
         return is(x) ? x : (is(y) ? y : null);
       });
     }
+
     if (this._timers.has(label)) {
       const span = this._timeSpan(this._timers.get(label));
       this._timers.delete(label);
