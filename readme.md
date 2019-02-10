@@ -783,7 +783,7 @@ For more info on how to contribute to the project, please read the [contributing
 ## Related
 
 - [qoa](https://github.com/klaussinani/qoa) - Minimal interactive command-line prompts
-- [taskbook](https://github.com/klaussinani/signale) - Tasks, boards & notes for the command-line habitat
+- [taskbook](https://github.com/klaussinani/taskbook) - Tasks, boards & notes for the command-line habitat
 
 ## Who's Using It?
 
