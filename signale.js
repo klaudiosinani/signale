@@ -322,16 +322,19 @@ class Signale {
     }
 
     this._timers.set(label, this._now);
+
     const message = this._meta();
+    message.push(green(this._padEnd(this._types.start.badge, 2)));
 
-    const report = [
-      green(this._padEnd(this._types.start.badge, 2)),
-      green(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)),
-      'Initialized timer...'
-    ];
+    if (this._config.underlineLabel) {
+      message.push(green(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+    } else {
+      message.push(green(this._padEnd(label, this._longestLabel.length + 1)));
+    }
 
-    message.push(...report);
+    message.push('Initialized timer...');
     this._log(message.join(' '));
+
     return label;
   }
 
@@ -348,16 +351,18 @@ class Signale {
       this._timers.delete(label);
 
       const message = this._meta();
-      const report = [
-        red(this._padEnd(this._types.pause.badge, 2)),
-        red(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)),
-        'Timer run for:',
-        yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
-      ];
+      message.push(red(this._padEnd(this._types.pause.badge, 2)));
 
-      message.push(...report);
+      if (this._config.underlineLabel) {
+        message.push(red(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+      } else {
+        message.push(red(this._padEnd(label, this._longestLabel.length + 1)));
+      }
 
+      message.push('Timer run for:');
+      message.push(yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's'));
       this._log(message.join(' '));
+
       return {label, span};
     }
   }
