@@ -76,6 +76,10 @@ class Signale {
     return pkgConf.sync(namespace, {defaults});
   }
 
+  get _longestUnderlinedLabel() {
+    return underline(this._longestLabel);
+  }
+
   set configuration(configObj) {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
@@ -91,7 +95,7 @@ class Signale {
   _getLongestLabel() {
     const {_types} = this;
     const labels = Object.keys(_types).map(x => _types[x].label);
-    return Math.max(...labels.filter(x => x).map(x => x.length));
+    return labels.reduce((x, y) => x.length > y.length ? x : y);
   }
 
   _mergeTypes(standard, custom) {
@@ -210,9 +214,9 @@ class Signale {
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(this._padEnd(chalk[type.color].underline(label), this._longestLabel + 20));
+        signale.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
       } else {
-        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel + 1)));
+        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
       }
     }
 
@@ -322,7 +326,7 @@ class Signale {
 
     const report = [
       green(this._padEnd(this._types.start.badge, 2)),
-      this._padEnd(green.underline(label), this._longestLabel + 20),
+      green(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)),
       'Initialized timer...'
     ];
 
@@ -346,7 +350,7 @@ class Signale {
       const message = this._meta();
       const report = [
         red(this._padEnd(this._types.pause.badge, 2)),
-        this._padEnd(red.underline(label), this._longestLabel + 20),
+        red(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)),
         'Timer run for:',
         yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's')
       ];
