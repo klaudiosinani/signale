@@ -196,14 +196,14 @@ Switches all loggers belonging to the created instance into the interactive mode
 
 ##### `stream`
 
-- Type: `Writable stream` or `Array of Writable streams`
+- Type: `stream.Writable|stream.Writable[]`
 - Default: `process.stdout`
 
 Destination to which the data is written, can be a single valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) or an array holding multiple valid Writable streams.
 
 ##### `scope`
 
-- Type: `String` or `Array of Strings`
+- Type: `String|String[]`
 
 Name of the scope the logger is reporting from.
 
