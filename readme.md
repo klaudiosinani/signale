@@ -128,7 +128,10 @@ const options = {
     remind: {
       badge: '**',
       color: 'yellow',
-      label: 'reminder'
+      label: 'reminder',
+      done: (...msg) => {
+        // Do something with the logged message(s)
+      }
     },
     santa: {
       badge: '🎅',
