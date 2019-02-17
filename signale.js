@@ -133,22 +133,8 @@ class Signale {
     return `[${this.timestamp}]`;
   }
 
-  _formatMessage(str, type) {
-    str = this._arrayify(str);
-
-    if (this._config.coloredInterpolation) {
-      const _ = Object.assign({}, util.inspect.styles);
-
-      Object.keys(util.inspect.styles).forEach(x => {
-        util.inspect.styles[x] = type.color || _[x];
-      });
-
-      str = util.formatWithOptions({colors: true}, ...str);
-      util.inspect.styles = Object.assign({}, _);
-      return str;
-    }
-
-    return util.format(...str);
+  _formatMessage(str) {
+    return util.format(...this._arrayify(str));
   }
 
   _meta() {
@@ -178,8 +164,8 @@ class Signale {
     return meta;
   }
 
-  _hasAdditional({suffix, prefix}, args, type) {
-    return (suffix || prefix) ? '' : this._formatMessage(args, type);
+  _hasAdditional({suffix, prefix}, args) {
+    return (suffix || prefix) ? '' : this._formatMessage(args);
   }
 
   _buildSignale(type, ...args) {
@@ -191,10 +177,10 @@ class Signale {
       } else {
         const [{prefix, message, suffix}] = args;
         additional = Object.assign({}, {suffix, prefix});
-        msg = message ? this._formatMessage(message, type) : this._hasAdditional(additional, args, type);
+        msg = message ? this._formatMessage(message) : this._hasAdditional(additional, args);
       }
     } else {
-      msg = this._formatMessage(args, type);
+      msg = this._formatMessage(args);
     }
 
     const signale = this._meta();

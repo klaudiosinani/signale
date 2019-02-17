@@ -362,7 +362,6 @@ The following illustrates all the available options with their respective defaul
 ```json
 {
   "signale": {
-    "coloredInterpolation": false,
     "displayScope": true,
     "displayBadge": true,
     "displayDate": false,
@@ -380,13 +379,6 @@ The following illustrates all the available options with their respective defaul
 
 <details>
 <summary>View all of the available options in detail.</summary>
-
-##### `coloredInterpolation`
-
-- Type: `Boolean`
-- Default: `false`
-
-Display the arguments, which replace the placeholder tokens on string interpolation, colored. 
 
 ##### `displayScope`
 
