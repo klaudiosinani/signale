@@ -24,6 +24,7 @@ class Signale {
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
     this._longestLabel = this._getLongestLabel();
+    this._secrets = options.secrets || [];
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -45,7 +46,8 @@ class Signale {
       types: this._customTypes,
       interactive: this._interactive,
       timers: this._timers,
-      stream: this._stream
+      stream: this._stream,
+      secrets: this._secrets
     });
   }
 
@@ -106,6 +108,22 @@ class Signale {
     });
 
     return types;
+  }
+
+  _filterSecrets(message) {
+    const {_secrets} = this;
+
+    if (_secrets.length === 0) {
+      return message;
+    }
+
+    let safeMessage = message;
+
+    _secrets.forEach(secret => {
+      safeMessage = safeMessage.replace(new RegExp(secret, 'g'), '[secure]');
+    });
+
+    return safeMessage;
   }
 
   _formatStream(stream) {
@@ -255,7 +273,9 @@ class Signale {
   }
 
   _logger(type, ...messageObj) {
-    this._log(this._buildSignale(this._types[type], ...messageObj), this._types[type].stream);
+    const {stream} = this._types[type];
+    const message = this._buildSignale(this._types[type], ...messageObj);
+    this._log(this._filterSecrets(message), stream);
   }
 
   _padEnd(str, targetLength) {
