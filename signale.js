@@ -294,6 +294,14 @@ class Signale {
     return str + ' '.repeat(targetLength);
   }
 
+  addSecrets(secrets) {
+    if (!Array.isArray(secrets)) {
+      throw new TypeError('Argument must be an array.');
+    }
+
+    this._secrets.push(...secrets);
+  }
+
   config(configObj) {
     this.configuration = configObj;
   }
