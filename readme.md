@@ -302,7 +302,6 @@ setTimeout(() => {
   <img alt="Interactive Mode" src="media/interactive-mode.gif" width="65%">
 </div>
 
-
 ### Writable Streams
 
 By default, all signale instances log their messages to the `process.stdout` stream. This can be modified, to match your own preference, through the [`stream`](#stream) property, where you can define a single or multiple valid Writable streams, which will be used by all logger types to log your data. Additionally, it is possible to define one or more Writable streams exclusively for a specific logger type, thus write data independently from the rest logger types.
@@ -327,6 +326,37 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 <div align="center">
   <img alt="Writable Streams" src="media/writable-streams.png" width="73%">
+</div>
+
+
+### Secrets Filtering
+
+By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner.
+
+It is **critical** and **highly recommended** to **not type directly secrets in your code**, thus the following example serves **only** as a simple & easily reproducible usage demonstration.
+
+```js
+const {Signale} = require('signale');
+
+// In reality secrets could be securely fetched/decrypted through a dedicated API 
+const [USERNAME, TOKEN] = ['klaussinani', 'token'];
+
+const logger1 = new Signale({
+  secrets: [USERNAME, TOKEN]
+});
+
+logger1.log('$ exporting USERNAME=%s', USERNAME);
+logger1.log('$ exporting TOKEN=%s', TOKEN);
+
+// `logger2` inherits all secrets from its parent `logger1`
+const logger2 = logger1.scope('parent');
+
+logger2.log('$ exporting USERNAME=%s', USERNAME);
+logger2.log('$ exporting TOKEN=%s', TOKEN);
+```
+
+<div align="center">
+  <img alt="Secrets Filtering" src="media/filter-secrets.png" width="73%">
 </div>
 
 ### Timers
