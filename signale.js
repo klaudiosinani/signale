@@ -302,6 +302,10 @@ class Signale {
     this._secrets.push(...secrets);
   }
 
+  clearSecrets() {
+    this._secrets = [];
+  }
+
   config(configObj) {
     this.configuration = configObj;
   }
