@@ -25,6 +25,7 @@ class Signale {
     this._stream = options.stream || process.stdout;
     this._longestLabel = this._getLongestLabel();
     this._secrets = options.secrets || [];
+    this._generalLogLevel = this._validateLogLevel(options.logLevel);
 
     Object.keys(this._types).forEach(type => {
       this[type] = this._logger.bind(this, type);
@@ -47,7 +48,8 @@ class Signale {
       interactive: this._interactive,
       timers: this._timers,
       stream: this._stream,
-      secrets: this._secrets
+      secrets: this._secrets,
+      logLevel: this._generalLogLevel
     });
   }
 
@@ -82,6 +84,16 @@ class Signale {
     return underline(this._longestLabel);
   }
 
+  get _logLevels() {
+    return {
+      info: 0,
+      timer: 1,
+      debug: 2,
+      warn: 3,
+      error: 4
+    };
+  }
+
   set configuration(configObj) {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
@@ -98,6 +110,10 @@ class Signale {
     const {_types} = this;
     const labels = Object.keys(_types).map(x => _types[x].label);
     return labels.reduce((x, y) => x.length > y.length ? x : y);
+  }
+
+  _validateLogLevel(level) {
+    return Object.keys(this._logLevels).includes(level) ? level : 'info';
   }
 
   _mergeTypes(standard, custom) {
@@ -264,8 +280,8 @@ class Signale {
     isPreviousLogInteractive = this._interactive;
   }
 
-  _log(message, streams = this._stream) {
-    if (this.isEnabled()) {
+  _log(message, streams = this._stream, logLevel) {
+    if (this.isEnabled() && this._logLevels[logLevel] >= this._logLevels[this._generalLogLevel]) {
       this._formatStream(streams).forEach(stream => {
         this._write(stream, message);
       });
@@ -273,9 +289,9 @@ class Signale {
   }
 
   _logger(type, ...messageObj) {
-    const {stream} = this._types[type];
+    const {stream, logLevel} = this._types[type];
     const message = this._buildSignale(this._types[type], ...messageObj);
-    this._log(this._filterSecrets(message), stream);
+    this._log(this._filterSecrets(message), stream, this._validateLogLevel(logLevel));
   }
 
   _padEnd(str, targetLength) {
@@ -351,7 +367,7 @@ class Signale {
     }
 
     message.push('Initialized timer...');
-    this._log(message.join(' '));
+    this._log(message.join(' '), this._stream, 'timer');
 
     return label;
   }
@@ -379,7 +395,7 @@ class Signale {
 
       message.push('Timer run for:');
       message.push(yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's'));
-      this._log(message.join(' '));
+      this._log(message.join(' '), this._stream, 'timer');
 
       return {label, span};
     }

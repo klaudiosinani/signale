@@ -5,86 +5,103 @@ module.exports = {
   error: {
     badge: figures.cross,
     color: 'red',
-    label: 'error'
+    label: 'error',
+    logLevel: 'error'
   },
   fatal: {
     badge: figures.cross,
     color: 'red',
-    label: 'fatal'
+    label: 'fatal',
+    logLevel: 'error'
   },
   fav: {
     badge: figures('❤'),
     color: 'magenta',
-    label: 'favorite'
+    label: 'favorite',
+    logLevel: 'info'
   },
   info: {
     badge: figures.info,
     color: 'blue',
-    label: 'info'
+    label: 'info',
+    logLevel: 'info'
   },
   star: {
     badge: figures.star,
     color: 'yellow',
-    label: 'star'
+    label: 'star',
+    logLevel: 'info'
   },
   success: {
     badge: figures.tick,
     color: 'green',
-    label: 'success'
+    label: 'success',
+    logLevel: 'info'
   },
   wait: {
     badge: figures.ellipsis,
     color: 'blue',
-    label: 'waiting'
+    label: 'waiting',
+    logLevel: 'info'
   },
   warn: {
     badge: figures.warning,
     color: 'yellow',
-    label: 'warning'
+    label: 'warning',
+    logLevel: 'warn'
   },
   complete: {
     badge: figures.checkboxOn,
     color: 'cyan',
-    label: 'complete'
+    label: 'complete',
+    logLevel: 'info'
   },
   pending: {
     badge: figures.checkboxOff,
     color: 'magenta',
-    label: 'pending'
+    label: 'pending',
+    logLevel: 'info'
   },
   note: {
     badge: figures.bullet,
     color: 'blue',
-    label: 'note'
+    label: 'note',
+    logLevel: 'info'
   },
   start: {
     badge: figures.play,
     color: 'green',
-    label: 'start'
+    label: 'start',
+    logLevel: 'info'
   },
   pause: {
     badge: figures.squareSmallFilled,
     color: 'yellow',
-    label: 'pause'
+    label: 'pause',
+    logLevel: 'info'
   },
   debug: {
     badge: figures('⬤'),
     color: 'red',
-    label: 'debug'
+    label: 'debug',
+    logLevel: 'debug'
   },
   await: {
     badge: figures.ellipsis,
     color: 'blue',
-    label: 'awaiting'
+    label: 'awaiting',
+    logLevel: 'info'
   },
   watch: {
     badge: figures.ellipsis,
     color: 'yellow',
-    label: 'watching'
+    label: 'watching',
+    logLevel: 'info'
   },
   log: {
     badge: '',
     color: '',
-    label: ''
+    label: '',
+    logLevel: 'info'
   }
 };
