@@ -337,10 +337,9 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
   <img alt="Writable Streams" src="media/writable-streams.png" width="73%">
 </div>
 
-
 ### Secrets Filtering
 
-By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner.
+By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner. Also, the unary [`signale.addSecrets()`](https://github.com/klaussinani/signale#signaleaddsecretssecrets) and the nullary [`signale.clearSecrets()`](https://github.com/klaussinani/signale#signaleclearsecrets) functions are available through the API for adding and clearing secrets respectively.
 
 It is **critical** and **highly recommended** to **not type directly secrets in your code**, thus the following example serves **only** as a simple & easily reproducible usage demonstration.
 
@@ -822,6 +821,24 @@ signale.addSecrets(['klaussinani']);
 
 signale.log('$ exporting USERNAME=%s', 'klaussinani');
 //=> $ exporting USERNAME=[secure]
+```
+
+#### signale.`clearSecrets()`
+
+Removes all secrets/sensitive-information from the targeted Signale instance.
+
+```js
+const signale = require('signale');
+
+signale.addSecrets(['klaussinani']);
+
+signale.log('$ exporting USERNAME=%s', 'klaussinani');
+//=> $ exporting USERNAME=[secure]
+
+signale.clearSecrets();
+
+signale.log('$ exporting USERNAME=%s', 'klaussinani');
+//=> $ exporting USERNAME=klaussinani
 ```
 
 ## Development
