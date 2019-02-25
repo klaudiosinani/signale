@@ -802,6 +802,28 @@ signale.isEnabled();
 // => false
 ```
 
+#### signale.`addSecrets(secrets)`
+
+Adds new secrets/sensitive-information to the targeted Signale instance.
+
+##### **`secrets`**
+
+- Type: `(String|Number)[]`
+
+Array holding the secrets/sensitive-information to be filtered out.
+
+```js
+const signale = require('signale');
+
+signale.log('$ exporting USERNAME=%s', 'klaussinani');
+//=> $ exporting USERNAME=klaussinani
+
+signale.addSecrets(['klaussinani']);
+
+signale.log('$ exporting USERNAME=%s', 'klaussinani');
+//=> $ exporting USERNAME=[secure]
+```
+
 ## Development
 
 For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
