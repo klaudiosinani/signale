@@ -37,6 +37,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 - Integrated timers
 - Custom pluggable loggers
 - Interactive and regular modes
+- Secrets & sensitive information filtering
 - Filename, date and timestamp support
 - Scoped loggers and timers
 - String interpolation support
