@@ -815,6 +815,7 @@ For more info on how to contribute to the project, please read the [contributing
 
 - [qoa](https://github.com/klaussinani/qoa) - Minimal interactive command-line prompts
 - [taskbook](https://github.com/klaussinani/taskbook) - Tasks, boards & notes for the command-line habitat
+- [hyperocean](https://github.com/klaussinani/hyperocean) - Deep oceanic blue Hyper terminal theme
 
 ## Who's Using It?
 
