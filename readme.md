@@ -90,6 +90,7 @@ Import signale and start using any of the default loggers.
 - `star`
 - `start`
 - `success`
+- `wait`
 - `warn`
 - `watch`
 - `log`
