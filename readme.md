@@ -123,6 +123,7 @@ const options = {
   disabled: false,
   interactive: false,
   stream: process.stdout,
+  secrets: [],
   scope: 'custom',
   types: {
     remind: {
@@ -193,6 +194,13 @@ Disables the logging functionality of all loggers belonging to the created insta
 - Default: `false`
 
 Switches all loggers belonging to the created instance into the interactive mode.
+
+##### `secrets`
+
+- Type: `(String|Number)[]`
+- Default: `[]`
+
+An array holding secrets/sensitive-information to be removed from the body and metadata of to-be-logged messages and replaced with the default `'[secure]'` string.
 
 ##### `stream`
 
