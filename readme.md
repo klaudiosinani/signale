@@ -40,6 +40,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 - Secrets & sensitive information filtering
 - Filename, date and timestamp support
 - Scoped loggers and timers
+- Scaled logging levels mechanism
 - String interpolation support
 - Multiple configurable writable streams
 - Simple and minimal syntax
@@ -124,19 +125,22 @@ const {Signale} = require('signale');
 const options = {
   disabled: false,
   interactive: false,
-  stream: process.stdout,
-  secrets: [],
+  logLevel: 'info',
   scope: 'custom',
+  secrets: [],
+  stream: process.stdout,
   types: {
     remind: {
       badge: '**',
       color: 'yellow',
-      label: 'reminder'
+      label: 'reminder',
+      logLevel: 'info'
     },
     santa: {
       badge: '🎅',
       color: 'red',
-      label: 'santa'
+      label: 'santa',
+      logLevel: 'info'
     }
   }
 };
@@ -197,6 +201,13 @@ Disables the logging functionality of all loggers belonging to the created insta
 
 Switches all loggers belonging to the created instance into the interactive mode.
 
+##### `logLevel`
+
+- Type: `String`
+- Default: `'info'`
+
+Sets the general logging level of the created instance. Can be `'info'` - logs all messages of all loggers, `'timer'` - logs only messages of `time`, `timeEnd`, `debug`, `warn`, `error` & `fatal` loggers, `'debug'` - logs only messages of `debug`, `warn`, `error` & `fatal` loggers, `'warn'` - logs only messages of `warn`, `error` & `fatal` loggers & `'error'` - logs only messages of `error` & `fatal` loggers.
+
 ##### `secrets`
 
 - Type: `(String|Number)[]`
@@ -223,6 +234,8 @@ Name of the scope the logger is reporting from.
 
 Holds the configuration of the custom and default loggers.
 
+Additionally, the configuration object of each custom/default logger type, defined in the `types` option, can hold any of the following attributes: `badge`, `label`, `color` and `logLevel`. 
+
 ##### `badge`
 
 - Type: `String`
@@ -240,6 +253,13 @@ The label used to identify the type of the logger.
 - Type: `String`
 
 The color of the label, can be any of the foreground colors supported by [chalk](https://github.com/chalk/chalk#colors).
+
+##### `logLevel`
+
+- Type: `String`
+- Type: `'info'`
+
+The log level corresponding to the logger. Messages originating from the logger are displayed only if the log level is greater or equal to the above described general logging level `logLevel` of the `Signale` instance.
 
 ### Scoped Loggers
 
