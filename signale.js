@@ -1,6 +1,7 @@
 'use strict';
 const util = require('util');
 const path = require('path');
+const readline = require('readline');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
@@ -271,9 +272,9 @@ class Signale {
 
   _write(stream, message) {
     if (this._interactive && stream.isTTY && isPreviousLogInteractive) {
-      stream.moveCursor(0, -1);
-      stream.clearLine();
-      stream.cursorTo(0);
+      readline.moveCursor(stream, 0, -1);
+      readline.clearLine(stream);
+      readline.cursorTo(stream, 0);
     }
 
     stream.write(message + '\n');
