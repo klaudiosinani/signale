@@ -257,7 +257,7 @@ The color of the label, can be any of the foreground colors supported by [chalk]
 ##### `logLevel`
 
 - Type: `String`
-- Type: `'info'`
+- Default: `'info'`
 
 The log level corresponding to the logger. Messages originating from the logger are displayed only if the log level is greater or equal to the above described general logging level `logLevel` of the `Signale` instance.
 
