@@ -270,7 +270,7 @@ class Signale {
   }
 
   _write(stream, message) {
-    if (this._interactive && isPreviousLogInteractive) {
+    if (this._interactive && stream.isTTY && isPreviousLogInteractive) {
       stream.moveCursor(0, -1);
       stream.clearLine();
       stream.cursorTo(0);
