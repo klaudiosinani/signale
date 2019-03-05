@@ -20,9 +20,8 @@
     "node": ">=6"
   },
   "files": [
-    "index.js",
-    "signale.js",
-    "types.js"
+    "src",
+    "index.js"
   ],
   "keywords": [
     "hackable",
