@@ -5,7 +5,7 @@ const readline = require('readline');
 const chalk = require('chalk');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
-const pkg = require('./package.json');
+const pkg = require('./../package.json');
 const defaultTypes = require('./types');
 
 const {green, grey, red, underline, yellow} = chalk;
