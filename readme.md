@@ -185,7 +185,7 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold any of the following attributes: `disabled`, `interactive`, `stream`, `scope` and `types`. 
+The `options` object can hold any of the following attributes: `disabled`, `interactive`, `logLevel`, `secrets`, `stream`, `scope` and `types`. 
 
 ##### `disabled`
 
@@ -234,7 +234,7 @@ Name of the scope the logger is reporting from.
 
 Holds the configuration of the custom and default loggers.
 
-Additionally, the configuration object of each custom/default logger type, defined in the `types` option, can hold any of the following attributes: `badge`, `label`, `color` and `logLevel`. 
+Additionally, the configuration object of each custom/default logger type, defined in the `types` option, can hold any of the following attributes: `badge`, `label`, `color`, `logLevel` & `stream`. 
 
 ##### `badge`
 
@@ -260,6 +260,13 @@ The color of the label, can be any of the foreground colors supported by [chalk]
 - Default: `'info'`
 
 The log level corresponding to the logger. Messages originating from the logger are displayed only if the log level is greater or equal to the above described general logging level `logLevel` of the `Signale` instance.
+
+##### `stream`
+
+- Type: `stream.Writable|stream.Writable[]`
+- Default: `process.stdout`
+
+Destination to which the data is written, can be a single valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) or an array holding multiple valid Writable streams.
 
 ### Scoped Loggers
 
