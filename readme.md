@@ -295,7 +295,7 @@ global.success('Successful Operation');
   <img alt="Scope Vanilla" src="media/scope-vanilla.png" width="65%">
 </div>
 
-To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, streams, configuration, interactive mode & disabled statuses from the initial one.
+To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, secrets, streams, configuration, log level, interactive mode & disabled statuses from the initial one.
 
 ```js
 const signale = require('signale');
