@@ -31,7 +31,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 
 ## Highlights
 
-- 16 out-of-the-box loggers
+- 19 out-of-the-box loggers
 - Hackable to the core
 - Clean and beautiful output
 - Integrated timers
