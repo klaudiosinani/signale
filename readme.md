@@ -63,6 +63,14 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 
 ## Install
 
+### Yarn
+
+```bash
+yarn add signale
+```
+
+### NPM
+
 ```bash
 npm install signale
 ```
