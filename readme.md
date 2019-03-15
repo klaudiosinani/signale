@@ -214,7 +214,13 @@ Switches all loggers belonging to the created instance into the interactive mode
 - Type: `String`
 - Default: `'info'`
 
-Sets the general logging level of the created instance. Can be `'info'` - logs all messages of all loggers, `'timer'` - logs only messages of `time`, `timeEnd`, `debug`, `warn`, `error` & `fatal` loggers, `'debug'` - logs only messages of `debug`, `warn`, `error` & `fatal` loggers, `'warn'` - logs only messages of `warn`, `error` & `fatal` loggers & `'error'` - logs only messages of `error` & `fatal` loggers.
+Sets the general logging level of the created instance. Can be one of the following:
+
+- `'info'` - Displays all messages from all loggers.
+- `'timer'` -  Displays messages only from the `time`, `timeEnd`, `debug`, `warn`, `error` & `fatal` loggers.
+- `'debug'` - Displays messages only from the `debug`, `warn`, `error` & `fatal` loggers.
+- `'warn'` - Displays messages only from the `warn`, `error` & `fatal` loggers.
+- `'error'` - Displays messages only from the `error` & `fatal` loggers.
 
 ##### `secrets`
 
