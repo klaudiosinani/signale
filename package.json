@@ -21,8 +21,10 @@
   },
   "files": [
     "src",
+    "types",
     "index.js"
   ],
+  "types": "./types/signale.d.ts",
   "keywords": [
     "hackable",
     "colorful",
@@ -61,11 +63,5 @@
     "ignores": [
       "test/**"
     ]
-  },
-  "files": [
-    "index.js",
-    "signale.js",
-    "types"
-  ],
-  "typings": "./types/signale.d.ts"
+  }
 }
