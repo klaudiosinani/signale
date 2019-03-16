@@ -40,7 +40,7 @@
     "pkg-conf": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "^10.3.2",
+    "@types/node": "^11.11.3",
     "xo": "*"
   },
   "options": {
