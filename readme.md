@@ -36,6 +36,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 - Clean and beautiful output
 - Integrated timers
 - Custom pluggable loggers
+- TypeScript support
 - Interactive and regular modes
 - Secrets & sensitive information filtering
 - Filename, date and timestamp support
