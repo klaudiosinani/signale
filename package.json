@@ -35,8 +35,9 @@
     "console"
   ],
   "scripts": {
-    "test": "xo",
-    "test:ts": "tsc --noEmit -p test"
+    "lint": "xo",
+    "test:ts": "tsc --noEmit -p test",
+    "test": "npm run lint && npm run test:ts"
   },
   "dependencies": {
     "chalk": "^2.3.2",
