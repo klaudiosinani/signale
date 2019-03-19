@@ -22,6 +22,7 @@ declare namespace _signale {
     | 'star'
     | 'start'
     | 'success'
+    | 'wait'
     | 'warn'
     | 'watch';
 
