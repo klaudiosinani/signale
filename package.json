@@ -26,10 +26,13 @@
   ],
   "types": "./types/signale.d.ts",
   "keywords": [
+    "log",
+    "cli",
+    "logger",
+    "logging",
     "hackable",
     "colorful",
-    "console",
-    "logger"
+    "console"
   ],
   "scripts": {
     "test": "xo",
@@ -61,9 +64,6 @@
     }
   },
   "xo": {
-    "space": 2,
-    "ignores": [
-      "test/**"
-    ]
+    "space": 2
   }
 }
