@@ -60,7 +60,8 @@ class Signale {
   }
 
   get timestamp() {
-    return new Date().toLocaleTimeString();
+    const _ = new Date();
+    return [_.getHours(), _.getMinutes(), _.getSeconds()].join(':');
   }
 
   get filename() {
