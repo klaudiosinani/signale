@@ -914,6 +914,7 @@ View in detail all the packages and repositories that are using Signale [here](h
 ## Team
 
 - Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
+- Mario Sinani [(@mario-sinani)](https://github.com/mario-sinani)
 
 ## License
 
