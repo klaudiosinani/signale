@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  👋 Hackable console logger
+  👋 Highly configurable logging utility
 </h4>
 
 <div align="center">
