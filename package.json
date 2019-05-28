@@ -1,7 +1,7 @@
 {
   "name": "signale",
   "version": "1.4.0",
-  "description": "👋 Hackable console logger",
+  "description": "Highly configurable logging utility",
   "license": "MIT",
   "repository": "klaussinani/signale",
   "author": {
