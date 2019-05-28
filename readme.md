@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  👋 Highly configurable logging utility
+  Highly configurable logging utility
 </h4>
 
 <div align="center">
