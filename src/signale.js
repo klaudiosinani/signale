@@ -176,29 +176,40 @@ class Signale {
 
   _meta() {
     const meta = [];
+    let metaCharLength = 0;
 
     if (this._config.displayDate) {
-      meta.push(this._formatDate());
+      let str = this._formatDate();
+      meta.push(str);
+      metaCharLength+=this._stringUnicodeLength(str);
     }
 
     if (this._config.displayTimestamp) {
-      meta.push(this._formatTimestamp());
+      let str = this._formatTimestamp();
+      meta.push(str);
+      metaCharLength+=this._stringUnicodeLength(str);
     }
 
     if (this._config.displayFilename) {
-      meta.push(this._formatFilename());
+      let str = this._formatFilename();
+      meta.push(str);
+      metaCharLength+=this._stringUnicodeLength(str);
     }
 
     if (this._scopeName.length !== 0 && this._config.displayScope) {
-      meta.push(this._formatScopeName());
+      let str = this._formatScopeName();
+      meta.push(str);
+      metaCharLength+=this._stringUnicodeLength(str);
     }
 
     if (meta.length !== 0) {
-      meta.push(`${figures.pointerSmall}`);
-      return meta.map(item => grey(item));
+      let str = `${figures.pointerSmall}`;
+      meta.push(str);
+      metaCharLength+=this._stringUnicodeLength(str);
+      return [meta.map(item => grey(item)), metaCharLength];
     }
 
-    return meta;
+    return [meta, metaCharLength];
   }
 
   _hasAdditional({suffix, prefix}, args) {
@@ -220,56 +231,111 @@ class Signale {
       msg = this._formatMessage(args);
     }
 
-    const signale = this._meta();
+    let [firstLine,firstLineCharLength] = this._meta();
 
     if (additional.prefix) {
       if (this._config.underlinePrefix) {
-        signale.push(underline(additional.prefix));
+        firstLine.push(underline(additional.prefix));
       } else {
-        signale.push(additional.prefix);
+        firstLine.push(additional.prefix);
       }
+      firstLineCharLength+=this._stringUnicodeLength(additional.prefix);
     }
 
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](this._padEnd(type.badge, type.badge.length + 1)));
+      let str = this._padEnd(type.badge, type.badge.length + 1);
+      firstLine.push(chalk[type.color](str));
+      firstLineCharLength+=this._stringUnicodeLength(str);
     }
 
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
+
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+        firstLine.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
       } else {
-        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
-      }
-    }
-
-    if (msg instanceof Error && msg.stack) {
-      const [name, ...rest] = msg.stack.split('\n');
-      if (this._config.underlineMessage) {
-        signale.push(underline(name));
-      } else {
-        signale.push(name);
+        firstLine.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
       }
 
-      signale.push(grey(rest.map(l => l.replace(/^/, '\n')).join('')));
-      return signale.join(' ');
+      firstLineCharLength+=this._longestLabel.length + 1;
     }
 
-    if (this._config.underlineMessage) {
-      signale.push(underline(msg));
-    } else {
-      signale.push(msg);
-    }
+    let suffix = [];
+    let suffixCharLength = 0;
 
     if (additional.suffix) {
       if (this._config.underlineSuffix) {
-        signale.push(underline(additional.suffix));
+        suffix.push(chalk.grey(underline(additional.suffix)));
       } else {
-        signale.push(additional.suffix);
+        suffix.push(chalk.grey(additional.suffix));
       }
+      suffixCharLength+=this._stringUnicodeLength(additional.suffix);
     }
 
-    return signale.join(' ');
+    let lines;
+
+    if (this._config.splitLinebreaks) {
+      lines = msg.split("\n");
+    } else {
+      lines = [msg];
+    }
+
+    if (this._config.splitLongLines) {
+      let size = 0;
+      if (typeof this._config.splitLongLines == 'number') {
+        size = parseInt(this._config.splitLongLines);
+      } else if (this._config.splitLongLines == 'auto') {
+        size = process.stdout.columns;
+      } else {
+        size = 80;
+      }
+
+      size -= firstLineCharLength + firstLine.length + suffixCharLength + suffix.length;
+
+      lines = lines.map((str)=>{
+        const chunks = [];
+
+        for (let i = 0; i < str.length; i+=size) {
+          chunks.push(str.substr(i, size));
+        }
+
+        return chunks;
+      }).flat();
+    }
+
+    lines = lines.map((msg,index)=>{
+      let signale;
+      if (!index)
+        signale = firstLine.slice();
+      else
+        signale = [this._padLength(firstLineCharLength + firstLine.length - 1)];
+
+      if (msg instanceof Error && msg.stack) {
+        const [name, ...rest] = msg.stack.split('\n');
+        if (this._config.underlineMessage) {
+          signale.push(underline(name));
+        } else {
+          signale.push(name);
+        }
+
+        signale.push(grey(rest.map(l => l.replace(/^/, '\n')).join('')));
+        return signale.join(' ');
+      }
+
+      if (this._config.underlineMessage) {
+        signale.push(underline(msg));
+      } else {
+        signale.push(msg);
+      }
+
+      if (index == 0 && suffix.length) {
+        signale = signale.concat(suffix);
+      }
+
+      return signale.join(' ');
+    });
+
+    return lines.join("\n");
   }
 
   _write(stream, message) {
@@ -311,6 +377,24 @@ class Signale {
 
     targetLength -= str.length;
     return str + ' '.repeat(targetLength);
+  }
+
+  _stringUnicodeLength(val) {
+    if (typeof val == 'number')
+      return val;
+
+    if (typeof val == 'string')
+      return [...val].length;
+
+    return 0;
+  }
+
+  _padLength(val) {
+    let length = (typeof val == "number") ? val : this._stringUnicodeLength(val);
+
+    if (length <= 0)
+      return '';
+    return ' '.repeat(length);;
   }
 
   addSecrets(secrets) {
@@ -360,7 +444,7 @@ class Signale {
 
     this._timers.set(label, this._now);
 
-    const message = this._meta();
+    const [message,] = this._meta();
     message.push(green(this._padEnd(this._types.start.badge, 2)));
 
     if (this._config.underlineLabel) {
@@ -387,7 +471,7 @@ class Signale {
       const span = this._timeSpan(this._timers.get(label));
       this._timers.delete(label);
 
-      const message = this._meta();
+      const [message,] = this._meta();
       message.push(red(this._padEnd(this._types.pause.badge, 2)));
 
       if (this._config.underlineLabel) {
@@ -406,3 +490,4 @@ class Signale {
 }
 
 module.exports = Signale;
+

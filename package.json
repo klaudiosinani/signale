@@ -57,6 +57,8 @@
       "displayFilename": false,
       "displayLabel": true,
       "displayTimestamp": false,
+      "splitLongLines": false,
+      "splitLinebreaks": false,
       "underlineLabel": true,
       "underlineMessage": false,
       "underlinePrefix": false,
