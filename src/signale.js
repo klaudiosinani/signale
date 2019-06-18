@@ -179,33 +179,33 @@ class Signale {
     let metaCharLength = 0;
 
     if (this._config.displayDate) {
-      let str = this._formatDate();
+      const str = this._formatDate();
       meta.push(str);
-      metaCharLength+=this._stringUnicodeLength(str);
+      metaCharLength += this._stringUnicodeLength(str);
     }
 
     if (this._config.displayTimestamp) {
-      let str = this._formatTimestamp();
+      const str = this._formatTimestamp();
       meta.push(str);
-      metaCharLength+=this._stringUnicodeLength(str);
+      metaCharLength += this._stringUnicodeLength(str);
     }
 
     if (this._config.displayFilename) {
-      let str = this._formatFilename();
+      const str = this._formatFilename();
       meta.push(str);
-      metaCharLength+=this._stringUnicodeLength(str);
+      metaCharLength += this._stringUnicodeLength(str);
     }
 
     if (this._scopeName.length !== 0 && this._config.displayScope) {
-      let str = this._formatScopeName();
+      const str = this._formatScopeName();
       meta.push(str);
-      metaCharLength+=this._stringUnicodeLength(str);
+      metaCharLength += this._stringUnicodeLength(str);
     }
 
     if (meta.length !== 0) {
-      let str = `${figures.pointerSmall}`;
+      const str = `${figures.pointerSmall}`;
       meta.push(str);
-      metaCharLength+=this._stringUnicodeLength(str);
+      metaCharLength += this._stringUnicodeLength(str);
       return [meta.map(item => grey(item)), metaCharLength];
     }
 
@@ -231,7 +231,7 @@ class Signale {
       msg = this._formatMessage(args);
     }
 
-    let [firstLine,firstLineCharLength] = this._meta();
+    let [firstLine, firstLineCharLength] = this._meta();
 
     if (additional.prefix) {
       if (this._config.underlinePrefix) {
@@ -239,13 +239,14 @@ class Signale {
       } else {
         firstLine.push(additional.prefix);
       }
-      firstLineCharLength+=this._stringUnicodeLength(additional.prefix);
+
+      firstLineCharLength += this._stringUnicodeLength(additional.prefix);
     }
 
     if (this._config.displayBadge && type.badge) {
-      let str = this._padEnd(type.badge, type.badge.length + 1);
+      const str = this._padEnd(type.badge, type.badge.length + 1);
       firstLine.push(chalk[type.color](str));
-      firstLineCharLength+=this._stringUnicodeLength(str);
+      firstLineCharLength += this._stringUnicodeLength(str);
     }
 
     if (this._config.displayLabel && type.label) {
@@ -257,10 +258,10 @@ class Signale {
         firstLine.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
       }
 
-      firstLineCharLength+=this._longestLabel.length + 1;
+      firstLineCharLength += this._longestLabel.length + 1;
     }
 
-    let suffix = [];
+    const suffix = [];
     let suffixCharLength = 0;
 
     if (additional.suffix) {
@@ -269,22 +270,23 @@ class Signale {
       } else {
         suffix.push(chalk.grey(additional.suffix));
       }
-      suffixCharLength+=this._stringUnicodeLength(additional.suffix);
+
+      suffixCharLength += this._stringUnicodeLength(additional.suffix);
     }
 
     let lines;
 
     if (this._config.splitLinebreaks) {
-      lines = msg.split("\n");
+      lines = msg.split('\n');
     } else {
       lines = [msg];
     }
 
     if (this._config.splitLongLines) {
       let size = 0;
-      if (typeof this._config.splitLongLines == 'number') {
-        size = parseInt(this._config.splitLongLines);
-      } else if (this._config.splitLongLines == 'auto') {
+      if (typeof this._config.splitLongLines === 'number') {
+        size = parseInt(this._config.splitLongLines, 10);
+      } else if (this._config.splitLongLines === 'auto') {
         size = process.stdout.columns;
       } else {
         size = 80;
@@ -292,10 +294,10 @@ class Signale {
 
       size -= firstLineCharLength + firstLine.length + suffixCharLength + suffix.length;
 
-      lines = lines.map((str)=>{
+      lines = lines.map(str => {
         const chunks = [];
 
-        for (let i = 0; i < str.length; i+=size) {
+        for (let i = 0; i < str.length; i += size) {
           chunks.push(str.substr(i, size));
         }
 
@@ -303,12 +305,13 @@ class Signale {
       }).flat();
     }
 
-    lines = lines.map((msg,index)=>{
+    lines = lines.map((msg, index) => {
       let signale;
-      if (!index)
+      if (index === 0) {
         signale = firstLine.slice();
-      else
+      } else {
         signale = [this._padLength(firstLineCharLength + firstLine.length - 1)];
+      }
 
       if (msg instanceof Error && msg.stack) {
         const [name, ...rest] = msg.stack.split('\n');
@@ -328,14 +331,14 @@ class Signale {
         signale.push(msg);
       }
 
-      if (index == 0 && suffix.length) {
+      if (index === 0 && suffix.length !== 0) {
         signale = signale.concat(suffix);
       }
 
       return signale.join(' ');
     });
 
-    return lines.join("\n");
+    return lines.join('\n');
   }
 
   _write(stream, message) {
@@ -380,21 +383,25 @@ class Signale {
   }
 
   _stringUnicodeLength(val) {
-    if (typeof val == 'number')
+    if (typeof val === 'number') {
       return val;
+    }
 
-    if (typeof val == 'string')
+    if (typeof val === 'string') {
       return [...val].length;
+    }
 
     return 0;
   }
 
   _padLength(val) {
-    let length = (typeof val == "number") ? val : this._stringUnicodeLength(val);
+    const length = (typeof val === 'number') ? val : this._stringUnicodeLength(val);
 
-    if (length <= 0)
+    if (length <= 0) {
       return '';
-    return ' '.repeat(length);;
+    }
+
+    return ' '.repeat(length);
   }
 
   addSecrets(secrets) {
@@ -444,7 +451,7 @@ class Signale {
 
     this._timers.set(label, this._now);
 
-    const [message,] = this._meta();
+    const [message] = this._meta();
     message.push(green(this._padEnd(this._types.start.badge, 2)));
 
     if (this._config.underlineLabel) {
@@ -471,7 +478,7 @@ class Signale {
       const span = this._timeSpan(this._timers.get(label));
       this._timers.delete(label);
 
-      const [message,] = this._meta();
+      const [message] = this._meta();
       message.push(red(this._padEnd(this._types.pause.badge, 2)));
 
       if (this._config.underlineLabel) {
