@@ -89,9 +89,9 @@ class Signale {
 
   get _logLevels() {
     return {
-      info: 0,
+      debug: 0,
       timer: 1,
-      debug: 2,
+      info: 2,
       warn: 3,
       error: 4
     };
