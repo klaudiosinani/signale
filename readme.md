@@ -25,7 +25,7 @@ Hackable and configurable to the core, signale can be used for logging purposes,
 
 Read this document in: [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md).
 
-You can now support the development process by donating on [Open Collective](https://opencollective.com/klaussinani).
+You can now support the development process through [GitHub Sponsors](https://github.com/sponsors/klaussinani).
 
 Visit the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
