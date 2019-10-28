@@ -1,6 +1,7 @@
 ## Signale Translated Documentation
 
 - [简体中文 - Simplified Chinese](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md) by [@hardo](https://github.com/hardo)
+- [German - Deutsch](https://github.com/klaussinani/signale/blob/master/docs/readme.DE.md) by [@villabunterkunt](https://github.com/villabunterkunt)
 
 ## Contributing
 
