@@ -1,6 +1,6 @@
 {
   "name": "signales",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Highly configurable logging utility",
   "license": "MIT",
   "repository": "anru/signales",
@@ -12,7 +12,7 @@
   "maintainers": [
     {
       "name": "Andrey Rublev",
-      "email": "box@anru.mes",
+      "email": "box@anru.me",
       "url": "http://anru.me"
     }
   ],
