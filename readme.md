@@ -21,7 +21,7 @@
 
 ## Description
 
-Signales was forked form [signale](https://github.com/klaussinani/signale) in order to solve [issue with logging levels](https://github.com/klaussinani/signale/issues/96). So basicly signales is fork of singale + [#105 MR](https://github.com/klaussinani/signale/pull/105) merged in main codebase.
+Signales was forked form [signale](https://github.com/klaussinani/signale) in order to solve [issue with logging levels](https://github.com/klaussinani/signale/issues/96). So basically signales is a fork of singale, with [#105 MR](https://github.com/klaussinani/signale/pull/105) merged in main codebase.
 
 Hackable and configurable to the core, signales can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
