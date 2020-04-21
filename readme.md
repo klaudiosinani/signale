@@ -21,15 +21,15 @@
 
 ## Description
 
-Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
+Signales was forked form [signale](https://github.com/klaussinani/signale) in order to solve [issue with logging levels](https://github.com/klaussinani/signale/issues/96). So basicly signales is fork of singale + [#105 MR](https://github.com/klaussinani/signale/pull/105) merged in main codebase.
+
+Hackable and configurable to the core, signales can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
 Read this document in: [简体中文](https://github.com/anru/signales/blob/master/docs/readme.zh_CN.md).
 
 Visit the [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
 Come over [Twitter](https://twitter.com/anrublev) to share your thoughts on the project.
-
-Signales was forked form [signale](https://github.com/klaussinani/signale).
 
 ## Highlights
 
