@@ -226,7 +226,7 @@ Sets the general logging level of the created instance. Can be one of the follow
 - `'warn'` - Displays messages only from the `warn`, `error` & `fatal` loggers.
 - `'error'` - Displays messages only from the `error` & `fatal` loggers.
 
-#### `logLevels`
+##### `logLevels`
 
 - Type: `Object`
 

@@ -227,7 +227,7 @@ Setzte den Loglevel der erstellten Instanz. Es kann einer der folgenden Level ge
 - `'warn'` - Zeigt Benachrichtigungen von den `warn`, `error` & `fatal` Loggern.
 - `'error'` - Zeigt Benachrichtigungen von den `error` & `fatal` Loggern.
 
-#### `logLevels`
+##### `logLevels`
 
 - Type: `Object`
 
