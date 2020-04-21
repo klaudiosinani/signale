@@ -1,5 +1,5 @@
 <h1 align="center">
-  Signale
+  Signales
 </h1>
 
 <h4 align="center">
@@ -11,11 +11,11 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
+  <a href="https://travis-ci.com/anru/signales">
+    <img alt="Build Status" src="https://travis-ci.com/anru/signales.svg?branch=master">
   </a>
-  <a href="https://www.npmjs.com/package/signale">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
+  <a href="https://www.npmjs.com/package/signales">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signales.svg">
   </a>
 </p>
 
@@ -23,13 +23,13 @@
 
 Signale ist bis ins letzte hack- und konfigurierbar. Es kann für Logging und Statusreports als auch für das Handling des Output Rendering Process von anderen Node Modulen und Anwendungen verwendet werden.
 
-Diese Dokument in [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md) lesen.
+Diese Dokument in [简体中文](https://github.com/anru/signales/blob/master/docs/readme.zh_CN.md) lesen.
 
-Du kannst die Entwicklung dieses Projekts unterstützen und an [Open Collective](https://opencollective.com/klaussinani) spenden.
+Lies die [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md#translating-documentation) um zu lernen, wie du dieses Dokument in mehr Sprachen übersetzen kannst.
 
-Lies die [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) um zu lernen, wie du dieses Dokument in mehr Sprachen übersetzen kannst.
+Besuch doch [Twitter](https://twitter.com/anrublev) um deine Anmerkungen zu diesem Projekt zu teilen.
 
-Besuch doch [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https://twitter.com/klaussinani) um deine Anmerkungen zu diesem Projekt zu teilen.
+Signales wurde von [signale](https://github.com/klaussinani/signale) abgezweigt
 
 ## Höhepunkte
 
@@ -69,13 +69,13 @@ Besuch doch [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:/
 ### Yarn
 
 ```bash
-yarn add signale
+yarn add signales
 ```
 
 ### NPM
 
 ```bash
-npm install signale
+npm install signales
 ```
 
 ## Verwendung
@@ -113,7 +113,7 @@ Signale importieren und einen der default Logger verwenden.
 <br/>
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Operation successful');
 signale.debug('Hello', 'from', 'L59');
@@ -133,7 +133,7 @@ Um einen benutzerdefinierten Logger zu erzeugen, wird ein `options` Objekt mit e
 
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 const options = {
   disabled: false,
@@ -170,7 +170,7 @@ Ein Beispiel, wo die voreingestellten `error` und `success` Logger überschriebe
 
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 const options = {
   types: {
@@ -221,11 +221,31 @@ Schaltet alle Logger, die zu der Instanz gehören, in den interaktiven Modus.
 
 Setzte den Loglevel der erstellten Instanz. Es kann einer der folgenden Level gewählt werden:
 
-- `'info'` - Zeigt alle Benachrichtigungen von allen Loggern.
-- `'timer'` -  Zeigt Benachrichtigungen von den `time`, `timeEnd`, `debug`, `warn`, `error` & `fatal` Loggern.
-- `'debug'` - Zeigt Benachrichtigungen von den `debug`, `warn`, `error` & `fatal` Loggern.
+- `'debug'` - Zeigt alle Benachrichtigungen von allen Loggern.
+- `'info'` - Zeigt alle Benachrichtigungen von allen Loggern an, mit Ausnahme der `debug` Ebene.
+- `'timer'` -  Zeigt Benachrichtigungen von den `time`, `timeEnd`, `warn`, `error` & `fatal` Loggern.
 - `'warn'` - Zeigt Benachrichtigungen von den `warn`, `error` & `fatal` Loggern.
 - `'error'` - Zeigt Benachrichtigungen von den `error` & `fatal` Loggern.
+
+#### `logLevels`
+
+- Type: `Object`
+
+Ermöglicht es Ihnen, den LogLevel hinzuzufügen oder zu überschreiben.
+
+Zum Beispiel fügt ein Wert von `{ silly: -1 }` eine Ebene von `silly` hinzu, die noch geringere Priorität hat als `debug`.
+
+Default log levels are:
+
+```json5
+{
+  debug: 0,
+  info: 1,
+  timer: 2,
+  warn: 3,
+  error: 4
+}
+```
 
 ##### `secrets`
 
@@ -287,7 +307,7 @@ Das passende Loglevel für den Logger. Nachrichten vom Logger werden angezeigt, 
 Um einen neuen Logger für einen bestimmten Bereich zu erstellen, wird das `scope` Feld im `options` Objekt definiert und als Argument an die neue Signale Instanz übergeben.
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 const options = {
   scope: 'global scope'
@@ -304,7 +324,7 @@ global.success('Successful Operation');
 Um einen Logger für einen besteimmten Bereich, basierend auf einem bereits existierenden Logger, zu erstellen wird die `scope()` Funktion verwendet. Sie retourniert eine neue signale Instanz, die alle benutzerdefinierten Logger, Timer, Geheimnisse, Streams, Konfiguation, Loglevel, Interaktiven Modi und deaktivierten Stati erbt.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const global = signale.scope('global scope');
 global.success('Hello from the global scope');
@@ -331,7 +351,7 @@ foo();
 Um einen intaktiven Logger zu initialisieren, wird eine neue signale Instanz mit dem Wert `true` im [`interactive`](#interactive) Attribute erzeugt. Während man sich im interaktiven Modus befindet, werden zuvor geloggte Nachrichten von einem anderen interaktiven Logger von den neuen, die von dem gleichen oder einem neuen interaktiven Logger kommen, überschrieben. Reguläre Nachrichten von regulären Loggern werden von interaktiven nicht überschrieben.
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 const interactive = new Signale({interactive: true, scope: 'interactive'});
 
@@ -358,7 +378,7 @@ setTimeout(() => {
 Standardmäßig loggen alle Signale Instanzen die Nachrichten in den `process.stdout` stream. Der Ziel-Stream kann durch die [`stream`](#stream) property angepasst werden. Hier kann ein einzelner oder mehrere gütlige Writable streams angegeben werden, welche dann von allen Loggertypen verwendet werden. Zusätzlich ist es möglich einen oder mehrere Wirtable Streams exklusiv für einen spezifischen Loggertypen zu definieren - also Daten unabhängig von den restlichen Loggertypen zu schreiben.
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 const options = {
   stream: process.stderr, // All loggers will now write to `process.stderr`
@@ -381,12 +401,12 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 ### Secrets Filtering
 
-Durch das Verwenden der `secrets` Option werden geheime/sensitive Informationen, wie Scopenamen,  aus den Nachrichten (Body und Metadaten) herausgefiltert. Diese Option ist Teil des configuration-Objects, dass einer `Signale`-Instanz oder Initialisierung übergeben wird und hat den Typ `Array<String|Number>`. Das Array kann mehrere Geheimnisse enthalten. Alle werden, wenn sie vorkommen, entfernt und durch den standardmäßigen `'[secure]'` string ersetzt. Wenn die unäre `signale.scope(name)` Funktion verwendet wird, dann erbt die erzeugte `Signale` Instanz alle Geheimnisse des Parents. Die Geheimnisse werden **case-sensitive** überprüft. Die unäre [`signale.addSecrets()`](https://github.com/klaussinani/signale#signaleaddsecretssecrets) und die nullstellige [`signale.clearSecrets()`](https://github.com/klaussinani/signale#signaleclearsecrets) Funktion sind über die API verfügbar um die Geheimnisse hinzuzufügen/zu löschen.
+Durch das Verwenden der `secrets` Option werden geheime/sensitive Informationen, wie Scopenamen,  aus den Nachrichten (Body und Metadaten) herausgefiltert. Diese Option ist Teil des configuration-Objects, dass einer `Signale`-Instanz oder Initialisierung übergeben wird und hat den Typ `Array<String|Number>`. Das Array kann mehrere Geheimnisse enthalten. Alle werden, wenn sie vorkommen, entfernt und durch den standardmäßigen `'[secure]'` string ersetzt. Wenn die unäre `signale.scope(name)` Funktion verwendet wird, dann erbt die erzeugte `Signale` Instanz alle Geheimnisse des Parents. Die Geheimnisse werden **case-sensitive** überprüft. Die unäre [`signale.addSecrets()`](https://github.com/anru/signales#signaleaddsecretssecrets) und die nullstellige [`signale.clearSecrets()`](https://github.com/anru/signales#signaleclearsecrets) Funktion sind über die API verfügbar um die Geheimnisse hinzuzufügen/zu löschen.
 
 Es ist **entscheidende** und **stark befürwortete** Praxis, sensitive Informationen **nicht direkt im Quellcode zu speichern**. Das Beispiel ist **alleinig** zur die Demonstration gedacht:
 
 ```js
-const {Signale} = require('signale');
+const {Signale} = require('signales');
 
 // In reality secrets could be securely fetched/decrypted through a dedicated API 
 const [USERNAME, TOKEN] = ['klaussinani', 'token'];
@@ -414,7 +434,7 @@ logger2.log('$ exporting TOKEN=%s', TOKEN);
 Timer werden von den `time()` und `timeEnd()`  Funktionen verwaltet. Zur Identifikation eines Timers oder einer Initialisierung kann ein einzigartiges Label vewrendet werden. Wenn keines bereitgestellt wird, dann wird eines automatisch generiert. Wenn die `timeEnd()` Funktion ohne ein Label aufgerufen wird, dann wird der als letztes initialisierte Timer terminiert, der ohne Label erstellt wurde.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time('test');
 signale.time();
@@ -547,7 +567,7 @@ Das folgende Beispiel zeigt wie Logger in der `foo.js`-Datei unter einer eigenen
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 // Overrides any existing `package.json` config
 signale.config({
@@ -567,7 +587,7 @@ Logger für bestimmte Bereiche können eine unabhängige, eigene Konfiguration e
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -615,7 +635,7 @@ Kann jeder vereingestellte oder benutzerdefinierte Logger sein.
 Kann ein oder mehrere durch Kommas getrennte Strings sein.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Successful operation');
 //=> ✔  success  Successful operation
@@ -634,7 +654,7 @@ signale.success('Successful %s', 'operation');
 Kann jedes Error Objekt sein.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.error(new Error('Unsuccessful operation'));
 //=> ✖  error  Error: Unsuccessful operation
@@ -650,7 +670,7 @@ signale.error(new Error('Unsuccessful operation'));
 Kann jedes Objet sein, dass die Attribute `prefix`, `message` und `suffix` enthält, wobei `prefix` und `suffix` immer vor bzw. nach der `message` eingefügt werden.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
 //=> [task] ☒  complete  Fix issue #59 (@klaussinani)
@@ -670,7 +690,7 @@ Definiert den Namen des Loggers.
 Kann ein oder mehrere durch Kommas getrennte Strings sein.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 const fooBar = signale.scope('foo', 'bar');
@@ -687,7 +707,7 @@ fooBar.success('foo bar');
 Löscht den Bereichsnamen des Loggers.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 
@@ -712,7 +732,7 @@ Kann jede der dokumentierten [options](#global) enthalten.
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -739,7 +759,7 @@ Retourniert einen String, der das Timerlabel repräsentiert.
 Label, dass zum Timer gehört. Jeder Timer braucht ein einzigartiges Label.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -766,7 +786,7 @@ Retourniert ein Objekt `{label, span}`, welches das Label und die Laufzeit enth�
 Label, dass zu dem Timer gehört. Jeder Timer hat ein einzigartiges label.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -792,7 +812,7 @@ signale.timeEnd('label');
 Deaktiviert das Logging für alle Logger die zu einer spezifischen Instanz gehören.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('foo');
 //=> ✔  success  foo
@@ -807,7 +827,7 @@ signale.success('foo');
 
 Aktiviert das Logging für alle Logger die zu einer spezifischen Instanz gehören.
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.disable();
 
@@ -825,7 +845,7 @@ signale.success('foo');
 Überprüft, ob Logging für die spezifische Instanz aktiviert ist.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('foo');
 //=> ✔  success  foo
@@ -853,7 +873,7 @@ Fügt neue geheime/sensitive Informatioen hinzu.
 Array, dass die geheime/sensitive Information enthält, die herausgefiltert werden soll.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.log('$ exporting USERNAME=%s', 'klaussinani');
 //=> $ exporting USERNAME=klaussinani
@@ -869,7 +889,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 Entfernt alle geheimen/sensitiven Informationen der spezifischen Signale Instanz.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.addSecrets(['klaussinani']);
 
@@ -884,7 +904,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 
 ## Development
 
-Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
+Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md).
 
 - Das Repository forken und auf deine Maschine klonen
 - Zum lokalen Fork navigieren: `cd signale`
@@ -898,21 +918,15 @@ Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contri
 
 ## Who's Using It?
 
-- [Boostnote](https://github.com/BoostIO/Boostnote)
-- [Docz](https://github.com/pedronauck/docz)
-- [Remix by Ethereum](https://github.com/ethereum/remix)
-- [Semantic Release](https://github.com/semantic-release/semantic-release)
-- [Shower](https://github.com/shower/shower)
-- [Taskbook](https://github.com/klaussinani/taskbook)
-- [Vant](https://github.com/youzan/vant)
-
-Repositories, die Signale verwenden im Detail ansehen: [hier](https://github.com/klaussinani/signale/network/dependents).
+Repositories, die Signales verwenden im Detail ansehen: [hier](https://github.com/anru/signales/network/dependents).
 
 ## Team
 
 - Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
 - Mario Sinani [(@mariosinani)](https://github.com/mariosinani)
+- Andrey Rublev [(@anrublev)](https://github.com/anrublev)
+- Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
 
 ## License
 
-[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
+[MIT](https://github.com/anru/signales/blob/master/license.md)

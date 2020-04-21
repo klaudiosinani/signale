@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2018 - present Klaus Sinani <klaussinani@gmail.com>
+Copyright (c) 2018 - 2020 Klaus Sinani <klaussinani@gmail.com>
+Copyright (c) 2020 - present Andrey Rublev <box@anru.me>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

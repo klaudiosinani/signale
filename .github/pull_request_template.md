@@ -1,8 +1,8 @@
 <!--
 
-Thank you for taking the time to contribute to Signale!
+Thank you for taking the time to contribute to Signales!
 
-For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
+For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md).
 
 We are always excited about pull requests!
 If the pull request fixes any open issues, reference the corresponding issues in the following fashion: `Fixes #321`.

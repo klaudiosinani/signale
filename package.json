@@ -1,9 +1,9 @@
 {
-  "name": "signale",
+  "name": "signales",
   "version": "1.4.0",
   "description": "Highly configurable logging utility",
   "license": "MIT",
-  "repository": "klaussinani/signale",
+  "repository": "anru/signales",
   "author": {
     "name": "Klaus Sinani",
     "email": "klaussinani@gmail.com",
@@ -11,9 +11,9 @@
   },
   "maintainers": [
     {
-      "name": "Mario Sinani",
-      "email": "mariosinani@protonmail.ch",
-      "url": "https://mariocfhq.github.io"
+      "name": "Andrey Rublev",
+      "email": "box@anru.mes",
+      "url": "http://anru.me"
     }
   ],
   "engines": {
@@ -35,9 +35,7 @@
     "console"
   ],
   "scripts": {
-    "lint": "xo",
-    "test:ts": "tsc --noEmit -p test",
-    "test": "npm run lint && npm run test:ts"
+    "test": "tsc --noEmit -p test"
   },
   "dependencies": {
     "chalk": "^2.3.2",
@@ -46,8 +44,7 @@
   },
   "devDependencies": {
     "@types/node": "^11.11.3",
-    "typescript": "^3.3.3333",
-    "xo": "*"
+    "typescript": "^3.3.3333"
   },
   "options": {
     "default": {
@@ -63,8 +60,5 @@
       "underlineSuffix": false,
       "uppercaseLabel": false
     }
-  },
-  "xo": {
-    "space": 2
   }
 }

@@ -1,5 +1,5 @@
 <h1 align="center">
-  Signale
+  Signales
 </h1>
 
 <h4 align="center">
@@ -11,11 +11,11 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
+  <a href="https://travis-ci.com/anru/signales">
+    <img alt="Build Status" src="https://travis-ci.com/anru/signales.svg?branch=master">
   </a>
-  <a href="https://www.npmjs.com/package/signale">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
+  <a href="https://www.npmjs.com/package/signales">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signales.svg">
   </a>
 </p>
 
@@ -23,13 +23,13 @@
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Read this document in: [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md).
+Read this document in: [简体中文](https://github.com/anru/signales/blob/master/docs/readme.zh_CN.md).
 
-You can now support the development process through [GitHub Sponsors](https://github.com/sponsors/klaussinani).
+Visit the [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
-Visit the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
+Come over [Twitter](https://twitter.com/anrublev) to share your thoughts on the project.
 
-Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https://twitter.com/klaussinani) to share your thoughts on the project.
+Signales was forked form [signale](https://github.com/klaussinani/signale).
 
 ## Highlights
 
@@ -69,20 +69,20 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 ### Yarn
 
 ```bash
-yarn add signale
+yarn add signales
 ```
 
 ### NPM
 
 ```bash
-npm install signale
+npm install signales
 ```
 
 ## Usage
 
 ### Default Loggers
 
-Import signale and start using any of the default loggers.
+Import signales and start using any of the default loggers.
 
 <details>
 <summary>View all of the available loggers.</summary>
@@ -92,6 +92,7 @@ Import signale and start using any of the default loggers.
 - `await`
 - `complete`
 - `error`
+- `alert`
 - `debug`
 - `fatal`
 - `fav`
@@ -112,7 +113,7 @@ Import signale and start using any of the default loggers.
 <br/>
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Operation successful');
 signale.debug('Hello', 'from', 'L59');
@@ -131,7 +132,7 @@ signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscf
 To create a custom logger define an `options` object yielding a `types` field with the logger data and pass it as argument to a new signale instance.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   disabled: false,
@@ -168,7 +169,7 @@ custom.santa('Hoho! You have an unused variable on L45.');
 Here is an example where we override the default `error` and `success` loggers.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   types: {
@@ -310,7 +311,7 @@ Destination to which the data is written, can be a single valid [Writable stream
 To create a scoped logger from scratch, define the `scope` field inside the `options` object and pass it as argument to a new signale instance.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   scope: 'global scope'
@@ -354,7 +355,7 @@ foo();
 To initialize an interactive logger, create a new signale instance with the [`interactive`](#interactive) attribute set to `true`. While into the interactive mode, previously logged messages originating from an interactive logger, will be overridden only by new ones originating from the same or a different interactive logger. Note that regular messages originating from regular loggers are not overridden by the interactive ones.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const interactive = new Signale({interactive: true, scope: 'interactive'});
 
@@ -381,7 +382,7 @@ setTimeout(() => {
 By default, all signale instances log their messages to the `process.stdout` stream. This can be modified, to match your own preference, through the [`stream`](#stream) property, where you can define a single or multiple valid Writable streams, which will be used by all logger types to log your data. Additionally, it is possible to define one or more Writable streams exclusively for a specific logger type, thus write data independently from the rest logger types.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   stream: process.stderr, // All loggers will now write to `process.stderr`
@@ -404,12 +405,12 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 ### Secrets Filtering
 
-By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner. Also, the unary [`signale.addSecrets()`](https://github.com/klaussinani/signale#signaleaddsecretssecrets) and the nullary [`signale.clearSecrets()`](https://github.com/klaussinani/signale#signaleclearsecrets) functions are available through the API for adding and clearing secrets respectively.
+By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner. Also, the unary [`signale.addSecrets()`](https://github.com/anru/signales#signaleaddsecretssecrets) and the nullary [`signale.clearSecrets()`](https://github.com/anru/signales#signaleclearsecrets) functions are available through the API for adding and clearing secrets respectively.
 
 It is **critical** and **highly recommended** to **not type directly secrets in your code**, thus the following example serves **only** as a simple & easily reproducible usage demonstration.
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 // In reality secrets could be securely fetched/decrypted through a dedicated API 
 const [USERNAME, TOKEN] = ['klaussinani', 'token'];
@@ -437,7 +438,7 @@ logger2.log('$ exporting TOKEN=%s', TOKEN);
 Timer are managed by the `time()` and `timeEnd()` functions. A unique label can be used to identify a timer on initialization, though if none is provided the timer will be assigned one automatically. In addition, calling the `timeEnd()` function without a specified label will have as effect the termination of the most recently initialized timer, that was created without providing a label.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time('test');
 signale.time();
@@ -570,7 +571,7 @@ In the following example, loggers in the `foo.js` file will run under their own 
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 // Overrides any existing `package.json` config
 signale.config({
@@ -908,7 +909,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 
 ## Development
 
-For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
+For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md).
 
 - Fork the repository and clone it to your machine
 - Navigate to your local fork: `cd signale`
@@ -923,21 +924,20 @@ For more info on how to contribute to the project, please read the [contributing
 
 ## Who's Using It?
 
-- [Boostnote](https://github.com/BoostIO/Boostnote)
-- [Docz](https://github.com/pedronauck/docz)
-- [Remix by Ethereum](https://github.com/ethereum/remix)
-- [Semantic Release](https://github.com/semantic-release/semantic-release)
-- [Shower](https://github.com/shower/shower)
-- [Taskbook](https://github.com/klaussinani/taskbook)
-- [Vant](https://github.com/youzan/vant)
+View in detail all the packages and repositories that are using Signales [here](https://github.com/anru/signales/network/dependents).
 
-View in detail all the packages and repositories that are using Signale [here](https://github.com/klaussinani/signale/network/dependents).
+## Maintainers
+
+- Andrey Rublev [(@anrublev)](https://github.com/anrublev)
+- Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
 
 ## Team
 
 - Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
 - Mario Sinani [(@mariosinani)](https://github.com/mariosinani)
+- Andrey Rublev [(@anrublev)](https://github.com/anrublev)
+- Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
 
 ## License
 
-[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
+[MIT](https://github.com/anru/signales/blob/master/license.md)

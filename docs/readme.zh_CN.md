@@ -1,5 +1,5 @@
 <h1 align="center">
-  Signale
+  Signale (fork of Signali)
 </h1>
 
 <h4 align="center">
@@ -11,8 +11,8 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.org/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
+  <a href="https://travis-ci.org/anru/signales">
+    <img alt="Build Status" src="https://travis-ci.com/anru/signales.svg?branch=master">
   </a>
 </p>
 
@@ -20,9 +20,9 @@
 
 Signale 的核心是可扩展和可配置的，可将其用于日志记录、状态报告以及处理其他 Node 模块和应用的输出渲染方式。
 
-来 [Gitter](https://gitter.im/klaussinani/signale) 或 [Twitter](https://twitter.com/klaussinani) 分享你对该项目的看法。
+来 [Twitter](https://twitter.com/anrublev) 分享你对该项目的看法。
 
-浏览 [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
+浏览 [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
 
 ## 亮点
 
@@ -92,7 +92,7 @@ npm install signale
 <br/>
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Operation successful');
 signale.debug('Hello', 'from', 'L59');
@@ -111,7 +111,7 @@ signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscf
 要创建自定义记录器，先定义一个 `options` 对象，在其 `types` 属性中填入记录器相关数据，然后将该对象作为参数传递给新的 signale 实例。
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   disabled: false,
@@ -144,7 +144,7 @@ custom.santa('Hoho! You have an unused variable on L45.');
 下面是一个覆盖默认记录器 `error` 和 `success` 的例子
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   types: {
@@ -230,7 +230,7 @@ custom.success('Custom Success Log');
 要从头创建局部记录器，需在 `options` 对象的 `scope` 属性中定义作用域名，然后将其作为一个参数传递给新的 signale 实例。
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   scope: 'global scope'
@@ -247,7 +247,7 @@ global.success('Successful Operation');
 可以使用 `scope()` 函数基于现有的记录器创建局部记录器，该函数将返回新的signale实例，该实例继承已有实例的所有自定义记录器、计时器、流、配置、禁用状态和交互模式信息。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const global = signale.scope('global scope');
 global.success('Hello from the global scope');
@@ -274,7 +274,7 @@ foo();
 要初始化交互式记录器，请创建一个新的 signale 实例，并将 [`interactive`](#interactive) 属性设置为 `true`。 进入交互模式时，之前来自交互式记录器的消息，会被后面来自相同实例中相同或不同的记录器的消息所覆盖。 请注意来自常规记录器的常规消息不会被交互式记录器覆盖。
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const interactive = new Signale({interactive: true, scope: 'interactive'});
 
@@ -302,7 +302,7 @@ setTimeout(() => {
 默认情况下，所有 signale 实例都将其消息记录到 `process.stdout` 输出流。 可以通过 stream 属性进行修改以匹配您自己的选项，你可以在其中定义单个或多个有效的输出流，所有类型的记录器都将使用这些流来记录您的数据。 此外，可以专门为特定记录器类型定义一个或多个可写流，从而独立于其余记录器类型写入数据。
 
 ```js
-const {Signale} = require('signale');
+const { Signale } = require('signales');
 
 const options = {
   stream: process.stderr, // 所有的记录器现在都会将数据写入 `process.stderr`
@@ -328,7 +328,7 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 计时器由 `time()` 和 `timeEnd()` 函数管理。 可以使用标签在初始化时唯一标识一个计时器，如果没有提供则计时器将自动分配一个。 此外，调用没有指定标签的 `timeEnd()` 函数将终止最近一个初始化时没有指定标签的计时器。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time('test');
 signale.time();
@@ -469,7 +469,7 @@ setTimeout(() => {
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 // 覆盖任何存在于 `package.json` 的配置
 signale.config({
@@ -489,7 +489,7 @@ signale.success('Hello from the Global scope');
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -537,7 +537,7 @@ foo();
 可以是一个或多个逗号分隔的字符串。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Successful operation');
 //=> ✔  success  Successful operation
@@ -556,7 +556,7 @@ signale.success('Successful %s', 'operation');
 可以是任意错误 (error) 对象。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.error(new Error('Unsuccessful operation'));
 //=> ✖  error  Error: Unsuccessful operation
@@ -572,7 +572,7 @@ signale.error(new Error('Unsuccessful operation'));
 可以是包含 `prefix` 、 `message` 和 `suffix` 属性的对象，`prefix` (前缀)和 `suffix` (后缀) 始终预先添加并附加到记录的 `message` (消息)里。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
 //=> [task] ☒  complete  Fix issue #59 (@klaussinani)
@@ -592,7 +592,7 @@ signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@k
 可以是一个或多个用逗号分隔的字符串。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 const fooBar = signale.scope('foo', 'bar');
@@ -609,7 +609,7 @@ fooBar.success('foo bar');
 清除记录器的作用域名称。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 
@@ -634,7 +634,7 @@ foo.success('foo');
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -661,7 +661,7 @@ signale.success('Successful operations');
 与计时器对应的标签。每个计时器必须有自己独有的标签。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -688,7 +688,7 @@ signale.time('label');
 与计时器对应的标签。每个计时器必须有自己独有的标签。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -714,7 +714,7 @@ signale.timeEnd('label');
 禁用特定实例包含的所有记录器的记录功能。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('foo');
 //=> ✔  success  foo
@@ -730,7 +730,7 @@ signale.success('foo');
 启用特定实例包含的所有记录器的记录功能。
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.disable();
 
@@ -745,7 +745,7 @@ signale.success('foo');
 
 ## 开发
 
-想知道如何参与到该项目的更多信息, 请阅读 [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md) 。
+想知道如何参与到该项目的更多信息, 请阅读 [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md) 。
 
 - Fork 该仓库并 clone 到你的本地机器上
 - 进入你的本地仓库: `cd signale`
@@ -760,7 +760,11 @@ signale.success('foo');
 ## 团队
 
 - Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
+- Mario Sinani [(@mariosinani)](https://github.com/mariosinani)
+- Andrey Rublev [(@anrublev)](https://github.com/anrublev)
+- Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
+
 
 ## 许可
 
-[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
+[MIT](https://github.com/anru/signales/blob/master/license.md)
