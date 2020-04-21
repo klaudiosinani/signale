@@ -56,7 +56,7 @@ Signale 的核心是可扩展和可配置的，可将其用于日志记录、状
 ## 安装
 
 ```bash
-npm install signale
+npm install signales
 ```
 
 ## 使用
@@ -73,6 +73,7 @@ npm install signale
 - `await`
 - `complete`
 - `error`
+- `alert`
 - `debug`
 - `fatal`
 - `fav`

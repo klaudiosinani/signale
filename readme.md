@@ -328,7 +328,7 @@ global.success('Successful Operation');
 To create a scoped logger based on an already existing one, use the `scope()` function, which will return a new signale instance, inheriting all custom loggers, timers, secrets, streams, configuration, log level, interactive mode & disabled statuses from the initial one.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const global = signale.scope('global scope');
 global.success('Hello from the global scope');
@@ -591,7 +591,7 @@ Also, scoped loggers can have their own independent configuration, overriding th
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -639,7 +639,7 @@ Can be any default or custom logger.
 Can be one or more comma delimited strings.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('Successful operation');
 //=> ✔  success  Successful operation
@@ -658,7 +658,7 @@ signale.success('Successful %s', 'operation');
 Can be any error object.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.error(new Error('Unsuccessful operation'));
 //=> ✖  error  Error: Unsuccessful operation
@@ -674,7 +674,7 @@ signale.error(new Error('Unsuccessful operation'));
 Can be an object holding the `prefix`, `message` and `suffix` attributes, with `prefix` and `suffix` always prepended and appended respectively to the logged `message`.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
 //=> [task] ☒  complete  Fix issue #59 (@klaussinani)
@@ -694,7 +694,7 @@ Defines the scope name of the logger.
 Can be one or more comma delimited strings.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 const fooBar = signale.scope('foo', 'bar');
@@ -711,7 +711,7 @@ fooBar.success('foo bar');
 Clears the scope name of the logger.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 const foo = signale.scope('foo'); 
 
@@ -736,7 +736,7 @@ Can hold any of the documented [options](#global).
 
 ```js
 // foo.js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.config({
   displayFilename: true,
@@ -763,7 +763,7 @@ Returns a string corresponding to the timer label.
 Label corresponding to the timer. Each timer must have its own unique label.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -790,7 +790,7 @@ Returns an object `{label, span}` holding the timer label and the total running 
 Label corresponding to the timer, each timer has its own unique label.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.time();
 //=> ▶  timer_0  Initialized timer...
@@ -816,7 +816,7 @@ signale.timeEnd('label');
 Disables the logging functionality of all loggers belonging to a specific instance.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('foo');
 //=> ✔  success  foo
@@ -832,7 +832,7 @@ signale.success('foo');
 Enables the logging functionality of all loggers belonging to a specific instance.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.disable();
 
@@ -850,7 +850,7 @@ signale.success('foo');
 Checks whether the logging functionality of a specific instance is enabled.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.success('foo');
 //=> ✔  success  foo
@@ -878,7 +878,7 @@ Adds new secrets/sensitive-information to the targeted Signale instance.
 Array holding the secrets/sensitive-information to be filtered out.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.log('$ exporting USERNAME=%s', 'klaussinani');
 //=> $ exporting USERNAME=klaussinani
@@ -894,7 +894,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 Removes all secrets/sensitive-information from the targeted Signale instance.
 
 ```js
-const signale = require('signale');
+const signale = require('signales');
 
 signale.addSecrets(['klaussinani']);
 

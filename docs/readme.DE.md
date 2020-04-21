@@ -93,6 +93,7 @@ Signale importieren und einen der default Logger verwenden.
 - `await`
 - `complete`
 - `error`
+- `alert`
 - `debug`
 - `fatal`
 - `fav`
