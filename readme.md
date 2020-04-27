@@ -137,7 +137,7 @@ const { Signale } = require('signales');
 const options = {
   disabled: false,
   interactive: false,
-  logLevel: 'info',
+  logLevel: 'debug',
   scope: 'custom',
   secrets: [],
   stream: process.stdout,
@@ -216,7 +216,7 @@ Switches all loggers belonging to the created instance into the interactive mode
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Sets the general logging level of the created instance. Can be one of the following:
 
@@ -295,7 +295,7 @@ The color of the label, can be any of the foreground colors supported by [chalk]
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 The log level corresponding to the logger. Messages originating from the logger are displayed only if the log level is greater or equal to the above described general logging level `logLevel` of the `Signale` instance.
 

@@ -13,6 +13,7 @@ declare namespace _signale {
     | 'debug'
     | 'error'
     | 'fatal'
+    | 'alert'
     | 'fav'
     | 'info'
     | 'log'
@@ -122,6 +123,7 @@ declare namespace signale {
 
 declare const signale: _signale.Instance & {
   Signale: _signale.Constructor;
+  Signales: _signale.Constructor;
 };
 
 export = signale;
