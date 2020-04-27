@@ -12,6 +12,7 @@ declare namespace _signale {
     | 'complete'
     | 'debug'
     | 'error'
+    | 'alert'
     | 'fatal'
     | 'fav'
     | 'info'

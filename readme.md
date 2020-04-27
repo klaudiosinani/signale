@@ -94,6 +94,7 @@ Import signale and start using any of the default loggers.
 - `error`
 - `debug`
 - `fatal`
+- `alert`
 - `fav`
 - `info`
 - `note`
@@ -136,7 +137,7 @@ const {Signale} = require('signale');
 const options = {
   disabled: false,
   interactive: false,
-  logLevel: 'info',
+  logLevel: 'debug',
   scope: 'custom',
   secrets: [],
   stream: process.stdout,
@@ -145,13 +146,13 @@ const options = {
       badge: '**',
       color: 'yellow',
       label: 'reminder',
-      logLevel: 'info'
+      logLevel: 'debug'
     },
     santa: {
       badge: '🎅',
       color: 'red',
       label: 'santa',
-      logLevel: 'info'
+      logLevel: 'debug'
     }
   }
 };
@@ -215,7 +216,7 @@ Switches all loggers belonging to the created instance into the interactive mode
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Sets the general logging level of the created instance. Can be one of the following:
 

@@ -95,6 +95,7 @@ Signale importieren und einen der default Logger verwenden.
 - `error`
 - `debug`
 - `fatal`
+- `alert`
 - `fav`
 - `info`
 - `note`
@@ -217,7 +218,7 @@ Schaltet alle Logger, die zu der Instanz gehören, in den interaktiven Modus.
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Setzte den Loglevel der erstellten Instanz. Es kann einer der folgenden Level gewählt werden:
 
