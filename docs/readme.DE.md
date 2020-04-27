@@ -139,7 +139,7 @@ const {Signale} = require('signales');
 const options = {
   disabled: false,
   interactive: false,
-  logLevel: 'info',
+  logLevel: 'debug',
   scope: 'custom',
   secrets: [],
   stream: process.stdout,
@@ -218,7 +218,7 @@ Schaltet alle Logger, die zu der Instanz gehören, in den interaktiven Modus.
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Setzte den Loglevel der erstellten Instanz. Es kann einer der folgenden Level gewählt werden:
 
@@ -299,7 +299,7 @@ Farbe des Labels. Kann eine der von [chalk](https://github.com/chalk/chalk#color
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Das passende Loglevel für den Logger. Nachrichten vom Logger werden angezeigt, wenn der Loglevel größer oder gleich zum oben beschriebenen generellen Loglevel `logLevel` der `Signale` Instanz ist.
 

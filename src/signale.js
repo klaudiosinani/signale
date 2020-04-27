@@ -117,7 +117,7 @@ class Signale {
   }
 
   _validateLogLevel(level) {
-    return Object.keys(this._logLevels).includes(level) ? level : 'info';
+    return Object.keys(this._logLevels).includes(level) ? level : 'debug';
   }
 
   _mergeTypes(standard, custom) {
