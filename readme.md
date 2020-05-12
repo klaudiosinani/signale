@@ -271,20 +271,6 @@ The label used to identify the type of the logger.
 
 The color of the label, can be any of the foreground colors supported by [chalk](https://github.com/chalk/chalk#colors).
 
-##### `logLevel`
-
-- Type: `String`
-- Default: `'info'`
-
-The log level corresponding to the logger. Messages originating from the logger are displayed only if the log level is greater or equal to the above described general logging level `logLevel` of the `Signale` instance.
-
-##### `stream`
-
-- Type: `stream.Writable|stream.Writable[]`
-- Default: `process.stdout`
-
-Destination to which the data is written, can be a single valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) or an array holding multiple valid Writable streams.
-
 ### Scoped Loggers
 
 To create a scoped logger from scratch, define the `scope` field inside the `options` object and pass it as argument to a new signale instance.
