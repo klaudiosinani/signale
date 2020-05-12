@@ -40,13 +40,13 @@
     "test": "npm run lint && npm run test:ts"
   },
   "dependencies": {
-    "chalk": "^2.3.2",
-    "figures": "^2.0.0",
-    "pkg-conf": "^2.1.0"
+    "chalk": "^4.0.0",
+    "figures": "^3.2.0",
+    "pkg-conf": "^3.1.0"
   },
   "devDependencies": {
-    "@types/node": "^11.11.3",
-    "typescript": "^3.3.3333",
+    "@types/node": "^13.13.5",
+    "typescript": "^3.8.3",
     "xo": "*"
   },
   "options": {
