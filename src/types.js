@@ -88,7 +88,7 @@ module.exports = {
   },
   debug: {
     badge: figures.pointerSmall,
-    color: '',
+    color: 'gray',
     label: 'debug',
     logLevel: 'debug'
   },
