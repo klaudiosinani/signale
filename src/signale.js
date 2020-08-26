@@ -88,12 +88,12 @@ class Signale {
     const callers = stack.map(x => x.getFileName());
     const callersAndLines = stack.map(x => {
       return {
-        'name': x.getFileName(),
-        'line': x.getLineNumber()
+        name: x.getFileName(),
+        line: x.getLineNumber()
       };
     });
 
-    const firstExternalFileLine = callersAndLines.find( x => {
+    const firstExternalFileLine = callersAndLines.find(x => {
       return x.name !== callers[0];
     });
 
