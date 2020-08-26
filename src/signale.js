@@ -109,7 +109,7 @@ class Signale {
   }
 
   get _logLevels() {
-    return {tfghyv
+    return {
       info: 0,
       timer: 1,
       debug: 2,
