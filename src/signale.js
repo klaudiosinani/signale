@@ -79,6 +79,27 @@ class Signale {
     return firstExternalFilePath ? path.basename(firstExternalFilePath) : 'anonymous';
   }
 
+  get fileLine() {
+    const _ = Error.prepareStackTrace;
+    Error.prepareStackTrace = (error, stack) => stack;
+    const {stack} = new Error();
+    Error.prepareStackTrace = _;
+
+    const callers = stack.map(x => x.getFileName());
+    const callersAndLines = stack.map(x => {
+      return {
+        'name': x.getFileName(),
+        'line': x.getLineNumber()
+      };
+    });
+
+    const firstExternalFileLine = callersAndLines.find( x => {
+      return x.name !== callers[0];
+    });
+
+    return firstExternalFileLine ? firstExternalFileLine.line : '-';
+  }
+
   get packageConfiguration() {
     return pkgConf.sync(namespace, {defaults});
   }
@@ -88,7 +109,7 @@ class Signale {
   }
 
   get _logLevels() {
-    return {
+    return {tfghyv
       info: 0,
       timer: 1,
       debug: 2,
@@ -154,7 +175,7 @@ class Signale {
   }
 
   _formatFilename() {
-    return `[${this.filename}]`;
+    return `[${this.filename} - Line: ${this.fileLine}]`;
   }
 
   _formatScopeName() {

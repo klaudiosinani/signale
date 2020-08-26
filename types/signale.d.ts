@@ -4,7 +4,7 @@
  *          Klaus Sinani <https://github.com/klaussinani>
  */
 
-import { Writable as WritableStream } from 'stream';
+import {Writable as WritableStream} from 'stream';
 
 declare namespace _signale {
   export type DefaultLogger =
