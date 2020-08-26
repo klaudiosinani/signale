@@ -97,7 +97,7 @@ class Signale {
       return x.name !== callers[0];
     });
 
-    return firstExternalFileLine ? firstExternalFileLine.line : '-';
+    return firstExternalFileLine ? ` - Line: ${firstExternalFileLine.line}` : '';
   }
 
   get packageConfiguration() {
@@ -175,7 +175,7 @@ class Signale {
   }
 
   _formatFilename() {
-    return `[${this.filename} - Line: ${this.fileLine}]`;
+    return `[${this.filename}${this.fileLine}]`;
   }
 
   _formatScopeName() {
