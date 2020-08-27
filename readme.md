@@ -563,14 +563,14 @@ Time zone configuration. [List of time zones](https://en.wikipedia.org/wiki/List
 - Type: `String`
 - Default: `YYYY-MM-DD`
 
-Setting to format the date. [List format](https://momentjs.com/docs/#/displaying/format/)
+Setting to format the date. [List of formats](https://momentjs.com/docs/#/displaying/format/)
 
 ##### `formatTime`
 
 - Type: `String`
 - Default: `HH:mm:ss a`
 
-Setting to format the time. [List format](https://momentjs.com/docs/#/displaying/format/)
+Setting to format the time. [List of formats](https://momentjs.com/docs/#/displaying/format/)
 
 </details>
 
