@@ -3,6 +3,7 @@ const util = require('util');
 const path = require('path');
 const readline = require('readline');
 const chalk = require('chalk');
+const moment = require('moment-timezone');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
 const pkg = require('./../package.json');
@@ -55,13 +56,11 @@ class Signale {
   }
 
   get date() {
-    const _ = new Date();
-    return [_.getFullYear(), _.getMonth() + 1, _.getDate()].join('-');
+    return moment().tz(this._config.timeZone).format(this._config.formatDate);
   }
 
   get timestamp() {
-    const _ = new Date();
-    return [_.getHours(), _.getMinutes(), _.getSeconds()].join(':');
+    return moment().tz(this._config.timeZone).format(this._config.formatTime);
   }
 
   get filename() {
@@ -174,8 +173,8 @@ class Signale {
     return `[${this.date}]`;
   }
 
-  _formatFilename() {
-    return `[${this.filename}${this.fileLine}]`;
+  _formatFilename(displayLine) {
+    return `[${this.filename}${displayLine ? this.fileLine : ''}]`;
   }
 
   _formatScopeName() {
@@ -207,7 +206,7 @@ class Signale {
     }
 
     if (this._config.displayFilename) {
-      meta.push(this._formatFilename());
+      meta.push(this._formatFilename(this._config.displayLine));
     }
 
     if (this._scopeName.length !== 0 && this._config.displayScope) {

@@ -62,6 +62,7 @@ declare namespace _signale {
     displayBadge?: boolean;
     displayDate?: boolean;
     displayFilename?: boolean;
+    displayLine?: boolean;
     displayLabel?: boolean;
     displayScope?: boolean;
     displayTimestamp?: boolean;
@@ -70,6 +71,9 @@ declare namespace _signale {
     underlinePrefix?: boolean;
     underlineSuffix?: boolean;
     uppercaseLabel?: boolean;
+    timeZone?: string;
+    formatDate?: string;
+    formatTime?: string;
   }
 
   export interface ConstructorOptions<T extends string> {
