@@ -21,7 +21,7 @@
 
 ## Description
 
-Original project: [Signale](https://www.npmjs.com/package/signale)
+**Original project:** [Signale](https://www.npmjs.com/package/signale)
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
