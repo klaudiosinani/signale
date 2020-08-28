@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "description": "Highly configurable logging utility",
   "license": "MIT",
-  "repository": "rudemex/signale-log",
+  "repository": "rudemex/signale-logger",
   "author": {
     "name": "Klaus Sinani",
     "email": "klaussinani@gmail.com",
