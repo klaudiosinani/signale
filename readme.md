@@ -449,7 +449,7 @@ The following illustrates all the available options with their respective defaul
     "displayBadge": true,
     "displayDate": false,
     "displayFilename": false,
-    "displayLine": true,
+    "displayLine": false,
     "displayLabel": true,
     "displayTimestamp": false,
     "underlineLabel": true,
@@ -459,7 +459,7 @@ The following illustrates all the available options with their respective defaul
     "uppercaseLabel": false,
     "timeZone": "America/Argentina/Buenos_Aires",
     "formatDate": "YYYY-MM-DD",
-    "formatTime": "HH:mm:ss a"
+    "formatTime": "HH:mm:ss"
   }
 }
 ```

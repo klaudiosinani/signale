@@ -54,17 +54,17 @@
     "default": {
       "displayScope": true,
       "displayBadge": true,
-      "displayDate": true,
-      "displayFilename": true,
+      "displayDate": false,
+      "displayFilename": false,
       "displayLine": true,
       "displayLabel": true,
-      "displayTimestamp": true,
+      "displayTimestamp": false,
       "underlineLabel": true,
       "underlineMessage": false,
       "underlinePrefix": false,
       "underlineSuffix": false,
       "uppercaseLabel": false,
-      "timeZone": "America/Argentina/Buenos_Aires",
+      "timeZone": "",
       "formatDate": "YYYY-MM-DD",
       "formatTime": "HH:mm:ss a"
     }
