@@ -1,6 +1,6 @@
 {
-  "name": "signale-log",
-  "version": "1.4.2",
+  "name": "signale-logger",
+  "version": "1.4.0",
   "description": "Highly configurable logging utility",
   "license": "MIT",
   "repository": "rudemex/signale-log",
