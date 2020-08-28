@@ -12,10 +12,10 @@
 
 <p align="center">
   <a href="https://travis-ci.com/rudemex/signale-log">
-    <img alt="Build Status" src="https://travis-ci.com/rudemex/signale-log.svg?branch=master&style=flat-square">
+    <img alt="Build Status" src="https://travis-ci.org/rudemex/signale-log.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/signale-log">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale-log?style=flat-square">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale-log">
   </a>
 </p>
 
