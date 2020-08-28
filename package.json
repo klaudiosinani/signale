@@ -1,9 +1,9 @@
 {
-  "name": "signale",
-  "version": "1.4.0",
+  "name": "signale-log",
+  "version": "1.4.1",
   "description": "Highly configurable logging utility",
   "license": "MIT",
-  "repository": "klaussinani/signale",
+  "repository": "rudemex/signale-log",
   "author": {
     "name": "Klaus Sinani",
     "email": "klaussinani@gmail.com",
@@ -11,9 +11,9 @@
   },
   "maintainers": [
     {
-      "name": "Mario Sinani",
-      "email": "mariosinani@protonmail.ch",
-      "url": "https://mariocfhq.github.io"
+      "name": "Maximiliano \"Mex\" Delgado",
+      "email": "mdelgado@tresdoce.com.ar",
+      "url": "https://rudemex.github.io/"
     }
   ],
   "engines": {
@@ -64,7 +64,7 @@
       "underlinePrefix": false,
       "underlineSuffix": false,
       "uppercaseLabel": false,
-      "timeZone": "",
+      "timeZone": "America/Argentina/Buenos_Aires",
       "formatDate": "YYYY-MM-DD",
       "formatTime": "HH:mm:ss a"
     }
