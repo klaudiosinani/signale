@@ -1,7 +1,8 @@
 'use strict';
-const figures = require('figures');
+import figures from 'figures'
+import type {DefaultLogTypes, LoggerTypesConf} from './types'
 
-module.exports = {
+const logTypes: LoggerTypesConf<DefaultLogTypes> = {
   error: {
     badge: figures.cross,
     color: 'red',
@@ -106,8 +107,10 @@ module.exports = {
   },
   log: {
     badge: '',
-    color: '',
+    color: '' as const,
     label: '',
     logLevel: 'info'
   }
-};
+}
+
+export default logTypes

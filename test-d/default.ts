@@ -1,4 +1,4 @@
-import * as logger1 from '..';
+import logger1 from '..';
 
 const { Signale } = logger1;
 

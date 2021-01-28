@@ -1,4 +1,4 @@
-import { Signale, SignaleConstructorOptions } from '../';
+import { Signale, SignaleConstructorOptions } from '..';
 
 type CustomLogger = 'remind' | 'santa';
 
