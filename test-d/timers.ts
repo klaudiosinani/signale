@@ -1,4 +1,4 @@
-import * as signale from '../';
+import signale from '..';
 
 signale.time('test1');
 signale.time('test2');

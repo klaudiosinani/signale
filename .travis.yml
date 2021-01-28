@@ -1,11 +1,12 @@
 language: node_js
 node_js:
+  - 14
+  - 12
   - 10
-  - 8
-  - 6
 before_install:
-  - npm install --global npm@6.4.0
   - npm --version
+before_script:
+  - yarn build
 git:
   depth: 5
 cache:

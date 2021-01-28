@@ -1,4 +1,4 @@
-import * as signale from '..';
+import signale from '..';
 
 // Overrides any existing `package.json` config
 signale.config({
