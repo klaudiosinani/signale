@@ -31,7 +31,7 @@ Besides that Signales:
 - New options: scopeFormatter.
 - stderr stream by default instead of stdout.
 
-### Incompatible behaviors in signales
+### Incompatible behaviors in signales in compare of signale
 
 You can't require directly signales instance in commonjs module. Code below DOESN'T work:
 
@@ -351,7 +351,7 @@ The log level corresponding to the logger. Messages originating from the logger 
 ##### `stream`
 
 - Type: `stream.Writable|stream.Writable[]`
-- Default: `process.stdout`
+- Default: `process.stderr`
 
 Destination to which the data is written, can be a single valid [Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) or an array holding multiple valid Writable streams.
 
@@ -817,7 +817,7 @@ foo.success('foo');
 
 #### signale.`clone(options)`
 
-Creates clone of current signales instance.
+Creates clone of current signales instance with new options applied to it.
 
 ```js
 const { signales, Signale } = require('signales')
@@ -1015,8 +1015,9 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/anru/signales/blob/master/contributing.md).
 
 - Fork the repository and clone it to your machine
-- Navigate to your local fork: `cd signale`
+- Navigate to your local fork: `cd signales`
 - Install the project dependencies: `npm install` or `yarn install`
+- Build project: `npm build` or `yarn build`
 - Lint code for errors: `npm test` or `yarn test`
 
 ## Related
@@ -1034,12 +1035,10 @@ View in detail all the packages and repositories that are using Signales [here](
 - Andrey Rublev [(@anrublev)](https://github.com/anrublev)
 - Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
 
-## Team
+## Original Signale's Team
 
 - Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
 - Mario Sinani [(@mariosinani)](https://github.com/mariosinani)
-- Andrey Rublev [(@anrublev)](https://github.com/anrublev)
-- Dmitry Kuznetsov [(@diokuz)](https://github.com/diokuz)
 
 ## License
 

@@ -31,25 +31,6 @@ You can use issue labels to discover issues you could help us out with!
 
 You may find an issue is assigned, or has the [`assigned` label](https://github.com/anru/signales/labels/assigned). Please double-check before starting on this issue because somebody else is likely already working on it
 
-### Say hi
-
-Come over and say hi anytime you feel like on [Gitter](https://gitter.im/anru/signales).
-
-### Translating Documentation
-
-#### Create a Translation
-
-- Visit the [`translations' index`](https://github.com/anru/signales/tree/master/docs/readme.md) file to ensure that the document is not already translated in your target language. 
-- Add the name of the language to the document as an extension, e.g: `readme.JP.md`
-- Place the translated document inside the [`docs`](https://github.com/anru/signales/tree/master/docs) directory.
-- Add your github profile and the translated document at the [`translations' index`](https://github.com/anru/signales/tree/master/docs/readme.md) file.
-- Create a Pull Request including the language in the title, e.g: `Readme: Japanese Translation`
-
-#### Improve a Translation
-
-- Include your github profile next to the translation you improved at the [`translations' index`](https://github.com/anru/signales/tree/master/docs/readme.md) file.
-- Create a Pull Request that delivers the improvements and include the language in the title, e.g: `Readme: Improvements for the Japanese Translation`
-
 ### Submitting an issue
 
 - Search the issue tracker before opening an issue
