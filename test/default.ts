@@ -2,6 +2,16 @@ import * as logger1 from '..';
 
 const { Signale } = logger1;
 
+logger1.config({
+  displayFilename: true,
+  displayTimestamp: true,
+  displayDate: true,
+  displayLine: true,
+  timeZone: "America/Argentina/Buenos_Aires",
+  formatDate: "DD-MM-YYYY",
+  formatTime: "HH:mm:ss a"
+});
+
 logger1.success('Operation successful');
 logger1.debug('Hello', 'from', 'L59');
 logger1.pending('Write release notes for %s', '1.2.0');

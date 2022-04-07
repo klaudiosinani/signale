@@ -11,15 +11,16 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
+  <a href="https://travis-ci.com/rudemex/signale">
+    <img alt="Build Status" src="https://travis-ci.org/rudemex/signale.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/signale">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale">
   </a>
 </p>
 
 ## Description
+
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
@@ -449,13 +450,17 @@ The following illustrates all the available options with their respective defaul
     "displayBadge": true,
     "displayDate": false,
     "displayFilename": false,
+    "displayLine": false,
     "displayLabel": true,
     "displayTimestamp": false,
     "underlineLabel": true,
     "underlineMessage": false,
     "underlinePrefix": false,
     "underlineSuffix": false,
-    "uppercaseLabel": false
+    "uppercaseLabel": false,
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "formatDate": "YYYY-MM-DD",
+    "formatTime": "HH:mm:ss"
   }
 }
 ```
@@ -490,6 +495,13 @@ Display the current local date in `YYYY-MM-DD` format.
 - Default: `false`
 
 Display the name of the file that the logger is reporting from.
+
+##### `displayLine`
+
+- Type: `Boolean`
+- Default: `true`
+
+Display the line of the file that the logger is reporting from.
 
 ##### `displayLabel`
 
@@ -539,6 +551,27 @@ Underline the logger suffix.
 - Default: `false`
 
 Display the label of the logger in uppercase.
+
+##### `timeZone`
+
+- Type: `String`
+- Default: `America/Argentina/Buenos_Aires`
+
+Time zone configuration. [List of time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
+
+##### `formatDate`
+
+- Type: `String`
+- Default: `YYYY-MM-DD`
+
+Setting to format the date. [List of formats](https://momentjs.com/docs/#/displaying/format/)
+
+##### `formatTime`
+
+- Type: `String`
+- Default: `HH:mm:ss a`
+
+Setting to format the time. [List of formats](https://momentjs.com/docs/#/displaying/format/)
 
 </details>
 

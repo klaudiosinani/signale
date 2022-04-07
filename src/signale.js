@@ -3,6 +3,7 @@ const util = require('util');
 const path = require('path');
 const readline = require('readline');
 const chalk = require('chalk');
+const moment = require('moment-timezone');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
 const pkg = require('./../package.json');
@@ -55,13 +56,11 @@ class Signale {
   }
 
   get date() {
-    const _ = new Date();
-    return [_.getFullYear(), _.getMonth() + 1, _.getDate()].join('-');
+    return moment().tz(this._config.timeZone).format(this._config.formatDate);
   }
 
   get timestamp() {
-    const _ = new Date();
-    return [_.getHours(), _.getMinutes(), _.getSeconds()].join(':');
+    return moment().tz(this._config.timeZone).format(this._config.formatTime);
   }
 
   get filename() {
@@ -77,6 +76,27 @@ class Signale {
     });
 
     return firstExternalFilePath ? path.basename(firstExternalFilePath) : 'anonymous';
+  }
+
+  get fileLine() {
+    const _ = Error.prepareStackTrace;
+    Error.prepareStackTrace = (error, stack) => stack;
+    const {stack} = new Error();
+    Error.prepareStackTrace = _;
+
+    const callers = stack.map(x => x.getFileName());
+    const callersAndLines = stack.map(x => {
+      return {
+        name: x.getFileName(),
+        line: x.getLineNumber()
+      };
+    });
+
+    const firstExternalFileLine = callersAndLines.find(x => {
+      return x.name !== callers[0];
+    });
+
+    return firstExternalFileLine ? firstExternalFileLine.line : '';
   }
 
   get packageConfiguration() {
@@ -153,8 +173,8 @@ class Signale {
     return `[${this.date}]`;
   }
 
-  _formatFilename() {
-    return `[${this.filename}]`;
+  _formatFilename(displayLine) {
+    return `[${this.filename}${displayLine ? `:${this.fileLine}` : ''}]`;
   }
 
   _formatScopeName() {
@@ -186,7 +206,7 @@ class Signale {
     }
 
     if (this._config.displayFilename) {
-      meta.push(this._formatFilename());
+      meta.push(this._formatFilename(this._config.displayLine));
     }
 
     if (this._scopeName.length !== 0 && this._config.displayScope) {
