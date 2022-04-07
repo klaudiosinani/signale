@@ -89,9 +89,9 @@ class Signale {
 
   get _logLevels() {
     return {
-      info: 0,
+      debug: 0,
       timer: 1,
-      debug: 2,
+      info: 2,
       warn: 3,
       error: 4
     };
@@ -116,7 +116,7 @@ class Signale {
   }
 
   _validateLogLevel(level) {
-    return Object.keys(this._logLevels).includes(level) ? level : 'info';
+    return Object.keys(this._logLevels).includes(level) ? level : 'debug';
   }
 
   _mergeTypes(standard, custom) {
