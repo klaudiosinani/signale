@@ -80,7 +80,7 @@ declare namespace _signale {
     scope?: string;
     secrets?: Secret;
     stream?: WritableStream | WritableStream[];
-    types?: Partial<Record<T, LoggerConfiguration>>;
+    types?: Partial<Record<T, Partial<LoggerConfiguration>>>;
   }
 
   export interface Constructor {
