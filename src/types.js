@@ -18,7 +18,7 @@ module.exports = {
     badge: figures('❤'),
     color: 'magenta',
     label: 'favorite',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   info: {
     badge: figures.info,
@@ -30,7 +30,7 @@ module.exports = {
     badge: figures.star,
     color: 'yellow',
     label: 'star',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   success: {
     badge: figures.tick,
@@ -42,7 +42,7 @@ module.exports = {
     badge: figures.ellipsis,
     color: 'blue',
     label: 'waiting',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   warn: {
     badge: figures.warning,
@@ -54,31 +54,31 @@ module.exports = {
     badge: figures.checkboxOn,
     color: 'cyan',
     label: 'complete',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   pending: {
     badge: figures.checkboxOff,
     color: 'magenta',
     label: 'pending',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   note: {
     badge: figures.bullet,
     color: 'blue',
     label: 'note',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   start: {
     badge: figures.play,
     color: 'green',
     label: 'start',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   pause: {
     badge: figures.squareSmallFilled,
     color: 'yellow',
     label: 'pause',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   debug: {
     badge: figures('⬤'),
@@ -90,18 +90,18 @@ module.exports = {
     badge: figures.ellipsis,
     color: 'blue',
     label: 'awaiting',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   watch: {
     badge: figures.ellipsis,
     color: 'yellow',
     label: 'watching',
-    logLevel: 'info'
+    logLevel: 'debug'
   },
   log: {
     badge: '',
     color: '',
     label: '',
-    logLevel: 'info'
+    logLevel: 'debug'
   }
 };
