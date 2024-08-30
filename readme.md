@@ -11,13 +11,25 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
-  </a>
   <a href="https://www.npmjs.com/package/signale">
     <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
   </a>
 </p>
+
+<div align="center">
+  <!-- <br> -->
+  <br>
+  <sup><b>Sponsored by:</b></sup>
+  <br>
+  <a href="https://betterstack.com">
+    <div>
+      <img src="https://github.com/Seldaek/monolog/assets/183678/7de58ce0-2fa2-45c0-b3e8-e60cebb3c4cf" width="200" alt="Better Stack">
+    </div>
+    <sup>
+      Spot, Resolve, and Prevent Downtime.
+    </sup>
+  </a>
+</div>
 
 ## Description
 
@@ -62,6 +74,7 @@ Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https:
 - [Related](#related)
 - [Who's Using It?](#whos-using-it)
 - [Team](#team)
+- [Sponsors](#sponsors)
 - [License](#license)
 
 ## Install
@@ -915,8 +928,15 @@ View in detail all the packages and repositories that are using Signale [here](h
 
 ## Team
 
-- Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
+- Klaudio Sinani [(@klaudiosinani)](https://github.com/klaudiosinani)
 - Mario Sinani [(@mariosinani)](https://github.com/mariosinani)
+
+## Sponsors
+
+A big thank you to all the people and companies supporting our Open Source work:
+
+- [Better Stack: Spot, Resolve, and Prevent Downtime.](https://betterstack.com/)
+
 
 ## License
 
