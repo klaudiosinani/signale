@@ -3,11 +3,11 @@
   "version": "1.4.0",
   "description": "Highly configurable logging utility",
   "license": "MIT",
-  "repository": "klaussinani/signale",
+  "repository": "klaudiosinani/signale",
   "author": {
-    "name": "Klaus Sinani",
-    "email": "klaussinani@gmail.com",
-    "url": "https://klaussinani.github.io"
+    "name": "Klaudio Sinani",
+    "email": "klaudiosinani@protonmail.ch",
+    "url": "https://klaudiosinani.com"
   },
   "maintainers": [
     {
