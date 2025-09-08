@@ -11,8 +11,8 @@
 </div>
 
 <p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
+  <a href="https://travis-ci.com/klaudiosinani/signale">
+    <img alt="Build Status" src="https://travis-ci.com/klaudiosinani/signale.svg?branch=master">
   </a>
   <a href="https://www.npmjs.com/package/signale">
     <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
@@ -23,13 +23,13 @@
 
 Signale ist bis ins letzte hack- und konfigurierbar. Es kann für Logging und Statusreports als auch für das Handling des Output Rendering Process von anderen Node Modulen und Anwendungen verwendet werden.
 
-Diese Dokument in [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md) lesen.
+Diese Dokument in [简体中文](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md) lesen.
 
 Du kannst die Entwicklung dieses Projekts unterstützen und an [Open Collective](https://opencollective.com/klaussinani) spenden.
 
-Lies die [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) um zu lernen, wie du dieses Dokument in mehr Sprachen übersetzen kannst.
+Lies die [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) um zu lernen, wie du dieses Dokument in mehr Sprachen übersetzen kannst.
 
-Besuch doch [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https://twitter.com/klaussinani) um deine Anmerkungen zu diesem Projekt zu teilen.
+Besuch doch [Gitter](https://gitter.im/klaudiosinani/signale) or [Twitter](https://twitter.com/klaussinani) um deine Anmerkungen zu diesem Projekt zu teilen.
 
 ## Höhepunkte
 
@@ -381,7 +381,7 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 ### Secrets Filtering
 
-Durch das Verwenden der `secrets` Option werden geheime/sensitive Informationen, wie Scopenamen,  aus den Nachrichten (Body und Metadaten) herausgefiltert. Diese Option ist Teil des configuration-Objects, dass einer `Signale`-Instanz oder Initialisierung übergeben wird und hat den Typ `Array<String|Number>`. Das Array kann mehrere Geheimnisse enthalten. Alle werden, wenn sie vorkommen, entfernt und durch den standardmäßigen `'[secure]'` string ersetzt. Wenn die unäre `signale.scope(name)` Funktion verwendet wird, dann erbt die erzeugte `Signale` Instanz alle Geheimnisse des Parents. Die Geheimnisse werden **case-sensitive** überprüft. Die unäre [`signale.addSecrets()`](https://github.com/klaussinani/signale#signaleaddsecretssecrets) und die nullstellige [`signale.clearSecrets()`](https://github.com/klaussinani/signale#signaleclearsecrets) Funktion sind über die API verfügbar um die Geheimnisse hinzuzufügen/zu löschen.
+Durch das Verwenden der `secrets` Option werden geheime/sensitive Informationen, wie Scopenamen,  aus den Nachrichten (Body und Metadaten) herausgefiltert. Diese Option ist Teil des configuration-Objects, dass einer `Signale`-Instanz oder Initialisierung übergeben wird und hat den Typ `Array<String|Number>`. Das Array kann mehrere Geheimnisse enthalten. Alle werden, wenn sie vorkommen, entfernt und durch den standardmäßigen `'[secure]'` string ersetzt. Wenn die unäre `signale.scope(name)` Funktion verwendet wird, dann erbt die erzeugte `Signale` Instanz alle Geheimnisse des Parents. Die Geheimnisse werden **case-sensitive** überprüft. Die unäre [`signale.addSecrets()`](https://github.com/klaudiosinani/signale#signaleaddsecretssecrets) und die nullstellige [`signale.clearSecrets()`](https://github.com/klaudiosinani/signale#signaleclearsecrets) Funktion sind über die API verfügbar um die Geheimnisse hinzuzufügen/zu löschen.
 
 Es ist **entscheidende** und **stark befürwortete** Praxis, sensitive Informationen **nicht direkt im Quellcode zu speichern**. Das Beispiel ist **alleinig** zur die Demonstration gedacht:
 
@@ -884,7 +884,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 
 ## Development
 
-Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
+Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md).
 
 - Das Repository forken und auf deine Maschine klonen
 - Zum lokalen Fork navigieren: `cd signale`
@@ -892,9 +892,9 @@ Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contri
 - Den Code für Fehler linten: `npm test` or `yarn test`
 ## Related
 
-- [qoa](https://github.com/klaussinani/qoa) - Minimal interactive command-line prompts
-- [taskbook](https://github.com/klaussinani/taskbook) - Tasks, boards & notes for the command-line habitat
-- [hyperocean](https://github.com/klaussinani/hyperocean) - Deep oceanic blue Hyper terminal theme
+- [qoa](https://github.com/klaudiosinani/qoa) - Minimal interactive command-line prompts
+- [taskbook](https://github.com/klaudiosinani/taskbook) - Tasks, boards & notes for the command-line habitat
+- [hyperocean](https://github.com/klaudiosinani/hyperocean) - Deep oceanic blue Hyper terminal theme
 
 ## Who's Using It?
 
@@ -903,10 +903,10 @@ Mehr Informationen im Bezug auf Beiträge zum Projekt finden sich in den [contri
 - [Remix by Ethereum](https://github.com/ethereum/remix)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Shower](https://github.com/shower/shower)
-- [Taskbook](https://github.com/klaussinani/taskbook)
+- [Taskbook](https://github.com/klaudiosinani/taskbook)
 - [Vant](https://github.com/youzan/vant)
 
-Repositories, die Signale verwenden im Detail ansehen: [hier](https://github.com/klaussinani/signale/network/dependents).
+Repositories, die Signale verwenden im Detail ansehen: [hier](https://github.com/klaudiosinani/signale/network/dependents).
 
 ## Team
 
@@ -915,4 +915,4 @@ Repositories, die Signale verwenden im Detail ansehen: [hier](https://github.com
 
 ## License
 
-[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
+[MIT](https://github.com/klaudiosinani/signale/blob/master/license.md)
