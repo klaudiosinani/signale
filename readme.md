@@ -35,13 +35,11 @@
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Read this document in: [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md).
+Read this document in: [简体中文](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md).
 
 You can now support the development process through [GitHub Sponsors](https://github.com/sponsors/klaussinani).
 
-Visit the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
-
-Come over to [Gitter](https://gitter.im/klaussinani/signale) or [Twitter](https://twitter.com/klaussinani) to share your thoughts on the project.
+Visit the [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
 ## Highlights
 
@@ -397,7 +395,7 @@ signale.error('Message will appear on both `process.stdout` & `process.stderr`')
 
 ### Secrets Filtering
 
-By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner. Also, the unary [`signale.addSecrets()`](https://github.com/klaussinani/signale#signaleaddsecretssecrets) and the nullary [`signale.clearSecrets()`](https://github.com/klaussinani/signale#signaleclearsecrets) functions are available through the API for adding and clearing secrets respectively.
+By utilizing the `secrets` option, secrets and other sensitive information can be filtered out from the body as well as the metadata, i.e. scope names etc, of to-be-logged messages. The option is part of the configuration object passed to a `Signale` instance on its initialization, and is of type `Array<String|Number>`. The array can hold multiple secrets, all of which are removed, if present, from the to-be-logged messages and are replaced with the default `'[secure]'` string. Additionally, when the unary `signale.scope(name)` function is used, the returned `Signale` instance inherits all the secrets belonging to its parent. The secrets checking process is performed in a **case-sensitive** manner. Also, the unary [`signale.addSecrets()`](https://github.com/klaudiosinani/signale#signaleaddsecretssecrets) and the nullary [`signale.clearSecrets()`](https://github.com/klaudiosinani/signale#signaleclearsecrets) functions are available through the API for adding and clearing secrets respectively.
 
 It is **critical** and **highly recommended** to **not type directly secrets in your code**, thus the following example serves **only** as a simple & easily reproducible usage demonstration.
 
@@ -901,7 +899,7 @@ signale.log('$ exporting USERNAME=%s', 'klaussinani');
 
 ## Development
 
-For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaussinani/signale/blob/master/contributing.md).
+For more info on how to contribute to the project, please read the [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md).
 
 - Fork the repository and clone it to your machine
 - Navigate to your local fork: `cd signale`
@@ -910,9 +908,9 @@ For more info on how to contribute to the project, please read the [contributing
 
 ## Related
 
-- [qoa](https://github.com/klaussinani/qoa) - Minimal interactive command-line prompts
-- [taskbook](https://github.com/klaussinani/taskbook) - Tasks, boards & notes for the command-line habitat
-- [hyperocean](https://github.com/klaussinani/hyperocean) - Deep oceanic blue Hyper terminal theme
+- [qoa](https://github.com/klaudiosinani/qoa) - Minimal interactive command-line prompts
+- [taskbook](https://github.com/klaudiosinani/taskbook) - Tasks, boards & notes for the command-line habitat
+- [hyperocean](https://github.com/klaudiosinani/hyperocean) - Deep oceanic blue Hyper terminal theme
 
 ## Who's Using It?
 
@@ -921,10 +919,10 @@ For more info on how to contribute to the project, please read the [contributing
 - [Remix by Ethereum](https://github.com/ethereum/remix)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Shower](https://github.com/shower/shower)
-- [Taskbook](https://github.com/klaussinani/taskbook)
+- [Taskbook](https://github.com/klaudiosinani/taskbook)
 - [Vant](https://github.com/youzan/vant)
 
-View in detail all the packages and repositories that are using Signale [here](https://github.com/klaussinani/signale/network/dependents).
+View in detail all the packages and repositories that are using Signale [here](https://github.com/klaudiosinani/signale/network/dependents).
 
 ## Team
 
@@ -940,4 +938,4 @@ A big thank you to all the people and companies supporting our Open Source work:
 
 ## License
 
-[MIT](https://github.com/klaussinani/signale/blob/master/license.md)
+[MIT](https://github.com/klaudiosinani/signale/blob/master/license.md)
