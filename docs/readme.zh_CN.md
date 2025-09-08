@@ -20,8 +20,6 @@
 
 Signale 的核心是可扩展和可配置的，可将其用于日志记录、状态报告以及处理其他 Node 模块和应用的输出渲染方式。
 
-来 [Gitter](https://gitter.im/klaudiosinani/signale) 或 [Twitter](https://twitter.com/klaussinani) 分享你对该项目的看法。
-
 浏览 [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
 
 ## 亮点
@@ -99,7 +97,7 @@ signale.debug('Hello', 'from', 'L59');
 signale.pending('Write release notes for %s', '1.2.0');
 signale.fatal(new Error('Unable to acquire lock'));
 signale.watch('Recursively watching build directory...');
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaudiosinani)'});
 ```
 
 <div align="center">
@@ -574,11 +572,11 @@ signale.error(new Error('Unsuccessful operation'));
 ```js
 const signale = require('signale');
 
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
-//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaudiosinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaudiosinani)
 
-signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaussinani)'});
-//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
+signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaudiosinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaudiosinani)
 ```
 
 #### signale.`scope(name[, name])`
@@ -759,7 +757,7 @@ signale.success('foo');
 
 ## 团队
 
-- Klaus Sinani [(@klaussinani)](https://github.com/klaussinani)
+- Klaudio Sinani [(@klaudiosinani)](https://github.com/klaudiosinani)
 
 ## 许可
 
