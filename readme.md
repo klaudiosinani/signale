@@ -37,7 +37,7 @@ Hackable and configurable to the core, signale can be used for logging purposes,
 
 Read this document in: [简体中文](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md).
 
-You can now support the development process through [GitHub Sponsors](https://github.com/sponsors/klaussinani).
+You can now support the development process through [GitHub Sponsors](https://github.com/sponsors/klaudiosinani).
 
 Visit the [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) to learn more on how to translate this document into more languages.
 
@@ -130,7 +130,7 @@ signale.debug('Hello', 'from', 'L59');
 signale.pending('Write release notes for %s', '1.2.0');
 signale.fatal(new Error('Unable to acquire lock'));
 signale.watch('Recursively watching build directory...');
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klauscfhq)'});
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaudiosinani)'});
 ```
 
 <div align="center">
@@ -403,7 +403,7 @@ It is **critical** and **highly recommended** to **not type directly secrets in 
 const {Signale} = require('signale');
 
 // In reality secrets could be securely fetched/decrypted through a dedicated API 
-const [USERNAME, TOKEN] = ['klaussinani', 'token'];
+const [USERNAME, TOKEN] = ['klaudiosinani', 'token'];
 
 const logger1 = new Signale({
   secrets: [USERNAME, TOKEN]
@@ -666,11 +666,11 @@ Can be an object holding the `prefix`, `message` and `suffix` attributes, with `
 ```js
 const signale = require('signale');
 
-signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaussinani)'});
-//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
+signale.complete({prefix: '[task]', message: 'Fix issue #59', suffix: '(@klaudiosinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaudiosinani)
 
-signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaussinani)'});
-//=> [task] ☒  complete  Fix issue #59 (@klaussinani)
+signale.complete({prefix: '[task]', message: ['Fix issue #%d', 59], suffix: '(@klaudiosinani)'});
+//=> [task] ☒  complete  Fix issue #59 (@klaudiosinani)
 ```
 
 #### signale.`scope(name[, name])`
@@ -870,12 +870,12 @@ Array holding the secrets/sensitive-information to be filtered out.
 ```js
 const signale = require('signale');
 
-signale.log('$ exporting USERNAME=%s', 'klaussinani');
-//=> $ exporting USERNAME=klaussinani
+signale.log('$ exporting USERNAME=%s', 'klaudiosinani');
+//=> $ exporting USERNAME=klaudiosinani
 
-signale.addSecrets(['klaussinani']);
+signale.addSecrets(['klaudiosinani']);
 
-signale.log('$ exporting USERNAME=%s', 'klaussinani');
+signale.log('$ exporting USERNAME=%s', 'klaudiosinani');
 //=> $ exporting USERNAME=[secure]
 ```
 
@@ -886,15 +886,15 @@ Removes all secrets/sensitive-information from the targeted Signale instance.
 ```js
 const signale = require('signale');
 
-signale.addSecrets(['klaussinani']);
+signale.addSecrets(['klaudiosinani']);
 
-signale.log('$ exporting USERNAME=%s', 'klaussinani');
+signale.log('$ exporting USERNAME=%s', 'klaudiosinani');
 //=> $ exporting USERNAME=[secure]
 
 signale.clearSecrets();
 
-signale.log('$ exporting USERNAME=%s', 'klaussinani');
-//=> $ exporting USERNAME=klaussinani
+signale.log('$ exporting USERNAME=%s', 'klaudiosinani');
+//=> $ exporting USERNAME=klaudiosinani
 ```
 
 ## Development
