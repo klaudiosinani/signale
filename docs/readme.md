@@ -1,5 +1,6 @@
 ## Signale Translated Documentation
 
+- [Albanian - Shqip](https://github.com/klaudiosinani/signale/blob/master/docs/readme.AL.md) by [@klaudiosinani](https://github.com/klaudiosinani)
 - [简体中文 - Simplified Chinese](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md) by [@hardo](https://github.com/hardo)
 - [German - Deutsch](https://github.com/klaudiosinani/signale/blob/master/docs/readme.DE.md) by [@villabunterkunt](https://github.com/villabunterkunt)
 
@@ -9,5 +10,5 @@ Visit the [contributing guidelines](https://github.com/klaudiosinani/signale/blo
 
 ## Thanks
 
-Tons of thank you to the amazing people that help out with the creation and maintenance of the translations! Your contributions make Signale available to everyone around the world! ❤️
+Tons of thank you to the amazing people that help out with the creation and maintenance of the translations, your contributions make Signale available to everyone around the world!
 

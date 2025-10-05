@@ -23,7 +23,7 @@
 
 Signale ist bis ins letzte hack- und konfigurierbar. Es kann für Logging und Statusreports als auch für das Handling des Output Rendering Process von anderen Node Modulen und Anwendungen verwendet werden.
 
-Diese Dokument in [简体中文](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md) lesen.
+Diese Dokument in [Albanian - Shqip](https://github.com/klaudiosinani/signale/blob/master/docs/readme.AL.md), [English](https://github.com/klaudiosinani/signale/blob/master/readme.md), [简体中文 - Simplified Chinese](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md) lesen.
 
 Lies die [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) um zu lernen, wie du dieses Dokument in mehr Sprachen übersetzen kannst.
 
