@@ -20,6 +20,8 @@
 
 Signale 的核心是可扩展和可配置的，可将其用于日志记录、状态报告以及处理其他 Node 模块和应用的输出渲染方式。
 
+您可以使用以下语言阅读本文档 [Albanian - Shqip](https://github.com/klaudiosinani/signale/blob/master/docs/readme.AL.md), [English](https://github.com/klaudiosinani/signale/blob/master/readme.md), [German - Deutsch](https://github.com/klaudiosinani/signale/blob/master/docs/readme.DE.md).
+
 浏览 [contributing guidelines](https://github.com/klaudiosinani/signale/blob/master/contributing.md#translating-documentation) 以了解如何将该文档翻译成其他语言。
 
 ## 亮点
