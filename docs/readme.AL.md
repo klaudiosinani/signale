@@ -34,7 +34,7 @@
 
 Plotësisht i modifikueshëm dhe i konfigurueshëm deri në thelb, signale mund të përdoret për qëllime regjistrimi, raportim statusi, si dhe për menaxhimin e procesit të shfaqjes së output-it të moduleve dhe aplikacioneve të tjera të node.
 
-Lexoni këtë dokument në: [简体中文](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md).
+Lexoni këtë dokument në: [English](https://github.com/klaudiosinani/signale/blob/master/readme.md), [German - Deutsch](https://github.com/klaudiosinani/signale/blob/master/docs/readme.DE.md), [简体中文 - Simplified Chinese](https://github.com/klaudiosinani/signale/blob/master/docs/readme.zh_CN.md).
 
 Tani mund të mbështetni procesin e zhvillimit përmes [GitHub Sponsors](https://github.com/sponsors/klaudiosinani).
 
