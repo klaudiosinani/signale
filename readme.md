@@ -104,6 +104,7 @@ Import signale and start using any of the default loggers.
 - `error`
 - `debug`
 - `fatal`
+- `alert`
 - `fav`
 - `info`
 - `note`
@@ -146,7 +147,7 @@ const {Signale} = require('signale');
 const options = {
   disabled: false,
   interactive: false,
-  logLevel: 'info',
+  logLevel: 'debug',
   scope: 'custom',
   secrets: [],
   stream: process.stdout,
@@ -155,13 +156,13 @@ const options = {
       badge: '**',
       color: 'yellow',
       label: 'reminder',
-      logLevel: 'info'
+      logLevel: 'debug'
     },
     santa: {
       badge: '🎅',
       color: 'red',
       label: 'santa',
-      logLevel: 'info'
+      logLevel: 'debug'
     }
   }
 };
@@ -206,7 +207,7 @@ custom.success('Custom Success Log');
   <img alt="Default Loggers" src="media/override-defaults.png" width="65%">
 </div>
 
-The `options` object can hold any of the following attributes: `disabled`, `interactive`, `logLevel`, `secrets`, `stream`, `scope` and `types`. 
+The `options` object can hold any of the following attributes: `disabled`, `interactive`, `logLevels`, `logLevel`, `secrets`, `stream`, `scope` and `types`.
 
 ##### `disabled`
 
@@ -225,15 +226,35 @@ Switches all loggers belonging to the created instance into the interactive mode
 ##### `logLevel`
 
 - Type: `String`
-- Default: `'info'`
+- Default: `'debug'`
 
 Sets the general logging level of the created instance. Can be one of the following:
 
-- `'info'` - Displays all messages from all loggers.
-- `'timer'` -  Displays messages only from the `time`, `timeEnd`, `debug`, `warn`, `error` & `fatal` loggers.
-- `'debug'` - Displays messages only from the `debug`, `warn`, `error` & `fatal` loggers.
+- `'debug'` - Displays all messages from all loggers.
+- `'info'` - Displays messages from all loggers except `debug` level.
+- `'timer'` -  Displays messages only from the `time`, `timeEnd`, `warn`, `error` & `fatal` loggers.
 - `'warn'` - Displays messages only from the `warn`, `error` & `fatal` loggers.
 - `'error'` - Displays messages only from the `error` & `fatal` loggers.
+
+#### `logLevels`
+
+- Type: `Object`
+
+Allows you to add or override log levels.
+
+For example, a value of `{ silly: -1 }` will add a level of `silly`, which will have even lower priority than `debug`.
+
+Default log levels are:
+
+```json5
+{
+  debug: 0,
+  info: 1,
+  timer: 2,
+  warn: 3,
+  error: 4
+}
+```
 
 ##### `secrets`
 
