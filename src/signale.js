@@ -2,13 +2,13 @@
 const util = require('util');
 const path = require('path');
 const readline = require('readline');
-const chalk = require('chalk');
+const pc = require('picocolors');
 const figures = require('figures');
 const pkgConf = require('pkg-conf');
 const pkg = require('./../package.json');
 const defaultTypes = require('./types');
 
-const {green, grey, red, underline, yellow} = chalk;
+const {green, gray: grey, red, underline, yellow} = pc;
 
 let isPreviousLogInteractive = false;
 const defaults = pkg.options.default;
@@ -231,15 +231,15 @@ class Signale {
     }
 
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](this._padEnd(type.badge, type.badge.length + 1)));
+      signale.push(pc[type.color](this._padEnd(type.badge, type.badge.length + 1)));
     }
 
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+        signale.push(pc[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
       } else {
-        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
+        signale.push(pc[type.color](this._padEnd(label, this._longestLabel.length + 1)));
       }
     }
 
