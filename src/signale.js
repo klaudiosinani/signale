@@ -8,6 +8,14 @@ const pkgConf = require('pkg-conf');
 const pkg = require('./../package.json');
 const defaultTypes = require('./types');
 
+const defaultLogLevels = {
+  debug: 0,
+  info: 1,
+  timer: 2,
+  warn: 3,
+  error: 4
+};
+
 const {green, grey, red, underline, yellow} = chalk;
 
 let isPreviousLogInteractive = false;
@@ -19,6 +27,8 @@ class Signale {
     this._interactive = options.interactive || false;
     this._config = Object.assign(this.packageConfiguration, options.config);
     this._customTypes = Object.assign({}, options.types);
+    this._customLogLevels = Object.assign({}, options.logLevels);
+    this._logLevels = Object.assign({}, defaultLogLevels, this._customLogLevels);
     this._disabled = options.disabled || false;
     this._scopeName = options.scope || '';
     this._timers = options.timers || new Map();
@@ -50,6 +60,7 @@ class Signale {
       timers: this._timers,
       stream: this._stream,
       secrets: this._secrets,
+      logLevels: this._customLogLevels,
       logLevel: this._generalLogLevel
     });
   }
@@ -87,16 +98,6 @@ class Signale {
     return underline(this._longestLabel);
   }
 
-  get _logLevels() {
-    return {
-      info: 0,
-      timer: 1,
-      debug: 2,
-      warn: 3,
-      error: 4
-    };
-  }
-
   set configuration(configObj) {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
@@ -116,7 +117,7 @@ class Signale {
   }
 
   _validateLogLevel(level) {
-    return Object.keys(this._logLevels).includes(level) ? level : 'info';
+    return Object.keys(this._logLevels).includes(level) ? level : 'debug';
   }
 
   _mergeTypes(standard, custom) {
@@ -230,16 +231,18 @@ class Signale {
       }
     }
 
+    const colorize = type.color ? chalk[type.color] : x => x;
+
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](this._padEnd(type.badge, type.badge.length + 1)));
+      signale.push(colorize(this._padEnd(type.badge, type.badge.length + 1)));
     }
 
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+        signale.push(colorize(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
       } else {
-        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
+        signale.push(colorize(this._padEnd(label, this._longestLabel.length + 1)));
       }
     }
 
@@ -346,7 +349,8 @@ class Signale {
       throw new Error('No scope name was defined.');
     }
 
-    return new Signale(Object.assign(this.currentOptions, {scope: name}));
+    const SignaleConstructor = this.constructor || Signale;
+    return new SignaleConstructor(Object.assign(this.currentOptions, {scope: name}));
   }
 
   unscope() {

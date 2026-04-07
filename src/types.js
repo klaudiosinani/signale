@@ -14,6 +14,12 @@ module.exports = {
     label: 'fatal',
     logLevel: 'error'
   },
+  alert: {
+    badge: figures('⬤'),
+    color: 'red',
+    label: 'alert',
+    logLevel: 'error'
+  },
   fav: {
     badge: figures('❤'),
     color: 'magenta',
@@ -81,8 +87,8 @@ module.exports = {
     logLevel: 'info'
   },
   debug: {
-    badge: figures('⬤'),
-    color: 'red',
+    badge: figures.pointerSmall,
+    color: '',
     label: 'debug',
     logLevel: 'debug'
   },

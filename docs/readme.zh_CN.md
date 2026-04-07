@@ -75,6 +75,7 @@ npm install signale
 - `error`
 - `debug`
 - `fatal`
+- `alert`
 - `fav`
 - `info`
 - `note`

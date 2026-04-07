@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/node": "^11.11.3",
     "typescript": "^3.3.3333",
-    "xo": "*"
+    "xo": "^0.24.0"
   },
   "options": {
     "default": {
